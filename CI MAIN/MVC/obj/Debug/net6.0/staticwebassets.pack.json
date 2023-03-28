@@ -1,0 +1,753 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Riya\\.nuget\\packages\\ntoastnotify\\8.0.0\\contentFiles\\any\\net6.0\\wwwroot\\noty.js",
+      "PackagePath": "staticwebassets\\noty.js"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CI Platform Project.bundle.scp.css",
+      "PackagePath": "staticwebassets\\CI Platform Project.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\css\\ForgotPassword.css",
+      "PackagePath": "staticwebassets\\css\\ForgotPassword.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\css\\LandingPage.css",
+      "PackagePath": "staticwebassets\\css\\LandingPage.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\css\\NoMissionFound.css",
+      "PackagePath": "staticwebassets\\css\\NoMissionFound.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\css\\Registration.css",
+      "PackagePath": "staticwebassets\\css\\Registration.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\css\\ResetPassword.css",
+      "PackagePath": "staticwebassets\\css\\ResetPassword.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\css\\ShareStory.css",
+      "PackagePath": "staticwebassets\\css\\ShareStory.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\css\\StoryListing.css",
+      "PackagePath": "staticwebassets\\css\\StoryListing.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\css\\VolunteeringMission.css",
+      "PackagePath": "staticwebassets\\css\\VolunteeringMission.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\css\\login.css",
+      "PackagePath": "staticwebassets\\css\\login.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\css\\navbar1.css",
+      "PackagePath": "staticwebassets\\css\\navbar1.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\404-Page-image.png",
+      "PackagePath": "staticwebassets\\img\\404-Page-image.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\Already-volunteered.png",
+      "PackagePath": "staticwebassets\\img\\Already-volunteered.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\Animal-welfare-&-save-birds-campaign-1.png",
+      "PackagePath": "staticwebassets\\img\\Animal-welfare-&-save-birds-campaign-1.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\Animal-welfare-&-save-birds-campaign.png",
+      "PackagePath": "staticwebassets\\img\\Animal-welfare-&-save-birds-campaign.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png",
+      "PackagePath": "staticwebassets\\img\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png",
+      "PackagePath": "staticwebassets\\img\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-2.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png",
+      "PackagePath": "staticwebassets\\img\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-3.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png",
+      "PackagePath": "staticwebassets\\img\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-4.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-5.png",
+      "PackagePath": "staticwebassets\\img\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-5.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png",
+      "PackagePath": "staticwebassets\\img\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity-6.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png",
+      "PackagePath": "staticwebassets\\img\\CSR-initiative-stands-for-Coffee--and-Farmer-Equity.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png",
+      "PackagePath": "staticwebassets\\img\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-1.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png",
+      "PackagePath": "staticwebassets\\img\\Education-Supplies-for-Every--Pair-of-Shoes-Sold-2.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\Education-Supplies-for-Every--Pair-of-Shoes-Sold.png",
+      "PackagePath": "staticwebassets\\img\\Education-Supplies-for-Every--Pair-of-Shoes-Sold.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\Grow-Trees-On-the-path-to-environment-sustainability-1.png",
+      "PackagePath": "staticwebassets\\img\\Grow-Trees-On-the-path-to-environment-sustainability-1.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\Grow-Trees-On-the-path-to-environment-sustainability-2.png",
+      "PackagePath": "staticwebassets\\img\\Grow-Trees-On-the-path-to-environment-sustainability-2.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\Grow-Trees-On-the-path-to-environment-sustainability-3.png",
+      "PackagePath": "staticwebassets\\img\\Grow-Trees-On-the-path-to-environment-sustainability-3.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\Grow-Trees-On-the-path-to-environment-sustainability-4.png",
+      "PackagePath": "staticwebassets\\img\\Grow-Trees-On-the-path-to-environment-sustainability-4.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\Grow-Trees-On-the-path-to-environment-sustainability-5.png",
+      "PackagePath": "staticwebassets\\img\\Grow-Trees-On-the-path-to-environment-sustainability-5.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\Grow-Trees-On-the-path-to-environment-sustainability-login.png",
+      "PackagePath": "staticwebassets\\img\\Grow-Trees-On-the-path-to-environment-sustainability-login.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\Grow-Trees-On-the-path-to-environment-sustainability.png",
+      "PackagePath": "staticwebassets\\img\\Grow-Trees-On-the-path-to-environment-sustainability.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\Nourish-the-Children-in--African-country-1.png",
+      "PackagePath": "staticwebassets\\img\\Nourish-the-Children-in--African-country-1.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\Nourish-the-Children-in--African-country.png",
+      "PackagePath": "staticwebassets\\img\\Nourish-the-Children-in--African-country.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\Open-Volunteering-Requests.png",
+      "PackagePath": "staticwebassets\\img\\Open-Volunteering-Requests.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\Plantation-and-Afforestation-programme-1.png",
+      "PackagePath": "staticwebassets\\img\\Plantation-and-Afforestation-programme-1.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\Plantation-and-Afforestation-programme.png",
+      "PackagePath": "staticwebassets\\img\\Plantation-and-Afforestation-programme.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\Seats-left.png",
+      "PackagePath": "staticwebassets\\img\\Seats-left.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\Volunteering-Rank.png",
+      "PackagePath": "staticwebassets\\img\\Volunteering-Rank.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\Voted-Missions.png",
+      "PackagePath": "staticwebassets\\img\\Voted-Missions.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\achieved.png",
+      "PackagePath": "staticwebassets\\img\\achieved.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\add.png",
+      "PackagePath": "staticwebassets\\img\\add.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\add1.png",
+      "PackagePath": "staticwebassets\\img\\add1.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\arrow.png",
+      "PackagePath": "staticwebassets\\img\\arrow.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\bell-big.png",
+      "PackagePath": "staticwebassets\\img\\bell-big.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\bell.png",
+      "PackagePath": "staticwebassets\\img\\bell.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\bin.png",
+      "PackagePath": "staticwebassets\\img\\bin.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\calender.png",
+      "PackagePath": "staticwebassets\\img\\calender.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\cancel.png",
+      "PackagePath": "staticwebassets\\img\\cancel.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\cancel1.png",
+      "PackagePath": "staticwebassets\\img\\cancel1.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\checked.png",
+      "PackagePath": "staticwebassets\\img\\checked.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\cross.png",
+      "PackagePath": "staticwebassets\\img\\cross.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\deadline.png",
+      "PackagePath": "staticwebassets\\img\\deadline.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\doc.png",
+      "PackagePath": "staticwebassets\\img\\doc.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\down.png",
+      "PackagePath": "staticwebassets\\img\\down.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\drag-and-drop.png",
+      "PackagePath": "staticwebassets\\img\\drag-and-drop.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\drop-down.png",
+      "PackagePath": "staticwebassets\\img\\drop-down.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\eye.png",
+      "PackagePath": "staticwebassets\\img\\eye.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\facebook.png",
+      "PackagePath": "staticwebassets\\img\\facebook.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\filter.png",
+      "PackagePath": "staticwebassets\\img\\filter.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\gift.png",
+      "PackagePath": "staticwebassets\\img\\gift.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\graph.png",
+      "PackagePath": "staticwebassets\\img\\graph.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\grid.png",
+      "PackagePath": "staticwebassets\\img\\grid.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\heart.png",
+      "PackagePath": "staticwebassets\\img\\heart.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\heart1.png",
+      "PackagePath": "staticwebassets\\img\\heart1.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\hours.png",
+      "PackagePath": "staticwebassets\\img\\hours.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\image.png",
+      "PackagePath": "staticwebassets\\img\\image.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\image1.png",
+      "PackagePath": "staticwebassets\\img\\image1.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\image2.png",
+      "PackagePath": "staticwebassets\\img\\image2.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\img.png",
+      "PackagePath": "staticwebassets\\img\\img.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\img1.png",
+      "PackagePath": "staticwebassets\\img\\img1.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\img11.png",
+      "PackagePath": "staticwebassets\\img\\img11.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\img2.png",
+      "PackagePath": "staticwebassets\\img\\img2.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\img22.png",
+      "PackagePath": "staticwebassets\\img\\img22.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\img3.png",
+      "PackagePath": "staticwebassets\\img\\img3.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\img33.png",
+      "PackagePath": "staticwebassets\\img\\img33.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\info.png",
+      "PackagePath": "staticwebassets\\img\\info.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\left.png",
+      "PackagePath": "staticwebassets\\img\\left.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\left1.png",
+      "PackagePath": "staticwebassets\\img\\left1.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\linkedin.png",
+      "PackagePath": "staticwebassets\\img\\linkedin.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\list.png",
+      "PackagePath": "staticwebassets\\img\\list.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\logo.png",
+      "PackagePath": "staticwebassets\\img\\logo.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\mission.png",
+      "PackagePath": "staticwebassets\\img\\mission.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\my-story.png",
+      "PackagePath": "staticwebassets\\img\\my-story.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\new-message.png",
+      "PackagePath": "staticwebassets\\img\\new-message.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\next.png",
+      "PackagePath": "staticwebassets\\img\\next.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\organization.png",
+      "PackagePath": "staticwebassets\\img\\organization.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\pdf.png",
+      "PackagePath": "staticwebassets\\img\\pdf.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\pin.png",
+      "PackagePath": "staticwebassets\\img\\pin.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\pin1.png",
+      "PackagePath": "staticwebassets\\img\\pin1.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\previous.png",
+      "PackagePath": "staticwebassets\\img\\previous.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\right-arrow.png",
+      "PackagePath": "staticwebassets\\img\\right-arrow.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\right-arrow1.png",
+      "PackagePath": "staticwebassets\\img\\right-arrow1.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\right-arrow2.png",
+      "PackagePath": "staticwebassets\\img\\right-arrow2.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\right-white.png",
+      "PackagePath": "staticwebassets\\img\\right-white.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\right.png",
+      "PackagePath": "staticwebassets\\img\\right.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\search.png",
+      "PackagePath": "staticwebassets\\img\\search.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\selected-star.png",
+      "PackagePath": "staticwebassets\\img\\selected-star.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\settings.png",
+      "PackagePath": "staticwebassets\\img\\settings.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\star-empty.png",
+      "PackagePath": "staticwebassets\\img\\star-empty.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\star.png",
+      "PackagePath": "staticwebassets\\img\\star.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\twitter.png",
+      "PackagePath": "staticwebassets\\img\\twitter.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\up.png",
+      "PackagePath": "staticwebassets\\img\\up.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\user-img-large.png",
+      "PackagePath": "staticwebassets\\img\\user-img-large.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\user-img.png",
+      "PackagePath": "staticwebassets\\img\\user-img.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\user.png",
+      "PackagePath": "staticwebassets\\img\\user.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\user1.png",
+      "PackagePath": "staticwebassets\\img\\user1.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\volunteer1.png",
+      "PackagePath": "staticwebassets\\img\\volunteer1.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\volunteer2.png",
+      "PackagePath": "staticwebassets\\img\\volunteer2.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\volunteer3.png",
+      "PackagePath": "staticwebassets\\img\\volunteer3.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\volunteer4.png",
+      "PackagePath": "staticwebassets\\img\\volunteer4.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\volunteer5.png",
+      "PackagePath": "staticwebassets\\img\\volunteer5.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\volunteer6.png",
+      "PackagePath": "staticwebassets\\img\\volunteer6.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\volunteer7.png",
+      "PackagePath": "staticwebassets\\img\\volunteer7.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\volunteer8.png",
+      "PackagePath": "staticwebassets\\img\\volunteer8.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\volunteer9.png",
+      "PackagePath": "staticwebassets\\img\\volunteer9.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\web.png",
+      "PackagePath": "staticwebassets\\img\\web.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\img\\xlsx.png",
+      "PackagePath": "staticwebassets\\img\\xlsx.png"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\js\\ShareStory.js",
+      "PackagePath": "staticwebassets\\js\\ShareStory.js"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\js\\landing.js",
+      "PackagePath": "staticwebassets\\js\\landing.js"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\js\\navbar.js",
+      "PackagePath": "staticwebassets\\js\\navbar.js"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\js\\rateMission.js",
+      "PackagePath": "staticwebassets\\js\\rateMission.js"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "D:\\CI dummy\\MVC\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.CI Platform Project.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.CI Platform Project.props",
+      "PackagePath": "build\\CI Platform Project.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.CI Platform Project.props",
+      "PackagePath": "buildMultiTargeting\\CI Platform Project.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.CI Platform Project.props",
+      "PackagePath": "buildTransitive\\CI Platform Project.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

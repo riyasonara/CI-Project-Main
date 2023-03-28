@@ -1,0 +1,408 @@
+﻿.imgtext {
+    display: inline;
+}
+
+.line {
+    border-right: 1px solid rgba(128, 128, 128, 0.303);
+}
+
+.bodr {
+    border-left: 1px solid rgba(128, 128, 128, 0.303);
+    padding: auto;
+    padding: 15px 0;
+}
+
+.navbarr {
+    padding: 0 50px !important;
+    background-color: white !important;
+}
+
+.filter-content {
+    align-items: center;
+}
+
+.menu-icon {
+    display: none;
+}
+
+.menu-btn {
+    display: none;
+}
+
+.bg-body-tertiary {
+    background-color: white !important;
+}
+
+.form-control {
+    border: none !important;
+}
+
+.filter-btn {
+    display: none;
+}
+
+.bg-body-tertiary {
+    background-color: white !important;
+}
+
+.search-icon {
+    align-items: center;
+}
+
+
+.imgtext {
+    display: inline;
+}
+
+.filters-btn {
+    display: none;
+}
+
+
+.filters {
+    display: none;
+}
+
+.offcanvas-body {
+    flex-grow: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.sort {
+    width: 11rem;
+    margin-left: auto;
+}
+
+.sortby {
+    margin-left: auto;
+}
+
+.c1 {
+    position: relative;
+}
+
+.c1-content {
+    position: absolute;
+    margin-left: auto !important;
+    background-color: rgb(0,0,0, 0.511);
+    border-radius: 20px;
+}
+
+.pin {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.514);
+    border-radius: 50px;
+    top: 15px;
+    right: 10px;
+}
+
+.heart {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.514);
+    border-radius: 50%;
+    bottom: 3rem;
+    right: 12px;
+}
+
+
+.form-select {
+    width: 80%;
+}
+
+.card {
+    margin-bottom: 1rem;
+}
+
+.list-view .row > [class*=col-] {
+    max-width: 100%;
+    flex: 0 0 100%;
+}
+
+.list-view .card {
+    flex-direction: row;
+}
+
+.date-detail {
+    border: 1px solid #c5c3c3;
+    border-radius: 20px;
+    padding: 3px 10px;
+    margin: auto;
+    margin-top: 1rem;
+    text-align: center;
+    width: fit-content;
+}
+
+.filter-list {
+    /*  padding:6px 10px;  */
+    background-color: white;
+    border: 1px solid #808080;
+    border-radius: 20px;
+    color: #000;
+    cursor: pointer;
+    margin: 5px;
+}
+
+.filter-close-button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin-left: 5px;
+    color: #888;
+}
+
+.filters-section {
+    margin-top: 2%;
+}
+
+.apply {
+    border-radius: 25px;
+    width: fit-content;
+    margin: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #F88634;
+    color: #F88634;
+    background: transparent;
+}
+
+.card-img {
+    position: relative;
+}
+
+.pin {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.514);
+    border-radius: 50px;
+    top: 15px;
+    right: 10px;
+}
+
+
+.share {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.514);
+    border-radius: 50%;
+    bottom: 7px;
+    right: 12px;
+}
+
+.card-img-top {
+    height: 100%;
+}
+
+.env {
+    position: absolute;
+    color: #7d7d7d;
+    background-color: white;
+    border-radius: 40px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    width: fit-content;
+    bottom: -16px;
+}
+
+.l-1 {
+    height: 0.5px;
+    background-color: #c5c3c3;
+    width: 74px;
+}
+
+.info-txt {
+    color: #757575;
+}
+
+.info-txt-2 {
+    color: #414141;
+}
+
+@media screen and (max-width:767px) {
+    .filters-btn {
+        display: inline;
+    }
+
+    .sortby {
+        display: none !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .list-view .card {
+        flex-direction: column;
+    }
+}
+
+.list-view .card > .card-img-top {
+    width: auto;
+}
+
+.list-view .card .card-body {
+    display: inline-block;
+}
+
+
+@media screen and (max-width:767px) {
+    .navbar {
+        align-items: flex-start;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    .drpdwn {
+        margin-top: 3rem;
+    }
+
+    .filters {
+        display: inline;
+    }
+
+    .filter-text {
+        display: none !important;
+    }
+
+    .second-div {
+        display: none;
+    }
+}
+
+
+@media screen and (min-width:767px) {
+    #offcanvasWithBothOptions1 {
+        display: none;
+    }
+}
+
+@media screen and (max-width:575px) {
+    .menu-icon {
+        display: inline;
+    }
+
+    .menu-btn {
+        display: inline;
+    }
+}
+
+/* =============================================================================================== */
+
+body,
+html {
+    height: 100%;
+}
+
+/* The hero image */
+.hero-image {
+    /* Use "linear-gradient" to add a darken background effect to the image (photographer.jpg). This will make the text easier to read */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/img/Grow-Trees-On-the-path-to-environment-sustainability-login.png");
+    /* Set a specific height */
+    height: 50%;
+    /* Position and center the image to scale nicely on all screens */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+/* Place text in the middle of the image */
+.hero-text {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.right-arrow {
+    border-radius: 25px;
+    /* width: fit-content;
+    margin: 1rem;
+    margin-left:auto ;
+    margin-right:auto ; */
+    border: 1px solid white;
+    color: white;
+    background: transparent;
+    padding: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.comment {
+    background-color: #ffff;
+    color: black;
+}
+
+.share-story-btn a{
+    text-decoration: none;
+    color:white;
+}
+
+.share-story-btn:hover a{
+    background-color: white;
+   color:black;
+}
+
+
+.pager {
+    text-align: center;
+}
+
+    .pager a, .pager span {
+        display: inline-block;
+        margin: 5px;
+        padding: 5px 10px;
+        background-color: #f2f2f2;
+        color: #333;
+        text-decoration: none;
+        border-radius: 3px;
+    }
+
+        .pager a:hover {
+            background-color: coral;
+        }
+/* ======================================================================================= */
+
+
+.plus{
+    height:100px !important;
+    width: 100px !important;
+}
+.containers {
+    position: relative;
+}
+
+.middle {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.containers:hover .image {
+    opacity: 0.3;
+}
+
+.containers:hover .middle {
+    opacity: 1;
+}
+
+.text {
+    background-color: transparent;
+    color: black;
+    font-size: 16px;
+    padding: 4px 10px;
+    border: 2px solid black;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+
+
+
