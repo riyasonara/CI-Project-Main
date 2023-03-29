@@ -9258,11 +9258,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\CI dummy\\CI PLatform Entities\\CI PLatform Entities.csproj",
+      "projectUniqueName": "E:\\Project\\CI Project Main\\CI MAIN\\CI PLatform Entities\\CI PLatform Entities.csproj",
       "projectName": "CI PLatform Entities",
-      "projectPath": "D:\\CI dummy\\CI PLatform Entities\\CI PLatform Entities.csproj",
+      "projectPath": "E:\\Project\\CI Project Main\\CI MAIN\\CI PLatform Entities\\CI PLatform Entities.csproj",
       "packagesPath": "C:\\Users\\Riya\\.nuget\\packages\\",
-      "outputPath": "D:\\CI dummy\\CI PLatform Entities\\obj\\",
+      "outputPath": "E:\\Project\\CI Project Main\\CI MAIN\\CI PLatform Entities\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Riya\\AppData\\Roaming\\NuGet\\NuGet.Config",

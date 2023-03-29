@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\img\" />
+    <Folder Include="wwwroot\img\storyuserimg\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -53,6 +53,49 @@ namespace CI_Platform_Project.Controllers
         }
         public IActionResult ShareStory()
         {
+            IEnumerable<Mission> missions = _db.Missions.ToList();
+            ViewData["mission"] = _db.MissionApplications.ToList();
+            
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult ShareStory(StoryViewModel storyView, IFormFileCollection? dragdrop)
+        {
+            IEnumerable<Mission> missions = _db.Missions.ToList();
+            ViewData["mission"] = _db.MissionApplications.ToList();
+            Story story = new Story();
+            story.UserId = Convert.ToInt64(HttpContext.Session.GetString("userID"));
+            story.MissionId = storyView.MissionId;
+            story.Title = storyView.Title;
+            story.Description = storyView.Description;
+            story.Status = "DRAFT";
+            story.CreatedAt = DateTime.Now;
+
+            foreach (IFormFile file in dragdrop)
+            {
+                if (file != null)
+                {
+                    //Set Key Name
+                    string ImageName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+
+                    //Get url To Save
+                    string SavePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img\\storyuserimg", ImageName);
+
+                    using (var stream = new FileStream(SavePath, FileMode.Create))
+                    {
+                        StoryMedium sm = new StoryMedium();
+                        sm.Type = file.ContentType.ToString().Replace("image/", "");
+                        sm.Path = ImageName;
+                        sm.CreatedAt = DateTime.Now;
+                        story.StoryMedia.Add(sm);
+                        file.CopyTo(stream);
+                    }
+                }
+            }
+
+            _db.Stories.Add(story);
+            _db.SaveChanges();
             return View();
         }
     }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\CI dummy\\CI Project.Repository\\CI Project.Repository.csproj": {}
+    "E:\\Project\\CI Project Main\\CI MAIN\\CI Project.Repository\\CI Project.Repository.csproj": {}
   },
   "projects": {
-    "D:\\CI dummy\\CI PLatform Entities\\CI PLatform Entities.csproj": {
+    "E:\\Project\\CI Project Main\\CI MAIN\\CI PLatform Entities\\CI PLatform Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CI dummy\\CI PLatform Entities\\CI PLatform Entities.csproj",
+        "projectUniqueName": "E:\\Project\\CI Project Main\\CI MAIN\\CI PLatform Entities\\CI PLatform Entities.csproj",
         "projectName": "CI PLatform Entities",
-        "projectPath": "D:\\CI dummy\\CI PLatform Entities\\CI PLatform Entities.csproj",
+        "projectPath": "E:\\Project\\CI Project Main\\CI MAIN\\CI PLatform Entities\\CI PLatform Entities.csproj",
         "packagesPath": "C:\\Users\\Riya\\.nuget\\packages\\",
-        "outputPath": "D:\\CI dummy\\CI PLatform Entities\\obj\\",
+        "outputPath": "E:\\Project\\CI Project Main\\CI MAIN\\CI PLatform Entities\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Riya\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -93,14 +93,14 @@
         }
       }
     },
-    "D:\\CI dummy\\CI Project.Repository\\CI Project.Repository.csproj": {
+    "E:\\Project\\CI Project Main\\CI MAIN\\CI Project.Repository\\CI Project.Repository.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\CI dummy\\CI Project.Repository\\CI Project.Repository.csproj",
+        "projectUniqueName": "E:\\Project\\CI Project Main\\CI MAIN\\CI Project.Repository\\CI Project.Repository.csproj",
         "projectName": "CI Project.Repository",
-        "projectPath": "D:\\CI dummy\\CI Project.Repository\\CI Project.Repository.csproj",
+        "projectPath": "E:\\Project\\CI Project Main\\CI MAIN\\CI Project.Repository\\CI Project.Repository.csproj",
         "packagesPath": "C:\\Users\\Riya\\.nuget\\packages\\",
-        "outputPath": "D:\\CI dummy\\CI Project.Repository\\obj\\",
+        "outputPath": "E:\\Project\\CI Project Main\\CI MAIN\\CI Project.Repository\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Riya\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -117,8 +117,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\CI dummy\\CI PLatform Entities\\CI PLatform Entities.csproj": {
-                "projectPath": "D:\\CI dummy\\CI PLatform Entities\\CI PLatform Entities.csproj"
+              "E:\\Project\\CI Project Main\\CI MAIN\\CI PLatform Entities\\CI PLatform Entities.csproj": {
+                "projectPath": "E:\\Project\\CI Project Main\\CI MAIN\\CI PLatform Entities\\CI PLatform Entities.csproj"
               }
             }
           }

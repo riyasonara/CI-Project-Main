@@ -1,4 +1,4 @@
-﻿.imgtext {
+﻿/*.imgtext {
     display: inline;
 }
 
@@ -133,9 +133,9 @@
     width: fit-content;
 }
 
-.filter-list {
+.filter-list {*/
     /*  padding:6px 10px;  */
-    background-color: white;
+    /*background-color: white;
     border: 1px solid #808080;
     border-radius: 20px;
     color: #000;
@@ -284,7 +284,7 @@
     .menu-btn {
         display: inline;
     }
-}
+}*/
 
 /* =============================================================================================== */
 
@@ -304,6 +304,9 @@ html {
     background-repeat: no-repeat;
     background-size: cover;
     position: relative;
+
+ 
+ 
 }
 
 /* Place text in the middle of the image */

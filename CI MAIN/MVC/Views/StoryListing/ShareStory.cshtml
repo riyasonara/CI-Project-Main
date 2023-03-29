@@ -1,9 +1,10 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@{
 
-}
+@using CI_PLatform_Entities.Models;
+@model CI_Platform_Project.Models.StoryViewModel;
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,15 +17,16 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    <link rel="stylesheet" href="~/css/ShareStory.css" asp-append-version="true">
     <script src="https://cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
+    <link rel="stylesheet" href="~/css/ShareStory.css" asp-append-version="true">
+
     <title>Story Listing</title>
 </head>
 
 <body>
 
 
-    <div class="container">
+    <form method="post" asp-action="ShareStory" asp-controller="StoryListing" class="container" enctype="multipart/form-data">
         <div class="mt-2">
             <h2>Share your Story</h2>
         </div>
@@ -32,24 +34,26 @@
 
             <div class="col">
                 <label for="exampleFormControlInput1" class="form-label">Select Mission</label>
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" aria-label="Default select example" asp-for="MissionId">
                     <option selected>Open this select menu</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    @foreach (var mission in ViewData["mission"] as IList<MissionApplication>)
+                    {
+                        <option value="@mission.MissionId">@mission.Mission.Title</option>
+                    }
+
                 </select>
             </div>
 
 
             <div class="mb-3 col ">
                 <label for="exampleFormControlInput1" class="form-label">My Story Title</label>
-                <input type="text" class="w-100 py-1 border-1  rounded-1" style="border-color:#ADADAD" placeholder="Enter Story Title">
+                <input type="text" class="w-100 py-1 border-1  rounded-1" style="border-color:#ADADAD" placeholder="Enter Story Title" asp-for="Title">
             </div>
 
 
             <div class="mb-3 col">
                 <label for="exampleFormControlInput1" class="form-label">Date</label>
-                <input type="date" class="w-100 py-1 border-1  rounded-1" style="border-color:#ADADAD" placeholder="Select Date">
+                <input type="date" class="w-100 py-1 border-1  rounded-1" style="border-color:#ADADAD" placeholder="Select Date" asp-for="CreatedAt">
             </div>
 
 
@@ -67,43 +71,31 @@
         <label class=" fs-5 mt-2 "> Upload Your Photos</label>
         <div class="input-div">
             <p>Drag & drop photos here or <strong>Browse</strong></p>
-            <input type="file" class="file" multiple="multiple" accept="image/jpeg, image/png, image/jpg">
+            <input type="file" class="file" multiple="multiple" name="dragdrop" accept="image/jpeg, image/png, image/jpg">
         </div>
 
         <output></output>
 
-        <div class="d-flex">
-            <div class="ms-2">
-                <button class="cancel-btn btn btn-outline-danger px-3 py-2 my-3">
-                    <a @*asp-controller="StoryListing" asp-action="StoryListing"*@ style="text-decoration:none;">
-                        Cancel &nbsp; <img src="~/img/right-arrow.png" alt="">
-                    </a>
-                </button>
+        <div class="row flex-column flex-md-row mt-4 mb-2">
+            <div class="col-12 col-md-2 me-auto">
+                <button class="w-100 bg-white rounded-5 py-2">cancel</button>
             </div>
-
-
-
-            <div>
-                <button class="share-story-btn btn btn-outline-warning px-3 py-2 my-3 me-3">
-                    <a @*asp-controller="StoryListing" asp-action="StoryListing"*@ style="text-decoration:none;">
-                        Save &nbsp; <img src="~/img/right-arrow.png" alt="">
-                    </a>
-                </button>
-
-                <button class="btn btn-outline-success px-3 py-2 my-3 me-5" id="submit-btn">
-                    <a @*asp-controller="StoryListing" asp-action="StoryListing"*@ style="text-decoration:none;">
-                        Submit &nbsp; <img src="~/img/right-arrow.png" alt="">
-                    </a>
-                </button>
+            <div class=" col-12 col-md-2 mt-2 mt-md-0 ">
+                <button class="w-100 bg-white rounded-5 py-2 ms-0 ms-md-1 savecancelbtn">Save</button>
+            </div>
+            <div class=" col-12 col-md-2 mt-2 mt-md-0">
+                <button type="submit" class="w-100 bg-white rounded-5 py-2 ms-0 ms-md-1 savecancelbtn">Submit</button>
             </div>
         </div>
-    </div>
+    </form>
 
 </body>
 
-<script src="~/js/ShareStory.js" asp-append-version="true"></script>
 <script>
     CKEDITOR.replace('editor1');
 </script>
+
+<script src="~/js/ShareStory.js" asp-append-version="true"></script>
+
 
 </html>
