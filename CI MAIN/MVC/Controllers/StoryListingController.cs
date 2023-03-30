@@ -25,6 +25,7 @@ namespace CI_Platform_Project.Controllers
             foreach (var story in storylist)
             {
                 var storyuser = _db.Users.FirstOrDefault(x => x.UserId == story.UserId);
+                var storymedia = _db.StoryMedia.Where(s => s.StoryId == story.StoryId).FirstOrDefault();
                 StoryList.Add(new VolunteeringViewModel
                 {
                     StoryId = story.StoryId,
@@ -34,6 +35,7 @@ namespace CI_Platform_Project.Controllers
                     ShortDescription = story.Description,
                     username = storyuser.FirstName,
                     lastname = storyuser.LastName,
+                    storypath=storymedia!=null?storymedia.Path:null,
 
                 });
 
@@ -68,7 +70,7 @@ namespace CI_Platform_Project.Controllers
             story.UserId = Convert.ToInt64(HttpContext.Session.GetString("userID"));
             story.MissionId = storyView.MissionId;
             story.Title = storyView.Title;
-            story.Description = storyView.Description;
+            story.Description = storyView.editor1;
             story.Status = "DRAFT";
             story.CreatedAt = DateTime.Now;
 
@@ -96,6 +98,12 @@ namespace CI_Platform_Project.Controllers
 
             _db.Stories.Add(story);
             _db.SaveChanges();
+            return View();
+        }
+
+
+        public IActionResult StoryDetail()
+        {
             return View();
         }
     }

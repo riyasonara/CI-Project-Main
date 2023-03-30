@@ -33,6 +33,10 @@
       "PackagePath": "staticwebassets\\css\\ShareStory.css"
     },
     {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\css\\StoryDetail.css",
+      "PackagePath": "staticwebassets\\css\\StoryDetail.css"
+    },
+    {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\css\\StoryListing.css",
       "PackagePath": "staticwebassets\\css\\StoryListing.css"
     },
@@ -417,6 +421,54 @@
       "PackagePath": "staticwebassets\\img\\star.png"
     },
     {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\storyuserimg\\19f2fea2-3868-4f2e-8773-04242f30f820.jpg",
+      "PackagePath": "staticwebassets\\img\\storyuserimg\\19f2fea2-3868-4f2e-8773-04242f30f820.jpg"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\storyuserimg\\1cdc59a1-71c9-4a60-831d-035f11c86aca.jpg",
+      "PackagePath": "staticwebassets\\img\\storyuserimg\\1cdc59a1-71c9-4a60-831d-035f11c86aca.jpg"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\storyuserimg\\49486861-8762-4894-beb5-8c72ce36d9ad.png",
+      "PackagePath": "staticwebassets\\img\\storyuserimg\\49486861-8762-4894-beb5-8c72ce36d9ad.png"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\storyuserimg\\6eb8e251-c544-4971-b3b5-e984ddf4fdee.png",
+      "PackagePath": "staticwebassets\\img\\storyuserimg\\6eb8e251-c544-4971-b3b5-e984ddf4fdee.png"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\storyuserimg\\772c2e78-0188-4af4-b428-8c04949846f7.jpg",
+      "PackagePath": "staticwebassets\\img\\storyuserimg\\772c2e78-0188-4af4-b428-8c04949846f7.jpg"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\storyuserimg\\8a688ade-0b19-4b30-a411-e0a4d14362e7.jpg",
+      "PackagePath": "staticwebassets\\img\\storyuserimg\\8a688ade-0b19-4b30-a411-e0a4d14362e7.jpg"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\storyuserimg\\8f38c3ce-c955-47da-ba01-0507a4c08ea9.jpg",
+      "PackagePath": "staticwebassets\\img\\storyuserimg\\8f38c3ce-c955-47da-ba01-0507a4c08ea9.jpg"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\storyuserimg\\9e6928de-61f4-459e-9077-87e9a5456c74.jpg",
+      "PackagePath": "staticwebassets\\img\\storyuserimg\\9e6928de-61f4-459e-9077-87e9a5456c74.jpg"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\storyuserimg\\b0983202-c4d8-4766-914f-cf750abe8cf0.jpg",
+      "PackagePath": "staticwebassets\\img\\storyuserimg\\b0983202-c4d8-4766-914f-cf750abe8cf0.jpg"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\storyuserimg\\c9bc6b7a-8d59-4cd8-99ef-cb968c4d9b86.jpg",
+      "PackagePath": "staticwebassets\\img\\storyuserimg\\c9bc6b7a-8d59-4cd8-99ef-cb968c4d9b86.jpg"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\storyuserimg\\df866b2c-7155-4299-a866-daa8c999692b.jpg",
+      "PackagePath": "staticwebassets\\img\\storyuserimg\\df866b2c-7155-4299-a866-daa8c999692b.jpg"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\storyuserimg\\e3ef56db-b711-4cd8-bd37-8ecfccf56721.jfif",
+      "PackagePath": "staticwebassets\\img\\storyuserimg\\e3ef56db-b711-4cd8-bd37-8ecfccf56721.jfif"
+    },
+    {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\twitter.png",
       "PackagePath": "staticwebassets\\img\\twitter.png"
     },
@@ -487,6 +539,10 @@
     {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\ShareStory.js",
       "PackagePath": "staticwebassets\\js\\ShareStory.js"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\StoryDetail.js",
+      "PackagePath": "staticwebassets\\js\\StoryDetail.js"
     },
     {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\landing.js",

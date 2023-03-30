@@ -43,6 +43,7 @@
         public long StoryId { get; set; }
         public string? StoryTitle { get; set; }
         public string? StoryDescription { get; set; }
+        public string storypath { get; set; }
 
         public int AverageRating { get; set; }
 

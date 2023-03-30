@@ -10,7 +10,7 @@
 
         public string? Title { get; set; }
 
-        public string? Description { get; set; }
+        public string? editor1 { get; set; }
 
         public string Status { get; set; } = null!;
 
