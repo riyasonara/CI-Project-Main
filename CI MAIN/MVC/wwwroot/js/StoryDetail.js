@@ -59,3 +59,39 @@ function Recommend(btn) {
         }
     });
 }
+
+
+const countEl = document.getElementById('count');
+
+updateVisitCount();
+
+function updateVisitCount() {
+
+    //Develop a namespace and key for your API, in my case "megs" is my namespace and "count" is my key
+    fetch('https://api.countapi.xyz/update/megs/count/?amount=1')
+        .then(res => res.json())
+        .then(res => {
+            countEl.innerHTML = res.value;
+        })
+}
+
+
+
+function Recommend(btn) {
+    var userMail = btn.value;
+    var currentURL = window.location.href;
+    console.log(btn);
+    btn.innerText = "Sending...";
+    btn.disabled = true;
+    $.ajax({
+        url: '/StoryListing/Recommend',
+        type: 'POST',
+        data: { targetURL: currentURL, userMail: userMail },
+        success: function (result) {
+            btn.innerText = "Shared";
+            btn.classList.remove("btn-outline-primary");
+            btn.classList.add("btn-outline-success");
+            btn.disabled = true;
+        }
+    });
+}

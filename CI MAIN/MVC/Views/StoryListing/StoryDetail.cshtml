@@ -88,11 +88,16 @@
 
 
             <div class="col-12 col-lg-6 col-md-12 col-sm-12">
-                <div class="col-4 mt-3 d-flex">
+                <div class="col-12 mt-3 d-flex justify-content-lg-between">
                     <a class=" ms-4 me-2 text-decoration-none text-black justify-content-center ">
                         <img src="~/img/volunteer1.png" class="involveduserprofile rounded-circle" height="62" width="62" /><br>
                         <label id="" class="text-center">Ama teki</label>
                     </a>
+
+                    <div class="views d-flex justify-content-center align-content-center me-1 mt-5 px-2 py-0 ">
+                        <i class="bi bi-eye" style="margin-top:3px; margin-bottom:3px"></i>
+                        <p class="viewsptag" style="margin-top:3px; margin-bottom:3px" id="count">0</p>
+                    </div>
                 </div>
 
 
@@ -125,6 +130,34 @@
                             <img src="~/img/add1.png" alt="">&nbsp;
                             Recommend to a Co-Worker &nbsp;
                         </button>
+
+                        @*<div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Recommend to co-worker</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body overflow-y-auto" style="height:200px;">
+                                        @foreach (var user in ViewBag.allavailuser)
+                                        {
+                                            <div class=" userlistdiv align-items-center d-flex my-3">
+                                                <img src="~/img/volunteer1.png" class="aviluser ms-2 my-1">
+                                                <label class=" ms-4  me-auto">   @user.username  @user.lastname </label>
+                                                <button class="share-btn me-3 btn btn-outline-primary" value="@user.userEmail" onclick="Recommend(this)" id="@user.userEmail" name="email"> Share </button>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+
+
+
+
                     </div>
 
                     <div class="m-auto text-center mt-2 ">
@@ -198,5 +231,5 @@
 
 </body>
 
-<script src="~/js/volunteering.js"></script>
+<script src="~/js/StoryDetail.js"></script>
 </html>

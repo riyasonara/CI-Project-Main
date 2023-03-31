@@ -5,7 +5,11 @@ using CI_PLatform_Entities.CIDbContext;
 using CI_PLatform_Entities.Models;
 using CI_Platform_Project.Models;
 using Microsoft.AspNetCore.Mvc;
-
+using MimeKit;
+using System.Net.Mail;
+using MailKit.Security;
+using SmtpClient = MailKit.Net.Smtp.SmtpClient;
+using CI_Project.Repository.Interface;
 
 namespace CI_Platform_Project.Controllers
 {
@@ -13,10 +17,12 @@ namespace CI_Platform_Project.Controllers
     {
 
         private readonly CiPlatformContext _db;
+        private readonly IUserInterface _Iuser;
 
-        public StoryListingController(CiPlatformContext db)
+        public StoryListingController(CiPlatformContext db, IUserInterface Iuser)
         {
             _db = db;
+            _Iuser = Iuser;
         }
         public IActionResult StoryListing(int? page)
         {
@@ -64,7 +70,36 @@ namespace CI_Platform_Project.Controllers
         [HttpPost]
         public IActionResult ShareStory(StoryViewModel storyView, IFormFileCollection? dragdrop)
         {
-            IEnumerable<Mission> missions = _db.Missions.ToList();
+
+            //var SessionUserId = HttpContext.Session.GetString("userID");
+            ////=============================== sending mail to co-Worker =======================
+
+            //List<User> alluser = _Iuser.users();
+            //List<VolunteeringViewModel> allavailuser = new List<VolunteeringViewModel>();
+            //foreach (var all in alluser)
+            //{
+            //    allavailuser.Add(new VolunteeringViewModel
+            //    {
+            //        username = all.FirstName,
+            //        lastname = all.LastName,
+            //        userEmail = all.Email,
+            //        UserId = all.UserId,
+            //    });
+
+            //}
+            //ViewBag.allavailuser = allavailuser;
+
+        
+
+
+
+
+
+
+
+
+
+        IEnumerable<Mission> missions = _db.Missions.ToList();
             ViewData["mission"] = _db.MissionApplications.ToList();
             Story story = new Story();
             story.UserId = Convert.ToInt64(HttpContext.Session.GetString("userID"));
@@ -102,7 +137,35 @@ namespace CI_Platform_Project.Controllers
         }
 
 
-        public IActionResult StoryDetail()
+
+        // < ====================================================================================== >
+        // < =============================== sending mail to co-Worker ============================ >
+        // < ====================================================================================== >
+        //public JsonResult Recommend(string targetURL, string userMail)
+        //{
+        //    var currentUser = HttpContext.Session.GetString("username");
+        //    var mailbody = "<h3>You got a mission recommendation from " + currentUser + "<br /> Do visit it</h3><h4><a href=" + targetURL + ">Checkout Mission</a></h4>";
+
+        //    var email = new MimeMessage();
+        //    email.From.Add(MailboxAddress.Parse("rahulshah89098@gmail.com"));
+        //    email.To.Add(MailboxAddress.Parse(userMail));
+        //    email.Subject = "Recommend mission";
+        //    email.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = mailbody };
+
+        //    using var smtp = new SmtpClient();
+        //    smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
+        //    smtp.Authenticate("rahulshah89098@gmail.com", "aufeorkjihnoevvs");
+        //    smtp.Send(email);
+        //    smtp.Disconnect(true);
+        //    return Json(new { status = 1 });
+        //}
+
+
+      
+
+
+
+public IActionResult StoryDetail()
         {
             return View();
         }

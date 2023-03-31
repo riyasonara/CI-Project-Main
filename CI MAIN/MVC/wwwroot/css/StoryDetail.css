@@ -159,3 +159,40 @@
     color: #F88634;
     background: transparent;
 }
+.views{
+    border: 1px solid gray;
+    border-radius: 30px;
+    padding:3px;
+    align-content:center;
+
+}
+
+
+
+
+
+/*=========================================================================================================================================*/
+
+
+* {
+    box-sizing: border-box;
+}
+
+/*body {
+    background-color: #192a56;
+    color: #fff;
+    font-family: 'Muli', sans-serif;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}*/
+
+.viewsptag {
+    color: rgba(10, 9, 9, 0.8);
+    letter-spacing: 2px;
+    margin: 0;
+}
+
