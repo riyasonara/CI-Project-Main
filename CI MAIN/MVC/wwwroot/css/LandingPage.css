@@ -274,6 +274,14 @@
 .info-txt-2 {
     color: #414141;
 }
+.applied{
+    width: fit-content;
+    position:absolute;
+    top:15px;
+    left:0;
+    background-color:rgb(0, 255, 144,0.6);
+    padding:2px;
+}
 
 @media screen and (max-width:767px) {
     .filters-btn {

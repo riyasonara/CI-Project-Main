@@ -1,4 +1,6 @@
-﻿namespace CI_Platform_Project.Models
+﻿using CI_PLatform_Entities.Models;
+
+namespace CI_Platform_Project.Models
 {
     public class StoryViewModel
     {
@@ -27,5 +29,13 @@
         public string Path { get; set; } = null!;
 
         public long StoryMedia { get; set; }
+
+        public List<Story> stories { get; set; }
+        public List<User> users { get; set; }
+        public List<Mission> missions { get; set; }
+        public List<MissionTheme> themes { get; set; }
+        public List<StoryMedium> storyMedia { get; set; }
+
+        public List<MissionApplication> applications { get; set; }
     }
 }
