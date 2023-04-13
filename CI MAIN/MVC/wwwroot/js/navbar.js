@@ -7,31 +7,28 @@ function filter(sortValue) {
     var Search = $("input[name='searchQuery']").val();
     //if (Search == '')
     //    Search = '';
-    console.log(Search)
+    /*console.log(Search)*/
 
 
     var country = [];
 
-    //$('#countryDropdown').find("input:checked").each(function (i, ob) {
-    //    country.push($(ob).val());
-    //});
     $("input[type='checkbox'][name='country']:checked").each(function () {
         country.push($(this).val());
     });
-    console.log(country)
+    //console.log(country)
 
 
     var city = [];
     $("input[type='checkbox'][name='city']:checked").each(function () {
         city.push($(this).val());
     });
-    console.log(city)
+    //console.log(city)
 
     var theme = [];
     $("input[type='checkbox'][name='theme']:checked").each(function () {
         theme.push($(this).val());
     });
-    console.log(theme)
+    //console.log(theme)
 
     $.ajax({
         url: "/User/navbarfilters",
@@ -59,7 +56,7 @@ for (var i = 0; i < cbs.length; i++) {
         else {
 
             removeElement(this.value);
-            console.log("unchecked");
+            //console.log("unchecked");
         }
     });
 }
@@ -83,8 +80,8 @@ function addElement(current, value) {
     crossButton.addEventListener('click', function () {
         let elementToBeRemoved = document.getElementById(value);
 
-        console.log(elementToBeRemoved);
-        console.log(current);
+        //console.log(elementToBeRemoved);
+        //console.log(current);
         elementToBeRemoved.remove();
 
         current.checked = false;

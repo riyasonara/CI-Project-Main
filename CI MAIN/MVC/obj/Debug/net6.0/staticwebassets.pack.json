@@ -57,6 +57,10 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\css\\userProfile.css",
+      "PackagePath": "staticwebassets\\css\\userProfile.css"
+    },
+    {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
@@ -449,6 +453,10 @@
       "PackagePath": "staticwebassets\\img\\storyuserimg\\565860f8-a466-4729-aeb1-b9476de36c90.jpg"
     },
     {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\storyuserimg\\637c71d2-130c-463b-ba47-87531ca03853.jfif",
+      "PackagePath": "staticwebassets\\img\\storyuserimg\\637c71d2-130c-463b-ba47-87531ca03853.jfif"
+    },
+    {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\storyuserimg\\6eb8e251-c544-4971-b3b5-e984ddf4fdee.png",
       "PackagePath": "staticwebassets\\img\\storyuserimg\\6eb8e251-c544-4971-b3b5-e984ddf4fdee.png"
     },
@@ -615,6 +623,10 @@
     {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\navbar.js",
       "PackagePath": "staticwebassets\\js\\navbar.js"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\popper.min.js",
+      "PackagePath": "staticwebassets\\js\\popper.min.js"
     },
     {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\rateMission.js",

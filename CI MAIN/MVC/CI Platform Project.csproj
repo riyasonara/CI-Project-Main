@@ -10,10 +10,12 @@
   <ItemGroup>
     <Content Remove="C:\Users\Riya\.nuget\packages\ntoastnotify\8.0.0\contentFiles\any\net6.0\wwwroot\toastr.js" />
     <Content Remove="wwwroot\css\LandingPage.cs" />
+    <Content Remove="wwwroot\js\userProfile.js" />
     <Content Remove="wwwroot\js\volunteering.js" />
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\js\userProfile.js" />
     <_ContentIncludedByDefault Remove="wwwroot\js\volunteering.js" />
   </ItemGroup>
 
@@ -22,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\js\userProfile.js" />
     <None Include="wwwroot\js\volunteering.js" />
   </ItemGroup>
 

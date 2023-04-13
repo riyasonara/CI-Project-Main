@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DTQwmUzv+bpzwfSW49VADZj/XcU9yBHm35oMrBQKg2w=",
+  "Hash": "8Rm3l8SVZNJBBqD4oZ1sOCpC102TAp+LtPRnnfo4PJs=",
   "Source": "CI Platform Project",
   "BasePath": "_content/CI Platform Project",
   "Mode": "Default",
@@ -287,6 +287,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\StoryListing.css"
+    },
+    {
+      "Identity": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\css\\userProfile.css",
+      "SourceId": "CI Platform Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\",
+      "BasePath": "_content/CI Platform Project",
+      "RelativePath": "css/userProfile.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\userProfile.css"
     },
     {
       "Identity": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\css\\VolunteeringMission.css",
@@ -1938,6 +1955,23 @@
       "OriginalItemSpec": "wwwroot\\img\\storyuserimg\\565860f8-a466-4729-aeb1-b9476de36c90.jpg"
     },
     {
+      "Identity": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\storyuserimg\\637c71d2-130c-463b-ba47-87531ca03853.jfif",
+      "SourceId": "CI Platform Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\",
+      "BasePath": "_content/CI Platform Project",
+      "RelativePath": "img/storyuserimg/637c71d2-130c-463b-ba47-87531ca03853.jfif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\storyuserimg\\637c71d2-130c-463b-ba47-87531ca03853.jfif"
+    },
+    {
       "Identity": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\storyuserimg\\6eb8e251-c544-4971-b3b5-e984ddf4fdee.png",
       "SourceId": "CI Platform Project",
       "SourceType": "Discovered",
@@ -2650,6 +2684,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\navbar.js"
+    },
+    {
+      "Identity": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\popper.min.js",
+      "SourceId": "CI Platform Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\",
+      "BasePath": "_content/CI Platform Project",
+      "RelativePath": "js/popper.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\popper.min.js"
     },
     {
       "Identity": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\rateMission.js",

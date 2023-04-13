@@ -553,5 +553,10 @@ namespace CI_Platform_Project.Controllers
             return View();
 
         }
+
+        public IActionResult userProfile()
+        {
+            return View();
+        }
     }
 }
