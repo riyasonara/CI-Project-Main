@@ -1,6 +1,8 @@
 ﻿using CI_PLatform_Entities.CIDbContext;
 using CI_PLatform_Entities.Models;
 using CI_Project.Repository.Interface;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,7 +24,8 @@ namespace CI_Project.Repository.Repository
             return _db.Users.FirstOrDefault(u => u.Email == mail);
         }
 
-        public User UserByEmail_Password(String mail, String Password) {
+        public User UserByEmail_Password(String mail, String Password)
+        {
             return _db.Users.FirstOrDefault(m => m.Email == mail && m.Password == Password);
         }
         public List<PasswordReset> passwordreset()
@@ -52,6 +55,10 @@ namespace CI_Project.Repository.Repository
         public List<Skill> skilllist()
         {
             return _db.Skills.ToList();
+        }
+        public List<UserSkill> skilllist(int userid)
+        {
+            return _db.UserSkills.Where(e => e.UserId == userid).ToList();
         }
         public List<GoalMission> goalMissions()
         {
@@ -96,9 +103,22 @@ namespace CI_Project.Repository.Repository
 
         public void passwordReset(PasswordReset pswdreset)
         {
-            _db.PasswordResets.Add(pswdreset);           
+            _db.PasswordResets.Add(pswdreset);
             _db.SaveChanges();
         }
-}
+        public void AddUserSkills(long SkillId, int UserId)
+        {
+            UserSkill skill = new UserSkill();
+            skill.SkillId = SkillId;
+            skill.UserId = UserId;
+            _db.UserSkills.Add(skill);
+            _db.SaveChanges();
+        }
+        public void updateuser(User user)
+        {
+            _db.Users.Add(user);
+            _db.SaveChanges();
+        }
+    }
 }
 

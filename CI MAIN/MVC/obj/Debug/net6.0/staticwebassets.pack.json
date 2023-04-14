@@ -629,6 +629,10 @@
       "PackagePath": "staticwebassets\\js\\popper.min.js"
     },
     {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\privacypolicy.js",
+      "PackagePath": "staticwebassets\\js\\privacypolicy.js"
+    },
+    {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\rateMission.js",
       "PackagePath": "staticwebassets\\js\\rateMission.js"
     },

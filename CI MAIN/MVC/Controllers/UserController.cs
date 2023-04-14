@@ -25,6 +25,7 @@ using System.Net.Mail;
 using MailKit.Net.Smtp;
 using SmtpClient = MailKit.Net.Smtp.SmtpClient;
 using CI_Project.Repository.Interface;
+using System.Linq;
 
 namespace CI_Platform_Project.Controllers
 {
@@ -51,10 +52,10 @@ namespace CI_Platform_Project.Controllers
             return View();
         }
 
-        
+
 
         // < ====================================================================================== >
-        // < =============================== sending mail to co-Worker ============================ >
+        // < =============================== sending mail to co-Worker ======================------------====== >
         // < ====================================================================================== >
         public JsonResult Recommend(string targetURL, string userMail)
         {
@@ -75,7 +76,7 @@ namespace CI_Platform_Project.Controllers
             return Json(new { status = 1 });
         }
 
-        public IActionResult VolunteeringMission(long missionid,long id)
+        public IActionResult VolunteeringMission(long missionid, long id)
         {
             var SessionUserId = HttpContext.Session.GetString("userID");
             ViewBag.UserId = int.Parse(SessionUserId);
@@ -87,7 +88,7 @@ namespace CI_Platform_Project.Controllers
             IEnumerable<Mission> selected = _Iuser.missionlist().Where(m => m.MissionId == missionid).ToList();
             var volmission = _Iuser.missionlist().FirstOrDefault(m => m.MissionId == missionid);
             var theme = _Iuser.themelist().FirstOrDefault(m => m.MissionThemeId == volmission.ThemeId);
-            var City =_Iuser.cities().FirstOrDefault(m => m.CityId == volmission.CityId);
+            var City = _Iuser.cities().FirstOrDefault(m => m.CityId == volmission.CityId);
             var prevRating = _Iuser.missionRatings().FirstOrDefault(e => e.MissionId == volmission.MissionId && e.UserId == Convert.ToInt64(SessionUserId));
             var themeobjective = _Iuser.goalMissions().FirstOrDefault(m => m.MissionId == missionid);
             string[] Startdate = volmission.StartDate.ToString().Split(" ");
@@ -105,7 +106,7 @@ namespace CI_Platform_Project.Controllers
             volunteeringVM.Themename = theme.Title;
             volunteeringVM.EndDate = Enddate[0];
             volunteeringVM.StartDate = Startdate[0];
-            volunteeringVM.UserPrevRating=prevRating !=null ? prevRating.Rating : 0;
+            volunteeringVM.UserPrevRating = prevRating != null ? prevRating.Rating : 0;
             var favrioute = (id != null) ? _Iuser.favoriteMissions().Any(u => u.UserId == Convert.ToInt64(SessionUserId) && u.MissionId == volmission.MissionId) : false;
             //if (prevRating != null) { volunteeringVM.UserPrevRating = prevRating.Rating; }
 
@@ -171,7 +172,7 @@ namespace CI_Platform_Project.Controllers
             ViewBag.relatedmission = relatedlist.Take(3);
 
             List<VolunteeringViewModel> recentvolunteredlist = new List<VolunteeringViewModel>();
-            
+
             var recentvoluntered = from U in _Iuser.users() join MA in _Iuser.applications() on U.UserId equals MA.UserId where MA.MissionId == missionid select U;
             foreach (var item in recentvoluntered)
             {
@@ -192,29 +193,29 @@ namespace CI_Platform_Project.Controllers
         {
             return View();
         }
-        public JsonResult AddToFav(int missionId,int id)
+        public JsonResult AddToFav(int missionId, int id)
         {
             var obj = new FavoriteMission();
             obj.UserId = Convert.ToInt64(HttpContext.Session.GetString("userID"));
             obj.MissionId = missionId;
             obj.CreatedAt = DateTime.Now;
-          
+
             var isFav = _Iuser.favoriteMissions().FirstOrDefault(m => m.MissionId == missionId && m.UserId == id);
             if (isFav == null)
             {
-                
-               _Iuser.favoriteMissions().Add(obj);
+
+                _Iuser.favoriteMissions().Add(obj);
             }
             else
             {
                 _Iuser.favoriteMissions().Remove(isFav);
-            }  
+            }
 
             _db.SaveChanges();
-            return Json(new {success = true,  isFav});
+            return Json(new { success = true, isFav });
         }
 
-        public IActionResult PostComment(int missionId,string commentVal)
+        public IActionResult PostComment(int missionId, string commentVal)
         {
             Comment objComment = new Comment();
             objComment.UserId = Convert.ToInt64(HttpContext.Session.GetString("userID"));
@@ -222,11 +223,11 @@ namespace CI_Platform_Project.Controllers
             objComment.CommentValue = commentVal;
             objComment.CreatedAt = DateTime.Now;
             _Iuser.userComment(objComment);
-                       
-         
-            return RedirectToAction("VolunteeringMission", new { id= Convert.ToInt64(HttpContext.Session.GetString("userID")),missionid = missionId });
 
-           
+
+            return RedirectToAction("VolunteeringMission", new { id = Convert.ToInt64(HttpContext.Session.GetString("userID")), missionid = missionId });
+
+
 
         }
 
@@ -265,8 +266,9 @@ namespace CI_Platform_Project.Controllers
             ViewBag.countrylist = _Iuser.countrylist();
             ViewBag.themelist = _Iuser.themelist();
             ViewBag.citylist = _Iuser.cities();
+            ViewBag.skilllist = _Iuser.skilllist();
             return View();
-           
+
         }
         //#region landingpage
         //public ActionResult landingPage(int? page, string searchQuery, int Order)
@@ -380,7 +382,7 @@ namespace CI_Platform_Project.Controllers
                 var Applybtn = (id != null) ? _Iuser.applications().Any(u => u.MissionId == item.MissionId && u.UserId == Convert.ToInt64(SessionUserId)) : false;
                 ViewBag.FavoriteMissions = favrioute;
                 var ratiing = _Iuser.missionRatings().Where(u => u.MissionId == item.MissionId).ToList();
-                
+
 
                 int finalrating = 0;
                 if (ratiing.Count > 0)
@@ -555,6 +557,137 @@ namespace CI_Platform_Project.Controllers
         }
 
         public IActionResult userProfile()
+        {
+            var userId = Convert.ToInt64(HttpContext.Session.GetString("userID"));
+
+            var user = _Iuser.users().FirstOrDefault(u => u.UserId == userId);
+            UserProfileViewModel userProfile = new UserProfileViewModel();
+
+            userProfile.employeeID = user.EmployeeId;
+            userProfile.FirstName = user.FirstName;
+            userProfile.Surname = user.LastName;
+            userProfile.Email = user.Email;
+
+            userProfile.WhyIVolunteer = user.WhyIVolunteer;
+            userProfile.title = user.Title;
+            userProfile.CityId = user.CityId;
+            userProfile.CountryId = user.CountryId;
+            //userVM.availability = user.
+            userProfile.ProfileText = user.ProfileText;
+            userProfile.LinkedInUrl = user.LinkedInUrl;
+            userProfile.Avatar = user.Avatar != null ? user.Avatar : "";
+            userProfile.department = user.Department;
+            userProfile.CityId = user.CityId;
+            userProfile.CountryId = user.CountryId;
+            userProfile.Availability = user.Availability;
+            var allskills = _Iuser.skilllist();
+            ViewBag.allskills = allskills;
+            var skills = from US in _db.UserSkills
+                         join S in _db.Skills on US.SkillId equals S.SkillId
+                         select new { US.SkillId, S.SkillName, US.UserId };
+            var uskills = skills.Where(e => e.UserId == userId).ToList();
+            ViewBag.userskills = uskills;
+            foreach (var skill in uskills)
+            {
+                var rskill = allskills.FirstOrDefault(e => e.SkillId == skill.SkillId);
+                allskills.Remove(rskill);
+            }
+            ViewBag.remainingSkills = allskills;
+            ViewBag.allcities = _Iuser.cities();
+            ViewBag.allcountry = _Iuser.countrylist();
+            userProfile.skills = _Iuser.skilllist();
+            userProfile.userSkills = _Iuser.skilllist(Convert.ToInt32(userId));
+
+            var r = from row1 in userProfile.skills.AsEnumerable()
+                    where !userProfile.userSkills.AsEnumerable().Select(r => r.SkillId).Contains(row1.SkillId)
+                    select row1;
+
+            userProfile.RemainingSkill = r.ToList();
+            return View(userProfile);
+        }
+
+        [HttpPost]
+
+        public async Task<IActionResult> userProfile(UserProfileViewModel model, IFormFileCollection files)
+        {
+
+            var userId = Convert.ToInt64(HttpContext.Session.GetString("userID"));
+
+            //long id = Convert.ToInt64(userid);
+            //long storyid = model.storyId;
+            var userdetail = _Iuser.users().FirstOrDefault(u => u.UserId == userId);
+            userdetail.FirstName = model.FirstName;
+            userdetail.LastName = model.Surname;
+            userdetail.WhyIVolunteer = model.WhyIVolunteer;
+            userdetail.Title = model.title;
+
+            userdetail.EmployeeId = model.employeeID;
+            userdetail.ProfileText = model.ProfileText;
+            userdetail.LinkedInUrl = model.LinkedInUrl;
+            userdetail.UpdatedAt = DateTime.Now;
+            userdetail.Department = model.department;
+            userdetail.CountryId = model.CountryId;
+            userdetail.CityId = model.CityId;
+            userdetail.Availability = model.Availability;
+
+            if (files.Count() == 0)
+            {
+                model.Avatar = userdetail.Avatar;
+            }
+            else
+            {
+                userdetail.Avatar = model.Avatar;
+
+            }
+            foreach (var file in files)
+            {
+                using (var ms = new MemoryStream())
+                {
+                    await file.CopyToAsync(ms);
+                    var imageBytes = ms.ToArray();
+                    var base64String = Convert.ToBase64String(imageBytes);
+                    userdetail.Avatar = "data:image/png;base64," + base64String;
+                    model.Avatar = "data:image/png;base64," + base64String;
+                    HttpContext.Session.SetString("useravtar", "data:image/png;base64," + base64String);
+                }
+            }
+
+            var allskills = _Iuser.skilllist();
+            ViewBag.allskills = allskills;
+            var skills = from US in _db.UserSkills
+                         join S in _db.Skills on US.SkillId equals S.SkillId
+                         select new { US.SkillId, S.SkillName, US.UserId };
+            var uskills = skills.Where(e => e.UserId == userId).ToList();
+            ViewBag.userskills = uskills;
+            foreach (var skill in uskills)
+            {
+                var rskill = allskills.FirstOrDefault(e => e.SkillId == skill.SkillId);
+                allskills.Remove(rskill);
+            }
+            ViewBag.remainingSkills = allskills;
+            ViewBag.allcities = _Iuser.cities();
+            ViewBag.allcountry = _Iuser.countrylist();
+
+            _Iuser.updateuser(userdetail);
+            return View(model);
+        }
+
+
+
+        [HttpPost]
+        public async Task<IActionResult> SaveUserSkills(long[] selectedSkills)
+        {
+            var userid = HttpContext.Session.GetString("userID");
+            long id = Convert.ToInt64(userid);
+            var abc = _db.UserSkills.Where(e => e.UserId == id).ToList();
+            foreach (var skills in selectedSkills)
+            {
+                _Iuser.AddUserSkills(skills, Convert.ToInt32(userid));
+            }
+            return RedirectToAction("userProfile", "User");
+        }
+
+        public IActionResult PrivacyPolicy()
         {
             return View();
         }

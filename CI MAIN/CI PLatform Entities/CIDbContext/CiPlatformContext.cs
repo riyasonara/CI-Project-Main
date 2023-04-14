@@ -795,6 +795,9 @@ public partial class CiPlatformContext : DbContext
             entity.ToTable("user");
 
             entity.Property(e => e.UserId).HasColumnName("user_id");
+            entity.Property(e => e.Availability)
+                .HasMaxLength(50)
+                .IsUnicode(false);
             entity.Property(e => e.Avatar)
                 .HasMaxLength(2048)
                 .IsUnicode(false)

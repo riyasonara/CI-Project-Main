@@ -43,7 +43,12 @@ namespace CI_Project.Repository.Interface
         public List<Comment> comments();
 
         public void passwordReset(PasswordReset pswdreset);
-        
-        
+
+        public List<UserSkill> skilllist(int userid);
+
+        public void AddUserSkills(long SkillId, int UserId);
+
+        public void updateuser(User user);
+
     }
 }

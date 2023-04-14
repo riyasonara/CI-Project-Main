@@ -80,38 +80,18 @@ namespace CI_Platform_Project.Controllers
                 storyView.StoryId = storyId;
 
             }
+    
             return View(storyView);
         }
 
         [HttpPost]
         public IActionResult ShareStory(StoryViewModel storyView, IFormFileCollection? dragdrop, string action)
         {
-
-            //var SessionUserId = HttpContext.Session.GetString("userID");
-            ////=============================== sending mail to co-Worker =======================
-
-            //List<User> alluser = _Iuser.users();
-            //List<VolunteeringViewModel> allavailuser = new List<VolunteeringViewModel>();
-            //foreach (var all in alluser)
-            //{
-            //    allavailuser.Add(new VolunteeringViewModel
-            //    {
-            //        username = all.FirstName,
-            //        lastname = all.LastName,
-            //        userEmail = all.Email,
-            //        UserId = all.UserId,
-            //    });
-
-            //}
-            //ViewBag.allavailuser = allavailuser;
-
-
-
-
-
             if (action == "submit")
             {
-                IEnumerable<Mission> missions = _db.Missions.ToList();
+                if (storyView.StoryId == null)
+                {
+                    IEnumerable<Mission> missions = _db.Missions.ToList();
                 ViewData["mission"] = _db.MissionApplications.ToList();
                 Story story = new Story();
                 story.UserId = Convert.ToInt64(HttpContext.Session.GetString("userID"));
@@ -145,12 +125,31 @@ namespace CI_Platform_Project.Controllers
 
                 _db.Stories.Add(story);
                 _db.SaveChanges();
-                return View();
-
+                return RedirectToAction("StoryListing", "StoryListing");
+            }
+                else
+                {
+                    var foundstory = _db.Stories.FirstOrDefault(x => x.StoryId == storyView.StoryId);
+                    foundstory.StoryId = storyView.StoryId;
+                    foundstory.UserId = Convert.ToInt64(HttpContext.Session.GetString("userID"));
+                    foundstory.MissionId = storyView.MissionId;
+                    foundstory.Title = storyView.Title;
+                    foundstory.Description = storyView.editor1;
+                    foundstory.Status = "1";
+                    foundstory.CreatedAt = DateTime.Now;
+                    foundstory.UpdatedAt = DateTime.Now;
+                    _db.Update(foundstory);
+                    _db.SaveChanges();
+                    return RedirectToAction("StoryListing", "StoryListing");
+                }
             }
             else if (action == "save")
             {
-                IEnumerable<Mission> missions = _db.Missions.ToList();
+                if (storyView.StoryId == null)
+                {
+
+
+                    IEnumerable<Mission> missions = _db.Missions.ToList();
                 ViewData["mission"] = _db.MissionApplications.ToList();
                 Story story = new Story();
                 story.UserId = Convert.ToInt64(HttpContext.Session.GetString("userID"));
@@ -187,14 +186,24 @@ namespace CI_Platform_Project.Controllers
                 return View();
 
             }
+                else
+                {
+                    var foundstory=_db.Stories.FirstOrDefault(x=>x.StoryId == storyView.StoryId);
+                    foundstory.StoryId = storyView.StoryId;
+                    foundstory.UserId = Convert.ToInt64(HttpContext.Session.GetString("userID"));
+                    foundstory.MissionId = storyView.MissionId;
+                    foundstory.Title = storyView.Title;
+                    foundstory.Description = storyView.editor1;
+                    foundstory.Status = "Draft";
+                    foundstory.CreatedAt = DateTime.Now;
+                    foundstory.UpdatedAt= DateTime.Now;
+                    _db.Update(foundstory);
+                    _db.SaveChanges();
+                    return RedirectToAction("DraftStory", "StoryListing");
+
+                }
+            }
             else { return View(); }
-
-
-
-
-
-
-
         }
 
 
