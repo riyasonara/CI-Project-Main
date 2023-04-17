@@ -69,6 +69,17 @@ namespace CI_Project.Repository.Repository
         {
             return _db.MissionRatings.ToList();
         }
+
+        public void apply(long missionid, long userid)
+        {
+            var missionapplication = new MissionApplication();
+            missionapplication.UserId = userid;
+            missionapplication.MissionId = missionid;
+            missionapplication.AppliedAt = DateTime.Now;
+            missionapplication.ApprovalStatus = "1";
+            _db.Add(missionapplication);
+            _db.SaveChanges();
+        }
         public void adduser(User user)
         {
             _db.Users.Add(user);

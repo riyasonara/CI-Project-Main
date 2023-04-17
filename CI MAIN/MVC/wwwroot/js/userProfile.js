@@ -52,7 +52,10 @@ function ved4() {
         a.add(c.options[a, i])
     }
 }
+
+//document.getElementById('skillSave').onclick(function () { })
 document.getElementById('skillSave').addEventListener("click", e => {
+    debugger
     var selectedSkills = [];
     const skillsSelected = $('#s2 option');
 
@@ -63,13 +66,14 @@ document.getElementById('skillSave').addEventListener("click", e => {
     console.log(selectedSkills);
     $.ajax({
         url: '/User/SaveUserSkills',
-        type: 'POST',
+        method:'POST',
         data: { selectedSkills: selectedSkills },
 
         success: function (response) {
-
+            debugger;
             $('#userskilldiv').html($(response).find('#userskilldiv').html());
-            document.getElementById('close').click();
+            window.location.href = '/user/userprofile';
+            //document.getElementById('close').click();
 
         },
         error: function () {

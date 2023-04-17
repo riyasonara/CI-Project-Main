@@ -76,16 +76,20 @@ namespace CI_Platform_Project.Controllers
             return Json(new { status = 1 });
         }
 
-        public IActionResult VolunteeringMission(long missionid, long id)
+       
+
+        public IActionResult VolunteeringMission(long missionid,int? id)
         {
             var SessionUserId = HttpContext.Session.GetString("userID");
-            ViewBag.UserId = int.Parse(SessionUserId);
-            ViewBag.user = _Iuser.users().FirstOrDefault(e => e.UserId == id);
+            var uId = int.Parse(SessionUserId);
+            ViewBag.UserId = uId;
+            ViewBag.user = _Iuser.users().FirstOrDefault(e => e.UserId == uId);
             List<VolunteeringViewModel> relatedlist = new List<VolunteeringViewModel>();
             IEnumerable<FavoriteMission> objFav = _Iuser.favoriteMissions();
             IEnumerable<Mission> objMis = _Iuser.missionlist();
             IEnumerable<Comment> objComm = _Iuser.comments();
             IEnumerable<Mission> selected = _Iuser.missionlist().Where(m => m.MissionId == missionid).ToList();
+            var applied = (uId != null) ? _Iuser.applications().Any(m => m.UserId == int.Parse(SessionUserId) && m.MissionId == missionid) : false;
             var volmission = _Iuser.missionlist().FirstOrDefault(m => m.MissionId == missionid);
             var theme = _Iuser.themelist().FirstOrDefault(m => m.MissionThemeId == volmission.ThemeId);
             var City = _Iuser.cities().FirstOrDefault(m => m.CityId == volmission.CityId);
@@ -106,8 +110,9 @@ namespace CI_Platform_Project.Controllers
             volunteeringVM.Themename = theme.Title;
             volunteeringVM.EndDate = Enddate[0];
             volunteeringVM.StartDate = Startdate[0];
+            volunteeringVM.isapplied = applied;
             volunteeringVM.UserPrevRating = prevRating != null ? prevRating.Rating : 0;
-            var favrioute = (id != null) ? _Iuser.favoriteMissions().Any(u => u.UserId == Convert.ToInt64(SessionUserId) && u.MissionId == volmission.MissionId) : false;
+            var favrioute = (uId != null) ? _Iuser.favoriteMissions().Any(u => u.UserId == Convert.ToInt64(SessionUserId) && u.MissionId == volmission.MissionId) : false;
             //if (prevRating != null) { volunteeringVM.UserPrevRating = prevRating.Rating; }
 
             volunteeringVM.GoalObjectiveText = themeobjective.GoalObjectiveText;
@@ -147,7 +152,7 @@ namespace CI_Platform_Project.Controllers
                 ;
             }
 
-
+            
             //=============================== sending mail to co-Worker =======================
 
             List<User> alluser = _Iuser.users();
@@ -188,6 +193,13 @@ namespace CI_Platform_Project.Controllers
 
             return View(selected);
         }
+        public async Task<IActionResult> apply(long MissionId, long UserId)
+        {
+            _Iuser.apply(MissionId, UserId);
+
+            return Json(new { success = true });
+        }
+
 
         public IActionResult NoMissionFound()
         {
@@ -556,6 +568,7 @@ namespace CI_Platform_Project.Controllers
 
         }
 
+        [HttpGet]
         public IActionResult userProfile()
         {
             var userId = Convert.ToInt64(HttpContext.Session.GetString("userID"));
@@ -668,7 +681,9 @@ namespace CI_Platform_Project.Controllers
             ViewBag.allcities = _Iuser.cities();
             ViewBag.allcountry = _Iuser.countrylist();
 
-            _Iuser.updateuser(userdetail);
+            _db.Users.Update(userdetail);
+            _db.SaveChanges();
+            //_Iuser.updateuser(userdetail);
             return View(model);
         }
 
@@ -680,15 +695,144 @@ namespace CI_Platform_Project.Controllers
             var userid = HttpContext.Session.GetString("userID");
             long id = Convert.ToInt64(userid);
             var abc = _db.UserSkills.Where(e => e.UserId == id).ToList();
+            _db.RemoveRange(abc);
+            _db.SaveChanges();
             foreach (var skills in selectedSkills)
             {
                 _Iuser.AddUserSkills(skills, Convert.ToInt32(userid));
             }
-            return RedirectToAction("userProfile", "User");
+            return RedirectToAction("userprofile","user");
         }
 
         public IActionResult PrivacyPolicy()
         {
+            return View();
+        }
+
+        //Timesheet
+        public IActionResult VolunteeringTimeSheet()
+        {
+            StoryViewModel ss = new StoryViewModel();
+            var userid = HttpContext.Session.GetString("userID");
+            ss.missions = _db.Missions.ToList();
+            ss.applications = _db.MissionApplications.Where(e => e.UserId == Convert.ToInt64(userid)).ToList();
+            ss.timesheets = _db.Timesheets.ToList();
+
+            return View(ss);
+        }
+
+        [HttpPost]
+        public IActionResult VolunteeringTimeSheet(StoryViewModel ss)
+        {
+            if (ss.TimesheetId != 0)
+            {
+                Timesheet sheet = _db.Timesheets.FirstOrDefault(e => e.TimesheetId == ss.TimesheetId);
+                if (ss.hour != 0 && ss.minute != 0)
+                {
+                    var userId = Convert.ToInt64(HttpContext.Session.GetString("userID"));
+                    //var user = Convert.ToInt32(userid);
+                    sheet.UserId = userId;
+                    sheet.MissionId = ss.MissionId;
+                    sheet.TimesheetTime = ss.hour + ":" + ss.minute;
+                    ss.DateVolunteered = ss.DateVolunteered;
+                    sheet.DateVolunteered = ss.DateVolunteered;
+                    sheet.Notes = ss.Notes;
+                }
+
+                else
+                {
+                    var userId = Convert.ToInt64(HttpContext.Session.GetString("userID"));
+                    //var user = Convert.ToInt32(userid);
+                    sheet.UserId = userId;
+                    sheet.MissionId = ss.MissionId;
+                    ss.DateVolunteered = ss.DateVolunteered;
+                    sheet.DateVolunteered = ss.DateVolunteered;
+                    sheet.Notes = ss.Notes;
+                    sheet.Action = ss.Action;
+                }
+
+                _db.Timesheets.Update(sheet);
+                _db.SaveChanges();
+            }
+
+            else
+            {
+                Timesheet sheets = new Timesheet();
+                if (ss.hour != 0 && ss.minute != 0)
+                {
+                    var userId = Convert.ToInt64(HttpContext.Session.GetString("userID"));
+                    //var user = Convert.ToInt32(userid);
+                    sheets.UserId = userId;
+                    sheets.MissionId = ss.MissionId;
+                    sheets.TimesheetTime = ss.hour + ":" + ss.minute;
+                    ss.DateVolunteered = ss.DateVolunteered;
+                    sheets.DateVolunteered = ss.DateVolunteered;
+                    sheets.Notes = ss.Notes;
+                }
+
+                else
+                {
+                    var userId = Convert.ToInt64(HttpContext.Session.GetString("userID"));
+                    //var user = Convert.ToInt32(userid);
+                    sheets.UserId = userId;
+                    sheets.MissionId = ss.MissionId;
+                    ss.DateVolunteered = ss.DateVolunteered;
+                    sheets.DateVolunteered = ss.DateVolunteered;
+                    sheets.Notes = ss.Notes;
+                    sheets.Action = ss.Action;
+                }
+
+                _db.Timesheets.Add(sheets);
+                _db.SaveChanges();
+            }
+
+
+
+            return RedirectToAction("VolunteeringTimeSheet", "User");
+        }
+
+        public IActionResult EditTimesheet(int id)
+        {
+            StoryViewModel ss = new StoryViewModel();
+            var userid = HttpContext.Session.GetString("userID");
+            ss.missions = _db.Missions.ToList();
+            ss.applications = _db.MissionApplications.Where(e => e.UserId == Convert.ToInt64(userid)).ToList();
+            ss.timesheets = _db.Timesheets.ToList();
+
+            ss.Singlesheet = _db.Timesheets.FirstOrDefault(u => u.UserId == Convert.ToInt64(userid));
+            var sheet = _db.Timesheets.FirstOrDefault(u => u.TimesheetId == id);
+
+            ss.DateVolunteered = sheet.DateVolunteered;
+            ss.TimesheetId = sheet.TimesheetId;
+            ss.Notes = sheet.Notes;
+
+            //if (ss.hour != 0 && ss.minute != 0)
+            if (sheet.TimesheetTime != null)
+            {
+                ss.hour = Convert.ToInt32(sheet.TimesheetTime.Split(":")[0]);
+                ss.minute = Convert.ToInt32(sheet.TimesheetTime.Split(":")[1]);
+            }
+
+            else
+            {
+                //ss.hour = 0;
+                //ss.minute = 0;
+                ss.Action = sheet.Action;
+            }
+
+
+            return View("VolunteeringTimeSheet", ss);
+        }
+
+
+        //Delete
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            var time = _db.Timesheets.FirstOrDefault(x => x.TimesheetId == id);
+            _db.Timesheets.Remove(time);
+            _db.SaveChanges();
+
             return View();
         }
     }

@@ -69,10 +69,11 @@
 
                 </a>
                 <ul class="dropdown-menu text-small">
-                    <li><a class="dropdown-item" href="#">Dashboard</a></li>
-                    <li><a class="dropdown-item" href="#">My Account</a></li>
+                    <li><a class="dropdown-item" asp-action="LandingPage" asp-controller="User">Dashboard</a></li>
                     <li><a class="dropdown-item" asp-action="DraftStory" asp-controller="StoryListing">Draft</a></li>
                     <li><a class="dropdown-item" asp-action="userProfile" asp-controller="User">My Profile</a></li>
+                    <li><a class="dropdown-item" asp-action="VolunteeringTimeSheet" asp-controller="User">Volunteering Timesheet</a></li>
+                    <li><a class="dropdown-item" asp-action="UserCrud" asp-controller="Admin">user crud</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>

@@ -776,6 +776,9 @@ public partial class CiPlatformContext : DbContext
                 .HasDefaultValueSql("('PENDING')")
                 .HasColumnName("status");
             entity.Property(e => e.Time).HasColumnName("time");
+            entity.Property(e => e.TimesheetTime)
+                .HasMaxLength(50)
+                .IsUnicode(false);
             entity.Property(e => e.UpdatedAt)
                 .HasColumnType("datetime")
                 .HasColumnName("updated_at");

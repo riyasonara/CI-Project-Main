@@ -149,3 +149,22 @@ function Recommend(btn) {
         }
     });
 }
+
+function apply(mid, uid) {
+    $.ajax({
+        url: '/User/apply',
+        type: 'POST',
+        data: { MissionId: mid, UserId: uid },
+        success: function (result) {
+            Swal.fire({
+                icon: 'success',
+                title: 'Applied',
+                text: 'Applied Successfully',
+
+            });
+            window.location.href = 'VolunteeringMission?missionid=' + mid;
+
+        },
+        error: function (result) { }
+    });
+}

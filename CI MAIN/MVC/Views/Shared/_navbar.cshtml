@@ -84,10 +84,12 @@
 
                         </a>
                         <ul class="dropdown-menu text-small">
-                            <li><a class="dropdown-item" href="#">Dashboard</a></li>
-                            <li><a class="dropdown-item" href="#">My Account</a></li>
+                            <li><a class="dropdown-item" asp-action="LandingPage" asp-controller="User">Dashboard</a></li>
                             <li><a class="dropdown-item" asp-action="DraftStory" asp-controller="StoryListing">Draft</a></li>
                             <li><a class="dropdown-item" asp-action="userProfile" asp-controller="User">My Profile</a></li>
+                        <li><a class="dropdown-item" asp-action="VolunteeringTimeSheet" asp-controller="User">Volunteering Timesheet</a></li>
+                        <li><a class="dropdown-item" asp-action="UserCrud" asp-controller="Admin">User Crud</a></li>
+
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -123,10 +125,11 @@
             <div class="second-div col-lg-6 col-md-7">
                 <ul class="navbar-nav filters-content">
                     <li class="nav-item col-lg-3 col-md-3  dropdown ">
-                        <a class="nav-link dropdown " href="#" role="button" data-bs-toggle="dropdown"
+                        <a class="nav-link dropdown" href="#" role="button" data-bs-toggle="dropdown"
                            aria-expanded="false">
-                            Country <img src="~/img/drop-down.png" alt="">
+                            Country <img src="~/img/drop-down.png" alt=""> @* <div class="vr"></div>*@
                         </a>
+                        
                         <ul class="dropdown-menu ps-1" style="overflow-y:auto; height:200px; width:max-content;">
                             @if (ViewBag.countrylist != null)
                             {

@@ -50,5 +50,6 @@ namespace CI_Project.Repository.Interface
 
         public void updateuser(User user);
 
+        public void apply(long missionid, long userid);
     }
 }

@@ -2,7 +2,6 @@
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
-@*@model List<CI_PLatform_Entities.Models.Mission>*@
 
 @inject IHttpContextAccessor Accessor
 
@@ -10,9 +9,7 @@
     var id = Context.Session.GetString("userID");
 
 }
-@{
-    //bool favcheck = false;
-}
+
 
 @{
     int sum = 0;

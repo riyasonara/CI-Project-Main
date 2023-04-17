@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DKWabgl2mrw2zQ3EOVViuWYW1Lx/Mg6DxvlyjBan46k=",
+  "Hash": "Mdg6tfDxjM5Siiubx3s1LjYnilDJlbkRiboS/11Uh4Q=",
   "Source": "CI Platform Project",
   "BasePath": "_content/CI Platform Project",
   "Mode": "Default",
@@ -2786,6 +2786,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\StoryDetail.js"
+    },
+    {
+      "Identity": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\userCrud.js",
+      "SourceId": "CI Platform Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\",
+      "BasePath": "_content/CI Platform Project",
+      "RelativePath": "js/userCrud.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\userCrud.js"
+    },
+    {
+      "Identity": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\VolunteeringTimeSheet.js",
+      "SourceId": "CI Platform Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\",
+      "BasePath": "_content/CI Platform Project",
+      "RelativePath": "js/VolunteeringTimeSheet.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\VolunteeringTimeSheet.js"
     },
     {
       "Identity": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",

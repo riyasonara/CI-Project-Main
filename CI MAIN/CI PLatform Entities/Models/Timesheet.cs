@@ -27,6 +27,8 @@ public partial class Timesheet
 
     public DateTime? DeletedAt { get; set; }
 
+    public string? TimesheetTime { get; set; }
+
     public virtual Mission? Mission { get; set; }
 
     public virtual User? User { get; set; }

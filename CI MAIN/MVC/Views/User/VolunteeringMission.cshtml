@@ -238,14 +238,23 @@
                         <p style="color: #414141;">@ViewBag.Missiondetail.OrganizationName</p>
                     </div>
                 </div>
-                <div class="m-auto text-center mt-2 ">
-                    <button class="apply-btn px-3 py-2 my-3">
-                        <a  style="text-decoration:none; color:#F88634;">
-                        Apply Now &nbsp; <img src="~/img/right-arrow.png" alt="">
-                        </a>
-                    </button>
-                </div>
-                </>
+                @if (ViewBag.Missiondetail.isapplied)
+                {
+                    <div class="m-auto text-center mt-2 ">
+                        <button class="apply px-3 py-2 my-3">
+                            Already Applied &nbsp; <img src="~/img/right-arrow.png" alt="">
+                        </button>
+                    </div>
+                }
+                else
+                {
+                    <div class="m-auto text-center mt-2 ">
+                        <button class="apply px-3 py-2 my-3" onclick="apply(@ViewBag.Missiondetail.MissionId, @ViewBag.user.UserId)">
+                            Apply Now &nbsp; <img src="~/img/right-arrow.png" alt="">
+                        </button>
+                    </div>
+                }
+               
             </div>
         </div>
     </div>
@@ -657,6 +666,7 @@
         </div>
     </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script src="~/lib/jquery/dist/jquery.js"></script>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
