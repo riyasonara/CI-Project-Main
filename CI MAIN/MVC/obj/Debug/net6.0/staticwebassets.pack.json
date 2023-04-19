@@ -9,6 +9,10 @@
       "PackagePath": "staticwebassets\\CI Platform Project.bundle.scp.css"
     },
     {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\css\\Admin.css",
+      "PackagePath": "staticwebassets\\css\\Admin.css"
+    },
+    {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\css\\ForgotPassword.css",
       "PackagePath": "staticwebassets\\css\\ForgotPassword.css"
     },

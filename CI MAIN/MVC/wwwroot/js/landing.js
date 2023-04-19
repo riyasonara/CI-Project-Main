@@ -23,7 +23,7 @@ function AddtoFav() {
     const params = new URLSearchParams(window.location.search);
     const query = params.get('missionid');
     $.ajax({
-        url: "/User/AddToFav",
+        url: "/Employee/User/AddToFav",
         data: { missionId: query },
         success: function (result) {
             if (result.isFav) {

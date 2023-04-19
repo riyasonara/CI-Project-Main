@@ -31,7 +31,7 @@ function filter(sortValue) {
     //console.log(theme)
 
     $.ajax({
-        url: "/User/navbarfilters",
+        url: "/Employee/User/navbarfilters",
         type: "POST",
         data: { 'search': Search, 'sortValue': sortValue, 'country': country, 'city': city, 'theme': theme},
 

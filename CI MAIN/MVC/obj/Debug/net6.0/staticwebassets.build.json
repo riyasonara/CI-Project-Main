@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Mdg6tfDxjM5Siiubx3s1LjYnilDJlbkRiboS/11Uh4Q=",
+  "Hash": "larH9j9vtqRatiAV5J/ku502Okr1Ql8ZjSZIbGK0+NY=",
   "Source": "CI Platform Project",
   "BasePath": "_content/CI Platform Project",
   "Mode": "Default",
@@ -100,6 +100,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\CI Platform Project.bundle.scp.css"
+    },
+    {
+      "Identity": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\css\\Admin.css",
+      "SourceId": "CI Platform Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\",
+      "BasePath": "_content/CI Platform Project",
+      "RelativePath": "css/Admin.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Admin.css"
     },
     {
       "Identity": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\css\\ForgotPassword.css",

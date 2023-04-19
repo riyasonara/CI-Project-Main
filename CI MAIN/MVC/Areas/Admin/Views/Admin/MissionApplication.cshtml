@@ -1,0 +1,55 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_navigationSidebar";
+}
+<body>
+    <div class="container-fluid d-flex">
+        <div class="missionApplications">
+            <table id="userTable">
+                <thead>
+                    <tr>
+                        <th>Mission Title</th>
+                        <th>Mission id</th>
+                        <th>User id</th>
+                        <th>User Name</th>
+                        <th>Applied Date</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var applications in Model.MissionApplications)
+                    {
+                        <tr>
+                            <td>@applications.Title</td>
+
+                            <td>@applications.MissionId</td>
+
+                            <td>@applications.User.UserId</td>
+
+                            <td>@applications.User.FirstName  @applications.User.LastName</td>
+
+                            <td>@applications.AppliedAt</td>
+
+                            <td><i class="fas fa-edit" data-bs-toggle="modal" data-bs-target="#exampleModal1" @*id="@fn.UserId"*@ onclick="editAdminUser(this.id)"></i> | <i class="fa fa-trash" style="color:red"></i></td>
+
+
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+<script>
+    $(document).ready(function () {
+
+        $('#userTable').DataTable();
+    });
+
+
+
+</script>

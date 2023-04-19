@@ -1,0 +1,235 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@using CI_PLatform_Entities.Models;
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor Accessor
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="./bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+@*    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+*@    <link rel="stylesheet" href="~/css/StoryDetail.css" asp-append-version="true">
+
+    <title>volunteering_mission</title>
+</head>
+
+<body>
+
+    <partial name="_Navbar1" />
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6 col-md-12 col-sm-12">
+                <div class="container">
+                    <!-- Full-width images with number text -->
+                    <div class="mySlides">
+                        <div class="numbertext"></div>
+                        <img class="slide-imgs"
+                             src="~/img/Grow-Trees-On-the-path-to-environment-sustainability-1.png"
+                             style="width:100%" />
+                    </div>
+
+                    <div class="mySlides">
+                        <div class="numbertext"></div>
+                        <img class="slide-imgs"
+                             src="~/img/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png"
+                             style="width:100%" />
+                    </div>
+
+                    <div class="mySlides">
+                        <div class="numbertext"></div>
+                        <img class="slide-imgs" src="~/img/img11.png" style="width:100%" />
+                    </div>
+
+                    <div class="mySlides">
+                        <div class="numbertext"></div>
+                        <img class="slide-imgs" src="~/img/Animal-welfare-&-save-birds-campaign-1.png"
+                             style="width:100%" />
+                    </div>
+
+
+                    <!-- Thumbnail images -->
+                    <div class="row">
+                        <div class="column" style="width:25%;">
+                            <img class="demo cursor"
+                                 src="~/img/Grow-Trees-On-the-path-to-environment-sustainability-1.png"
+                                 style="width:100%" onclick="currentSlide(1)" alt="Grow-Trees-On-the-path-to-environment-sustainability" />
+                        </div>
+                        <div class="column" style="width:25%;">
+                            <img class="demo cursor"
+                                 src="~/img/CSR-initiative-stands-for-Coffee--and-Farmer-Equity-1.png"
+                                 style="width:100%" onclick="currentSlide(2)" alt="CSR-initiative-stands-for-Coffee--and-Farmer-Equity" />
+                        </div>
+                        <div class="column" style="width:25%;">
+                            <img class="demo cursor" src="~/img/img11.png" style="width:100%"
+                                 onclick="currentSlide(3)" alt="img11" />
+                        </div>
+                        <div class="column" style="width:25%;">
+                            <img class="demo cursor" src="~/img/Animal-welfare-&-save-birds-campaign-1.png"
+                                 style="width:100%" onclick="currentSlide(4)" alt="Animal-welfare-&-save-birds-campaign" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+            <div class="col-12 col-lg-6 col-md-12 col-sm-12">
+                <div class="col-12 mt-3 d-flex justify-content-lg-between">
+                    <a class=" ms-4 me-2 text-decoration-none text-black justify-content-center ">
+                        <img src="~/img/volunteer1.png" class="involveduserprofile rounded-circle" height="62" width="62" /><br>
+                        <label id="" class="text-center">Ama teki</label>
+                    </a>
+
+                    <div class="views d-flex justify-content-center align-content-center me-1 mt-5 px-2 py-0 ">
+                        <i class="bi bi-eye" style="margin-top:3px; margin-bottom:3px"></i>
+                        <p class="viewsptag" style="margin-top:3px; margin-bottom:3px" id="count">0</p>
+                    </div>
+                </div>
+
+
+                <div class="text mt-4 ms-4">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates fugit assumenda ad eaque
+                        facere voluptatem explicabo voluptas commodi repellendus sint?
+                    </p>
+
+                    <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ducimus beatae inventore labore
+                        possimus earum, id explicabo nostrum dolorem sint quaerat quod unde dignissimos facilis
+                        eaque?
+                    </p>
+
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam similique enim maiores
+                        vitae ad, temporibus quis libero. Non laborum dolore eligendi unde dolorem iste, voluptate
+                        ipsa repellendus molestiae sed enim recusandae facere nam aliquid autem tempora. Vel
+                        consequatur expedita porro, fuga in inventore, numquam, assumenda quibusdam ipsa iusto
+                        possimus ducimus!
+                    </p>
+
+                </div>
+
+
+                <div class="d-flex">
+                    <div class="">
+                        <button class="apply px-3 py-2 my-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <img src="~/img/add1.png" alt="">&nbsp;
+                            Recommend to a Co-Worker &nbsp;
+                        </button>
+
+                        @*<div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Recommend to co-worker</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body overflow-y-auto" style="height:200px;">
+                                        @foreach (var user in ViewBag.allavailuser)
+                                        {
+                                            <div class=" userlistdiv align-items-center d-flex my-3">
+                                                <img src="~/img/volunteer1.png" class="aviluser ms-2 my-1">
+                                                <label class=" ms-4  me-auto">   @user.username  @user.lastname </label>
+                                                <button class="share-btn me-3 btn btn-outline-primary" value="@user.userEmail" onclick="Recommend(this)" id="@user.userEmail" name="email"> Share </button>
+                                            </div>
+                                        }
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+
+
+
+
+                    </div>
+
+                    <div class="m-auto text-center mt-2 ">
+                        <button class="apply-btn px-3 py-2 my-3">
+                            <a style="text-decoration:none; color:#F88634;">
+                                Open Mission &nbsp; <img src="~/img/right-arrow.png" alt="">
+                            </a>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-12 col-md-12 col-sm-12">
+                <div class="w3-container">
+                    <div class="w3-bar country tab-color">
+                        <button class="w3-bar-item w3-button tablink active-tab"
+                                onclick="openCity(event,'London')">
+                            Grow Trees - On the Path to environment sustainability
+                        </button>
+
+                    </div>
+
+                    <div id="London" class="w3-container mt-4 city">
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates fugit assumenda ad eaque
+                            facere voluptatem explicabo voluptas commodi repellendus sint?
+                        </p>
+
+                        <p>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quam veritatis, temporibus debitis fugit modi commodi!
+
+                        </p>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias quasi nemo, ipsum rem, labore architecto tenetur fuga eligendi quos atque amet laboriosam porro? Eveniet minima eaque non mollitia atque cupiditate consectetur, iste veniam voluptatem officiis, ab exercitationem eius doloribus amet! At, a deleniti. Soluta, porro.
+                        </p>
+
+                        <p>
+                            We use these technologies for a number of purposes, such as:
+
+                            <ul>
+                                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores, quas.</li>
+                                <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Repudiandae sit eius reprehenderit repellendus officia magni tenetur, culpa corporis suscipit delectus!</li>
+                                <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+                                <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, vitae maxime!</li>
+                                <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero distinctio repellendus et.</li>
+                            </ul>
+                        </p>
+
+                        <p>
+                            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis vero unde deleniti repudiandae iste dignissimos debitis. Ex esse consectetur minima illum debitis nam qui laborum nesciunt explicabo cum soluta asperiores perferendis sed voluptatem, minus ad amet eius tempora in rerum recusandae! A id et quam officiis veritatis consectetur nam suscipit unde iste alias perferendis, consequuntur reprehenderit dignissimos, harum hic doloribus ducimus optio, velit sit? Iste.
+                        </p>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+
+
+</body>
+
+<script src="~/js/StoryDetail.js"></script>
+</html>

@@ -20,6 +20,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Employee\Data\" />
+    <Folder Include="Areas\Employee\Models\" />
+    <Folder Include="Controllers\" />
     <Folder Include="wwwroot\img\storyuserimg\" />
   </ItemGroup>
 
@@ -49,6 +54,13 @@
   <ItemGroup>
     <ProjectReference Include="..\CI PLatform Entities\CI PLatform Entities.csproj" />
     <ProjectReference Include="..\CI Project.Repository\CI Project.Repository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Areas\Employee\Views\User\userProfile.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
