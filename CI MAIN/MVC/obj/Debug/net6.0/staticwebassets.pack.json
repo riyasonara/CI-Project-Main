@@ -613,6 +613,10 @@
       "PackagePath": "staticwebassets\\img\\xlsx.png"
     },
     {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\Admin.js",
+      "PackagePath": "staticwebassets\\js\\Admin.js"
+    },
+    {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\ShareStory.js",
       "PackagePath": "staticwebassets\\js\\ShareStory.js"
     },
@@ -647,10 +651,6 @@
     {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
-    },
-    {
-      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\userCrud.js",
-      "PackagePath": "staticwebassets\\js\\userCrud.js"
     },
     {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\lib\\bootstrap\\LICENSE",

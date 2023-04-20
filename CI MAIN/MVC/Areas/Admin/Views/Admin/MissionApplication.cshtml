@@ -4,6 +4,11 @@
 @{
     Layout = "_navigationSidebar";
 }
+
+@using CI_Platform_Project.Models;
+@model UserCrudVieweModel
+
+
 <body>
     <div class="container-fluid d-flex">
         <div class="missionApplications">
@@ -22,11 +27,11 @@
                     @foreach (var applications in Model.MissionApplications)
                     {
                         <tr>
-                            <td>@applications.Title</td>
+                            <td>@applications.Mission.Title</td>
 
                             <td>@applications.MissionId</td>
 
-                            <td>@applications.User.UserId</td>
+                            <td>@applications.UserId</td>
 
                             <td>@applications.User.FirstName  @applications.User.LastName</td>
 

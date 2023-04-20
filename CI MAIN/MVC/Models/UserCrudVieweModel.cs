@@ -5,12 +5,14 @@ namespace CI_Platform_Project.Models
     public class UserCrudVieweModel
     {
 
-        public List<User> users = new List<User>();
+        public List<User> users { get; set; }
 
-        public List<CmsPage> pages = new List<CmsPage>(); 
+        public List<CmsPage> pages { get; set; }
 
-        public List<Mission> missions = new List<Mission>();
+        public List<Mission> missions { get; set; }
 
-        public List<MissionApplication> MissionApplications = new List<MissionApplication>();
+        public List<MissionApplication> MissionApplications { get; set; }
+
+        public List<Story> Stories { get; set; }
     }
 }

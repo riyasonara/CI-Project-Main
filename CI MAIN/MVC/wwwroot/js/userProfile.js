@@ -4,11 +4,11 @@ document.getElementById('imgdiv').addEventListener("click", e => {
 
 
 document.getElementById('imginput').addEventListener("change", e => {
-	const reader = new FileReader(); // Create a new FileReader object
-	reader.onload = function () {
-		document.getElementById('user-profile-img').src = reader.result; // Set the source of the image tag to the selected image
-	}
-	reader.readAsDataURL(e.target.files[0]); // Read the selected file as a data URL
+    const reader = new FileReader(); // Create a new FileReader object
+    reader.onload = function () {
+        document.getElementById('user-profile-img').src = reader.result; // Set the source of the image tag to the selected image
+    }
+    reader.readAsDataURL(e.target.files[0]); // Read the selected file as a data URL
 });
 
 
@@ -53,6 +53,7 @@ function ved4() {
     }
 }
 
+
 //document.getElementById('skillSave').onclick(function () { })
 document.getElementById('skillSave').addEventListener("click", e => {
     debugger
@@ -66,7 +67,7 @@ document.getElementById('skillSave').addEventListener("click", e => {
     console.log(selectedSkills);
     $.ajax({
         url: '/User/SaveUserSkills',
-        method:'POST',
+        method: 'POST',
         data: { selectedSkills: selectedSkills },
 
         success: function (response) {
@@ -81,3 +82,36 @@ document.getElementById('skillSave').addEventListener("click", e => {
         }
     });
 });
+
+function ChangePassword() {
+    var oldpass = document.getElementById('old').value;
+    var newpass = document.getElementById('new').value;
+    var confirmpass = document.getElementById('cnf').value;
+    if (oldpass == "") {
+        alert("Old password Required");
+    }
+    else if (newp != cnf) {
+        alert("Confirm Password Dosen't Match");
+    }
+
+    else {
+        $.ajax({
+            url: '/Employee/User/ChangePassword',
+            type: 'POST',
+            data: { old: oldpass, newp: newpass, cnf: confirmpass },
+            success: function (response) {
+                if (response == true) {
+                    alert("password change successfully");
+
+                }
+                else {
+                    alert("Password Don't Get Change Due to Some Issues");
+                }
+
+            },
+            error: function () {
+                alert("could not comment");
+            }
+        });
+    }
+}

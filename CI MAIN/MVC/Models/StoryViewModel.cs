@@ -1,4 +1,5 @@
 ﻿using CI_PLatform_Entities.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace CI_Platform_Project.Models
 {
@@ -43,6 +44,7 @@ namespace CI_Platform_Project.Models
 
         public List<MissionApplication> applications { get; set; }
 
+
         //Timesheet
         public List<Timesheet> timesheets { get; set; }
 
@@ -53,17 +55,23 @@ namespace CI_Platform_Project.Models
 
         public string TimesheetTime { get; set; }
 
-
+        
         public int? Action { get; set; }
+
 
         public DateTime DateVolunteered { get; set; }
 
         public string? Notes { get; set; }
 
+
+        [Required]
         public int hour { get; set; }
 
+        [Required]
         public int minute { get; set; }
 
+
+        [Required(ErrorMessage = "Select mission")]
         public virtual Mission? Mission { get; set; }
 
     }

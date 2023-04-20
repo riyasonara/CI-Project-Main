@@ -58,6 +58,8 @@
                                             }
 
                                         </select>
+                                            <span class="text-danger" id="reqFname" asp-validation-for="Mission"> </span>
+
                                     </div>
 
                                     <label class="mt-4">Date Volunteered</label>
@@ -71,12 +73,16 @@
                                             <div>
                                                 <input asp-for="hour" class="col-12" type="number" id="hour" min="0" max="23" placeholder="Enter Spent Hours" />
                                             </div>
+                                                <span class="text-danger" id="reqFname" asp-validation-for="hour"> </span>
+
                                         </div>
                                         <div class="col-6">
                                             <label for="Action" class="mt-4">Minutes</label>
                                             <div>
                                                 <input asp-for="minute" class="col-12" type="number" id="min" min="0" max="59" placeholder="Enter Spent Minutes" />
                                             </div>
+                                                <span class="text-danger" id="reqFname" asp-validation-for="minute"> </span>
+
                                         </div>
                                     </div>
                                     <label class="mt-4">Message</label>
@@ -180,6 +186,8 @@
                                                 }
                                             }
                                         </select>
+                                            <span class="text-danger" id="reqFname" asp-validation-for="Mission"> </span>
+
                                     </div>
 
                                     <label for="Action" class="mt-4">Actions</label>
@@ -261,5 +269,6 @@
 </body>
 <script src="~/js/VolunteeringTimeSheet.js" asp-append-version="true"></script>
 
-
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 </html>

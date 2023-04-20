@@ -664,6 +664,9 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             userdetail.CityId = model.CityId;
             userdetail.Availability = model.Availability;
 
+
+
+
             if (files.Count() == 0)
             {
                 model.Avatar = userdetail.Avatar;
@@ -708,7 +711,29 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public bool ChangePassword(string old, string newp, string cnf)
+        {
 
+            var userid = HttpContext.Session.GetString("userID");
+            var user = _db.Users.Where(e => e.UserId == Convert.ToInt32(userid)).FirstOrDefault();
+
+            if (old != user.Password)
+            {
+                return false;
+            }
+            else
+            {
+                var pass = _db.Users.FirstOrDefault(u => u.Password == old);
+                pass.Password = newp;
+
+                _db.Users.Update(pass);
+                _db.SaveChanges();
+
+                return true;
+            }
+
+        }
 
         [HttpPost]
         public async Task<IActionResult> SaveUserSkills(long[] selectedSkills)

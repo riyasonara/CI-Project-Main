@@ -40,13 +40,24 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
         
         }
         
-        public IActionResult MissionsApplications() {
+        public IActionResult MissionApplication() {
 
             var missionApplication = new UserCrudVieweModel();
+            missionApplication.missions = _db.Missions.ToList();
+            missionApplication.users = _db.Users.ToList();
             missionApplication.MissionApplications = _db.MissionApplications.ToList();
             return View(missionApplication);
 
         
+        }
+        public IActionResult AdminStory()
+        {
+            var story = new UserCrudVieweModel();
+            story.missions = _db.Missions.ToList();
+            story.users = _db.Users.ToList();
+            story.Stories = _db.Stories.ToList();
+            return View(story);
+
         }
 
     }

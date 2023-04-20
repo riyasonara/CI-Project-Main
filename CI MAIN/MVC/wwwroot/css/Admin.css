@@ -250,3 +250,9 @@ div#example_info {
     color: #F88634 !important;
     border: 1px solid #F88634 !important;
 }
+.oran {
+    border: 1px solid #fd7e14;
+    border-radius: 22px;
+    color: #fd7e14;
+    background-color: white;
+}

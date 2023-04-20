@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "larH9j9vtqRatiAV5J/ku502Okr1Ql8ZjSZIbGK0+NY=",
+  "Hash": "GdXaB4f5Bychw54Ko72OrYjoAyvyG38V4BgOLMGsHVo=",
   "Source": "CI Platform Project",
   "BasePath": "_content/CI Platform Project",
   "Mode": "Default",
@@ -2669,6 +2669,23 @@
       "OriginalItemSpec": "wwwroot\\img\\xlsx.png"
     },
     {
+      "Identity": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\Admin.js",
+      "SourceId": "CI Platform Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\",
+      "BasePath": "_content/CI Platform Project",
+      "RelativePath": "js/Admin.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Admin.js"
+    },
+    {
       "Identity": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\landing.js",
       "SourceId": "CI Platform Project",
       "SourceType": "Discovered",
@@ -2803,23 +2820,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\StoryDetail.js"
-    },
-    {
-      "Identity": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\userCrud.js",
-      "SourceId": "CI Platform Project",
-      "SourceType": "Discovered",
-      "ContentRoot": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\",
-      "BasePath": "_content/CI Platform Project",
-      "RelativePath": "js/userCrud.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\userCrud.js"
     },
     {
       "Identity": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\VolunteeringTimeSheet.js",
