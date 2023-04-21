@@ -38,14 +38,14 @@
                 <ul class="nav nav-pills flex-column mb-auto mt-4 mt-lg-4 mt-md-5">
 
                     <li class="nav-item mt-2">
-                        <a asp-area="Admin" asp-action="Index" asp-controller="Admin" class="nav-link  sidebarcontent @(ViewBag.nav == 1? "active":"")" aria-current="page">
+                        <a asp-area="Admin" asp-action="UserCrud" asp-controller="Admin" class="nav-link  sidebarcontent @(ViewBag.nav == 1? "active":"")" aria-current="page">
 
                             <i class="bi bi-person-fill sidebar-img"></i>
                             <label class=" ms-2 d-block d-lg-block d-md-none">User</label>
                         </a>
                     </li>
                     <li class="mt-2">
-                        <a asp-area="Admin" asp-action="CmsPage" asp-controller="Admin" class="nav-link sidebarcontent @(ViewBag.nav == 2? "active":"")">
+                        <a asp-area="Admin" asp-action="CmsPage" asp-controller="Admin" id="cms" class="nav-link sidebarcontent @(ViewBag.nav == 2? "active":"")">
 
                             <i class="bi bi-file-earmark-text-fill sidebar-img "></i>
 
@@ -165,7 +165,7 @@
                 <ul class="nav nav-pills flex-column mb-auto mt-3">
 
                     <li class="nav-item mt-2">
-                        <a asp-area="Admin" asp-action="Index" asp-controller="Admin" class="nav-link  sidebarcontent @(ViewBag.nav == 1? "active":"")" aria-current="page">
+                        <a asp-area="Admin" asp-action="UserCrud" asp-controller="Admin" class="nav-link  sidebarcontent @(ViewBag.nav == 1? "active":"")" aria-current="page">
 
                             <i class="bi bi-person-fill   sidebar-img me-2  "></i>
                             <label class="d-block d-lg-block d-md-none">User</label>

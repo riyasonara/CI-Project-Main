@@ -1,0 +1,12 @@
+﻿.button-row {
+    display: flex;
+    justify-content: center;
+}
+
+.start-btn {
+    margin-right: auto;
+}
+
+.end-btn {
+    display: flex;
+}

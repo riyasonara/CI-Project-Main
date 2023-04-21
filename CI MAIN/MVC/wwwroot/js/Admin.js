@@ -58,3 +58,79 @@ $(document).ready(function () {
 
 	$('#userTable').DataTable();
 });
+
+
+
+
+
+    function AddEdit()
+    {
+           var Title = document.getElementById("Title").value;
+    var Desc = document.getElementById("Desc").value;
+    var Slug = document.getElementById("Slug").value;
+    var Status = document.getElementById("Status").value;
+    var CMSId = document.getElementById("CMSId").value;
+
+    $.ajax({
+        url: '/Admin/Admin/CMSAdd',
+    type: 'POST',
+    data: {'CMSId':CMSId , 'Title':Title, 'Desc': Desc, 'Slug': Slug, 'Status': Status  },
+    success: function (res) {
+        //console.log(res);
+        //$("#UserModal").html($(res).find("#UserModal").html());
+        $("#cms").click();
+               },
+    error: function (res) {
+        console.log(res);
+    alert("Modal error");
+               }
+           });
+       }
+
+    function GetCmsData(CMSId){
+        $.ajax({
+            url: '/Admin/Admin/GetCMSData',
+            type: 'GET',
+            data: { 'CMSId': CMSId },
+            success: function (res) {
+                console.log(res);
+                //$("#UserModal").html($(res).find("#UserModal").html());
+                $("#Title").val(res.title);
+                $("#Desc").val(res.description);
+                $("#Slug").val(res.slug);
+                $("#Status").val(res.status);
+                $("#CMSId").val(res.cmsPageId);
+            },
+            error: function (res) {
+                console.log(res);
+                alert("Modal error");
+            }
+        });
+       }
+
+    function DeleteCMS(CMSId)
+    {
+        $.ajax({
+            url: '/Admin/Admin/CMSDelete',
+            type: 'GET',
+            data: { 'CMSId': CMSId },
+            success: function (res) {
+                $("#cms").click();
+            },
+            error: function (res) {
+                $("#cms").click();
+            }
+        });
+       }
+
+    function nullvalues()
+    {
+        document.getElementById("Title").value = "";
+    document.getElementById("Desc").value ="";
+    document.getElementById("Slug").value ="";
+    document.getElementById("Status").value ="";
+    document.getElementById("CMSId").value ="";
+       }
+
+//CKEDITOR.replace('editor1');
+

@@ -49,6 +49,10 @@
       "PackagePath": "staticwebassets\\css\\VolunteeringMission.css"
     },
     {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\css\\cmspage.css",
+      "PackagePath": "staticwebassets\\css\\cmspage.css"
+    },
+    {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\css\\login.css",
       "PackagePath": "staticwebassets\\css\\login.css"
     },
@@ -631,6 +635,10 @@
     {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\landing.js",
       "PackagePath": "staticwebassets\\js\\landing.js"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\missionApplication.js",
+      "PackagePath": "staticwebassets\\js\\missionApplication.js"
     },
     {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\navbar.js",
