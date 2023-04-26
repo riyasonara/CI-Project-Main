@@ -601,6 +601,7 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             userProfile.FirstName = user.FirstName;
             userProfile.Surname = user.LastName;
             userProfile.Email = user.Email;
+            userProfile.username = user.FirstName;
 
             userProfile.WhyIVolunteer = user.WhyIVolunteer;
             userProfile.title = user.Title;
@@ -614,6 +615,7 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             userProfile.CityId = user.CityId;
             userProfile.CountryId = user.CountryId;
             userProfile.Availability = user.Availability;
+            userProfile.Avatar = user.Avatar;
             var allskills = _Iuser.skilllist();
             ViewBag.allskills = allskills;
             var skills = from US in _db.UserSkills
@@ -642,7 +644,7 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
 
         [HttpPost]
 
-        public async Task<IActionResult> userProfile(UserProfileViewModel model, IFormFileCollection files)
+        public async Task<IActionResult> userProfile(UserProfileViewModel model)
         {
 
             var userId = Convert.ToInt64(HttpContext.Session.GetString("userID"));
@@ -663,30 +665,33 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             userdetail.CountryId = model.CountryId;
             userdetail.CityId = model.CityId;
             userdetail.Availability = model.Availability;
+            userdetail.Email = model.Email;
+            model.username = userdetail.FirstName;
 
 
 
 
-            if (files.Count() == 0)
+            //if (files.Count() == 0)
+            //{
+            //    model.Avatar = userdetail.Avatar;
+            //}
+            //else
+            //{
+            //    userdetail.Avatar = model.Avatar;
+
+            //}
+            if (model.UserImg != null)
             {
-                model.Avatar = userdetail.Avatar;
-            }
-            else
-            {
-                userdetail.Avatar = model.Avatar;
-
-            }
-            foreach (var file in files)
-            {
+                var FileName = "";
                 using (var ms = new MemoryStream())
                 {
-                    await file.CopyToAsync(ms);
+                    await model.UserImg.CopyToAsync(ms)
+;
                     var imageBytes = ms.ToArray();
                     var base64String = Convert.ToBase64String(imageBytes);
-                    userdetail.Avatar = "data:image/png;base64," + base64String;
-                    model.Avatar = "data:image/png;base64," + base64String;
-                    HttpContext.Session.SetString("useravtar", "data:image/png;base64," + base64String);
+                    FileName = "data:image/png;base64," + base64String;
                 }
+                userdetail.Avatar = FileName;
             }
 
             var allskills = _Iuser.skilllist();
@@ -708,7 +713,7 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             _db.Users.Update(userdetail);
             _db.SaveChanges();
             //_Iuser.updateuser(userdetail);
-            return View(model);
+            return RedirectToAction("userProfile", "User");
         }
 
         [HttpPost]
@@ -734,6 +739,23 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             }
 
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> SaveContactus(UserProfileViewModel model)
+        {
+            try
+            {
+                _Iuser.addContactUs(model.subject, model.message, model.username, model.Email);
+                return RedirectToAction("UserProfile", "User");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Error", "User");
+            }
+        }
+
+
 
         [HttpPost]
         public async Task<IActionResult> SaveUserSkills(long[] selectedSkills)

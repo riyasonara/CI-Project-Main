@@ -10,3 +10,6 @@
 .end-btn {
     display: flex;
 }
+div.dataTables_wrapper div.dataTables_filter{
+    display:none !important;
+}

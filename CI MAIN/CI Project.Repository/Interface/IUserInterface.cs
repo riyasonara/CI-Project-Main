@@ -51,5 +51,8 @@ namespace CI_Project.Repository.Interface
         public void updateuser(User user);
 
         public void apply(long missionid, long userid);
+
+        public ContactU addContactUs(string subject, string message, string username, string email);
+
     }
 }

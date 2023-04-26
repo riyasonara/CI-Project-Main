@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\css\\Admin.css"
     },
     {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\css\\AdminMissions.css",
+      "PackagePath": "staticwebassets\\css\\AdminMissions.css"
+    },
+    {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\css\\ForgotPassword.css",
       "PackagePath": "staticwebassets\\css\\ForgotPassword.css"
     },
@@ -659,6 +663,10 @@
     {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\userPage.js",
+      "PackagePath": "staticwebassets\\js\\userPage.js"
     },
     {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\lib\\bootstrap\\LICENSE",

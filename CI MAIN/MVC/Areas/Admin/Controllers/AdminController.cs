@@ -17,23 +17,96 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
         }
         public IActionResult UserCrud()
         {
+            HttpContext.Session.SetInt32("Nav", 1);
+            ViewBag.nav = HttpContext.Session.GetInt32("Nav");
             var uservm = new UserCrudVieweModel();
             uservm.users = _db.Users.ToList();
+            uservm.Cities = _db.Cities.ToList();
+            uservm.Countries = _db.Countries.ToList();
             return View(uservm);
         }
 
-        public IActionResult CmsPage() {
+        [HttpPost]
 
+        public IActionResult adduser(long userID, int status, string proftxt, string email, string password, string department, string Fname, string Lname, string empID, int country, int city)
+        {
+
+
+            if (userID == 0)
+            {
+                User user = new User()
+                {
+                    FirstName = Fname,
+                    LastName = Lname,
+                    Email = email,
+                    Password = password,
+                    Department = department,
+                    Status = status,
+                    ProfileText = proftxt,
+                    EmployeeId = empID,
+                    CountryId = country,
+                    CityId = city,
+
+                };
+                _db.Users.Add(user);
+                _db.SaveChanges();
+            }
+            else
+            {
+                User user = _db.Users.FirstOrDefault(x => x.UserId == userID);
+                user.FirstName = Fname;
+                user.LastName = Lname;
+                user.Email = email;
+                user.Password = password;
+                user.Department = department;
+                user.CityId = city;
+                user.CountryId = country;
+                user.Department = department;
+                user.ProfileText = proftxt;
+                user.EmployeeId = empID;
+                user.Status = status;
+
+                _db.Update(user);
+                _db.SaveChanges();
+
+            }
+
+            return Json("UserCrud");
+        }
+
+        public IActionResult GetUser(long UserID)
+        {
+            var user = _db.Users.FirstOrDefault(x => x.UserId == UserID);
+            return Json(user);
+        }
+
+        public IActionResult deleteUser(long UserID)
+        {
+            var user = _db.Users.FirstOrDefault(x => x.UserId == UserID);
+            user.DeletedAt = DateTime.Now;
+
+            _db.Users.Update(user);
+            _db.SaveChanges();
+
+            return View("UserCrud");
+        }
+
+
+
+        public IActionResult CmsPage()
+        {
+            HttpContext.Session.SetInt32("Nav", 2);
+            ViewBag.nav = HttpContext.Session.GetInt32("Nav");
             var uservm = new UserCrudVieweModel();
             uservm.pages = _db.CmsPages.ToList();
             return View(uservm);
 
-        
+
         }
 
 
         //CMS
-       
+
         public IActionResult CMSAdd()
         {
             return View();
@@ -91,27 +164,39 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
 
 
 
-        public IActionResult Missions() {
+        public IActionResult Missions()
+        {
+
+            HttpContext.Session.SetInt32("Nav", 3);
+            ViewBag.nav = HttpContext.Session.GetInt32("Nav");
 
             var mission = new UserCrudVieweModel();
             mission.missions = _db.Missions.ToList();
             return View(mission);
 
-        
+
         }
-        
-        public IActionResult MissionApplication() {
+
+        public IActionResult MissionApplication()
+        {
+
+            HttpContext.Session.SetInt32("Nav", 6);
+            ViewBag.nav = HttpContext.Session.GetInt32("Nav");
 
             var missionApplication = new UserCrudVieweModel();
             missionApplication.missions = _db.Missions.ToList();
             missionApplication.users = _db.Users.ToList();
-            missionApplication.MissionApplications = _db.MissionApplications.ToList();
+            missionApplication.MissionApplications = _db.MissionApplications.Where(u => u.ApprovalStatus == "Pending").ToList();
             return View(missionApplication);
 
-        
+
         }
         public IActionResult AdminStory()
         {
+
+            HttpContext.Session.SetInt32("Nav", 7);
+            ViewBag.nav = HttpContext.Session.GetInt32("Nav");
+
             var story = new UserCrudVieweModel();
             story.missions = _db.Missions.ToList();
             story.users = _db.Users.ToList();
@@ -121,20 +206,20 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public bool approveMission(long missionApplicationId) 
+        public IActionResult approveMission(long missionApplicationId)
         {
-            var missionapp = _db.MissionApplications.FirstOrDefault( m => m.MissionApplicationId == missionApplicationId);
+            var missionapp = _db.MissionApplications.FirstOrDefault(m => m.MissionApplicationId == missionApplicationId);
             missionapp.ApprovalStatus = "Approved";
 
             _db.MissionApplications.Update(missionapp);
             _db.SaveChanges();
 
-            return true;
+            return RedirectToAction("MissionApplication", "Admin");
         }
 
         [HttpGet]
 
-        public bool rejectMission(long missionApplicationId)
+        public IActionResult rejectMission(long missionApplicationId)
         {
             var missionrej = _db.MissionApplications.FirstOrDefault(m => m.MissionApplicationId == missionApplicationId);
             missionrej.ApprovalStatus = "Rejected";
@@ -142,7 +227,32 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
             _db.MissionApplications.Update(missionrej);
             _db.SaveChanges();
 
-            return true;
+            return RedirectToAction("MissionApplication", "Admin");
+
+
+        }
+
+        [HttpGet]
+        public IActionResult MissionTheme()
+        {
+            HttpContext.Session.SetInt32("Nav", 4);
+            ViewBag.nav = HttpContext.Session.GetInt32("Nav");
+
+            var missiontheme = new UserCrudVieweModel();
+            missiontheme.MissionThemes = _db.MissionThemes.ToList();
+
+            return View(missiontheme);
+        }
+
+        public IActionResult MissionSkills()
+        {
+            HttpContext.Session.SetInt32("Nav", 5);
+            ViewBag.nav = HttpContext.Session.GetInt32("Nav");
+
+            var missionskill = new UserCrudVieweModel();
+            missionskill.Skills = _db.Skills.ToList();
+
+            return View(missionskill);
         }
     }
 }

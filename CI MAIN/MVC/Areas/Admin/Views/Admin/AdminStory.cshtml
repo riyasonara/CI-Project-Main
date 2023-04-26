@@ -10,8 +10,7 @@
 
 
 <body>
-    <div class="container-fluid d-flex">
-        <div class="missionApplications">
+   
             <table id="userTable">
                 <thead>
                     <tr>
@@ -34,9 +33,11 @@
 
                             <td>
                                 <span>
+                                    <a target="_blank" style="text-decoration:none" asp-area="Employee" asp-controller="StoryListing" asp-action="StoryDetail" asp-route-storyid="@applications.StoryId">
                                     <button class="btn shadow-none oran">
-                                        Edit
+                                        View
                                     </button>
+                                    </a>
                                 </span>
                                 <span>
                                     <button class="btn shadow-none" onclick="Approve(@applications.StoryId)">
@@ -60,8 +61,7 @@
 
                 </tbody>
             </table>
-        </div>
-    </div>
+     
 </body>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
 <script>

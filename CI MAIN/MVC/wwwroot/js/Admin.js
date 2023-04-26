@@ -12,47 +12,47 @@ $(document).ready(function () {
 });
 CKEDITOR.replace('editor1');
 
-//function ved1() {
-//	var a = document.getElementById("s1");
-//	var c = document.getElementById("s2");
-//	var b = a.options[a.selectedIndex];
-//	for (var i = 0; i < a.length; i++) {
+function ved1() {
+	var a = document.getElementById("s1");
+	var c = document.getElementById("s2");
+	var b = a.options[a.selectedIndex];
+	for (var i = 0; i < a.length; i++) {
 
-//		if (a.options[i].selected == true) {
-//			a.options[i].selected = false
-//			c.add(a.options[i])
+		if (a.options[i].selected == true) {
+			a.options[i].selected = false
+			c.add(a.options[i])
 
-//			ved1()
-//		}
+			ved1()
+		}
 
-//	}
-//}
-//function ved2() {
-//	var a = document.getElementById("s1");
-//	var c = document.getElementById("s2");
-//	var b = c.options[c.selectedIndex];
-//	for (var i = 0; i < c.length; i++) {
-//		if (c.options[i].selected == true) {
-//			c.options[i].selected = false
-//			a.add(c.options[i])
-//			ved2()
-//		}
-//	}
-//}
-//function ved3() {
-//	var a = document.getElementById("s1");
-//	var c = document.getElementById("s2");
-//	for (var i = 0; i < a.length;) {
-//		c.add(a.options[c, i])
-//	}
-//}
-//function ved4() {
-//	var a = document.getElementById("s1");
-//	var c = document.getElementById("s2");
-//	for (var i = 0; i < c.length;) {
-//		a.add(c.options[a, i])
-//	}
-//}
+	}
+}
+function ved2() {
+	var a = document.getElementById("s1");
+	var c = document.getElementById("s2");
+	var b = c.options[c.selectedIndex];
+	for (var i = 0; i < c.length; i++) {
+		if (c.options[i].selected == true) {
+			c.options[i].selected = false
+			a.add(c.options[i])
+			ved2()
+		}
+	}
+}
+function ved3() {
+	var a = document.getElementById("s1");
+	var c = document.getElementById("s2");
+	for (var i = 0; i < a.length;) {
+		c.add(a.options[c, i])
+	}
+}
+function ved4() {
+	var a = document.getElementById("s1");
+	var c = document.getElementById("s2");
+	for (var i = 0; i < c.length;) {
+		a.add(c.options[a, i])
+	}
+}
 
 $(document).ready(function () {
 
@@ -79,6 +79,7 @@ $(document).ready(function () {
         //console.log(res);
         //$("#UserModal").html($(res).find("#UserModal").html());
         $("#cms").click();
+        location.reload();
                },
     error: function (res) {
         console.log(res);
@@ -116,6 +117,7 @@ $(document).ready(function () {
             data: { 'CMSId': CMSId },
             success: function (res) {
                 $("#cms").click();
+                window.location.reload();
             },
             error: function (res) {
                 $("#cms").click();
@@ -126,11 +128,11 @@ $(document).ready(function () {
     function nullvalues()
     {
         document.getElementById("Title").value = "";
-    document.getElementById("Desc").value ="";
-    document.getElementById("Slug").value ="";
-    document.getElementById("Status").value ="";
-    document.getElementById("CMSId").value ="";
-       }
+        document.getElementById("Desc").value ="";
+        document.getElementById("Slug").value ="";
+        document.getElementById("Status").value ="";
+        document.getElementById("CMSId").value ="";
+    }
 
 //CKEDITOR.replace('editor1');
 

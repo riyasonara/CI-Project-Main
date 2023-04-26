@@ -14,5 +14,12 @@ namespace CI_Platform_Project.Models
         public List<MissionApplication> MissionApplications { get; set; }
 
         public List<Story> Stories { get; set; }
+
+        public List<City> Cities { get; set; }
+        public List<Country> Countries { get; set; }
+
+        public List<MissionTheme> MissionThemes { get; set; }
+
+        public List<Skill> Skills { get; set;}
     }
 }

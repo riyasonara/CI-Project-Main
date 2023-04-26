@@ -130,6 +130,20 @@ namespace CI_Project.Repository.Repository
             _db.Users.Add(user);
             _db.SaveChanges();
         }
+
+        public ContactU addContactUs(string subject, string message, string username, string email)
+        {
+            var contactUs = new ContactU();
+            contactUs.Username = username;
+            contactUs.Email = email;
+            contactUs.Subject = subject;
+            contactUs.Message = message;
+            contactUs.CreatedAt = DateTime.Now;
+
+            _db.Add(contactUs);
+            _db.SaveChanges();
+            return contactUs;
+        }
     }
 }
 
