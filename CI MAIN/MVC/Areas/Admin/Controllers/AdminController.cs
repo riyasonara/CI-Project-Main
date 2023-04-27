@@ -172,9 +172,18 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
 
             var mission = new UserCrudVieweModel();
             mission.missions = _db.Missions.ToList();
+            mission.Cities = _db.Cities.ToList();
+            mission.Countries = _db.Countries.ToList();
             return View(mission);
 
 
+        }
+
+        [HttpPost]
+        public IActionResult Upload(IFormFileCollection file)
+        {
+            // Handle the uploaded file here
+            return Json(new { success = true });
         }
 
         public IActionResult MissionApplication()

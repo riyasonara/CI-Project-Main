@@ -21,5 +21,9 @@ namespace CI_Platform_Project.Models
         public List<MissionTheme> MissionThemes { get; set; }
 
         public List<Skill> Skills { get; set;}
+
+        public long? CityId { get; set; }
+
+        public long? CountryId { get; set; }
     }
 }

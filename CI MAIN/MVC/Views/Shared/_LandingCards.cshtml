@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
     @*<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">*@
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">*@
     <link rel="stylesheet" href="~/css/LandingPage.css" asp-append-version="true">
 
 
@@ -96,13 +96,28 @@
                             <img class="card-img-top "
                                  src="~/img/Grow-Trees-On-the-path-to-environment-sustainability.png"
                                  alt="Card image cap" />
-
+                            @if (item.isapplied == 1)
+                            {
+                                <div class="applied-div">Applied</div>
+                            }
+                            @if (item.ispending == 1)
+                            {
+                                <div class="pending-div">Pending</div>
+                            }
+                            @if (item.isclosed == 0)
+                            {
+                                <div class="closed-div">Closed</div>
+                            }
+                            @if (item.isrejected == 1)
+                            {
+                                <div class="rejected-div">Rejected</div>
+                            }
                             <div class="pin d-flex align-items-center px-2 py-1 ">
                                 <img src="~/img/pin.png" alt="location">
                                 <p class="text-white mb-0 px-2">@item.Cityname</p>
                             </div>
 
-                            <p class="text-white applied">Applied</p>
+
 
 
 
@@ -118,9 +133,37 @@
                                     <img src="~/img/heart.png" alt="" class="heart-share-img">
                                 </div>
                             }
-                            <div class="share align-items-center px-2 py-1">
-                                <img src="~/img/user.png" alt="" class="heart-share-img">
+                            <div class="share align-items-center px-2 py-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <img src="~/img/add1.png" alt="" class="heart-share-img">
                             </div>
+                            <div class="modal fade" id="exampleModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Recommend to co-worker</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body" style="height:200px; overflow-y:scroll">
+                                            @foreach (var user in ViewBag.allavailuser)
+                                            {
+                                                <div class=" userlistdiv align-items-center d-flex my-3">
+                                                    <img src="~/img/volunteer1.png" class="aviluser ms-2 my-1">
+                                                    <label class=" ms-4  me-auto">   @user.username  @user.lastname </label>
+                                                    <button class="share-btn me-3 btn btn-outline-primary" value="@user.userEmail" onclick="Recommend(this)" id="@user.userEmail" name="email"> Share </button>
+                                                </div>
+                                            }
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
 
                             <div class="env align-items-center px-2 py-1 ">
                                 <p class="mb-0 info-txt-2">@item.Themename</p>
@@ -211,7 +254,7 @@
                             {
                                 <div class="m-auto" style="width: fit-content;">
                                     <button class="apply px-3 py-2 mb-0 my-3" onclick="apply()">
-                                        <a style="text-decoration:none; color: #F88634;">
+                                        <a href="/Employee/User/VolunteeringMission?missionid=@item.MissionId" style="text-decoration:none; color: #F88634;">
                                             Apply &nbsp; <img src="~/img/right-arrow.png" alt="">
                                         </a>
                                     </button>
@@ -222,7 +265,7 @@
                             {
                                 <div class="m-auto" style="width: fit-content;">
                                     <button class="apply px-3 py-2 mb-0 my-3">
-                                        <a href="/User/VolunteeringMission?missionid=@item.MissionId" style="text-decoration:none; color: #F88634;">
+                                        <a href="/Employee/User/VolunteeringMission?missionid=@item.MissionId" style="text-decoration:none; color: #F88634;">
                                             Apply &nbsp; <img src="~/img/right-arrow.png" alt="">
                                         </a>
                                     </button>

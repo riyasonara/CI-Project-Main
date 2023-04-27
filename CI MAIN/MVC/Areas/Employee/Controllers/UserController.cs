@@ -26,6 +26,8 @@ using MailKit.Net.Smtp;
 using SmtpClient = MailKit.Net.Smtp.SmtpClient;
 using CI_Project.Repository.Interface;
 using System.Linq;
+using PagedList;
+using System.Collections.Generic;
 
 namespace CI_Platform_Project.Areas.Employee.Controllers
 {
@@ -56,7 +58,7 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
 
 
         // < ====================================================================================== >
-        // < =============================== sending mail to co-Worker ======================------------====== >
+        // < =============================== sending mail to co-Worker ============================ >
         // < ====================================================================================== >
         public JsonResult Recommend(string targetURL, string userMail)
         {
@@ -90,7 +92,7 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             IEnumerable<Mission> objMis = _Iuser.missionlist();
             IEnumerable<Comment> objComm = _Iuser.comments();
             IEnumerable<Mission> selected = _Iuser.missionlist().Where(m => m.MissionId == missionid).ToList();
-            var applied = uId != null ? _Iuser.applications().Any(m => m.UserId == int.Parse(SessionUserId) && m.MissionId == missionid) : false;
+            var applied = _Iuser.applications().Where(u => u.MissionId == missionid && u.UserId == Convert.ToInt64(SessionUserId) && u.ApprovalStatus == "Approved").ToList();
             var volmission = _Iuser.missionlist().FirstOrDefault(m => m.MissionId == missionid);
             var theme = _Iuser.themelist().FirstOrDefault(m => m.MissionThemeId == volmission.ThemeId);
             var City = _Iuser.cities().FirstOrDefault(m => m.CityId == volmission.CityId);
@@ -111,7 +113,7 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             volunteeringVM.Themename = theme.Title;
             volunteeringVM.EndDate = Enddate[0];
             volunteeringVM.StartDate = Startdate[0];
-            volunteeringVM.isapplied = applied;
+            volunteeringVM.isapplied = applied.Count() != 0 ? 1 : 0;
             volunteeringVM.UserPrevRating = prevRating != null ? prevRating.Rating : 0;
             var favrioute = uId != null ? _Iuser.favoriteMissions().Any(u => u.UserId == Convert.ToInt64(SessionUserId) && u.MissionId == volmission.MissionId) : false;
             //if (prevRating != null) { volunteeringVM.UserPrevRating = prevRating.Rating; }
@@ -280,6 +282,10 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             ViewBag.themelist = _Iuser.themelist();
             ViewBag.citylist = _Iuser.cities();
             ViewBag.skilllist = _Iuser.skilllist();
+
+
+
+
             return View();
 
         }
@@ -363,7 +369,7 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
         //#endregion
 
         #region Filters
-        public IActionResult navbarfilters(long userId, int id, int missionid, string? search, int? pageIndex, string? sortValue, string[] country, string[] city, string[] theme)
+        public IActionResult navbarfilters(long userId, int id, int missionid, string? search, int? page, string? sortValue, string[] country, string[] city, string[] theme)
         {
             var SessionUserId = HttpContext.Session.GetString("userID");
 
@@ -392,7 +398,9 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
                 string[] Startdate1 = item.StartDate.ToString().Split(" ");
                 string[] Enddate2 = item.EndDate.ToString().Split(" ");
                 var favrioute = id != null ? _Iuser.favoriteMissions().Any(u => u.UserId == Convert.ToInt64(SessionUserId) && u.MissionId == item.MissionId) : false;
-                var Applybtn = id != null ? _Iuser.applications().Any(u => u.MissionId == item.MissionId && u.UserId == Convert.ToInt64(SessionUserId)) : false;
+                var Applybtn = _Iuser.applications().Where(u => u.MissionId == item.MissionId&&u.UserId== Convert.ToInt64(SessionUserId) && u.ApprovalStatus == "Approved").ToList();
+                var Pendingbtn = _Iuser.applications().Where(u => u.MissionId == item.MissionId  && u.ApprovalStatus == "Pending").ToList();
+                var Rejectedbtn = _Iuser.applications().Where(u => u.MissionId == item.MissionId  && u.ApprovalStatus == "Rejected").ToList();
                 ViewBag.FavoriteMissions = favrioute;
                 var ratiing = _Iuser.missionRatings().Where(u => u.MissionId == item.MissionId).ToList();
 
@@ -431,7 +439,9 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
                     MissionType = item.MissionType,
                     AverageRating = finalrating,
                     isfav = favrioute,
-                    isapplied = Applybtn,
+                    isapplied =Applybtn.Count() !=0 ? 1:0,
+                    ispending = Pendingbtn.Count() != 0 ? 1:0,
+                    isrejected = Rejectedbtn.Count() != 0 ? 1:0,
                     UserId = Convert.ToInt64(SessionUserId),
                 });
             }
@@ -488,14 +498,10 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             }
 
             //Pagination
-            //int pageSize = 6;
-            //int skip = (pageIndex ?? 0) * pageSize;
-            //var Missionss = Missions.Skip(skip).Take(pageSize).ToList();
-            //int totalMissions = mission.Count();
 
-            //ViewBag.TotalMission = totalMissions;
-            //ViewBag.TotalPages = (int)Math.Ceiling(totalMissions / (double)pageSize);
-            //ViewBag.CurrentPage = pageIndex ?? 0;
+            //int pageSize = 3;
+            //int pageNumber = (page ?? 1);
+
             var missionfinal = Missions;
 
 
@@ -601,7 +607,6 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             userProfile.FirstName = user.FirstName;
             userProfile.Surname = user.LastName;
             userProfile.Email = user.Email;
-            userProfile.username = user.FirstName;
 
             userProfile.WhyIVolunteer = user.WhyIVolunteer;
             userProfile.title = user.Title;
@@ -666,10 +671,6 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             userdetail.CityId = model.CityId;
             userdetail.Availability = model.Availability;
             userdetail.Email = model.Email;
-            model.username = userdetail.FirstName;
-
-
-
 
             //if (files.Count() == 0)
             //{
@@ -746,7 +747,7 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
         {
             try
             {
-                _Iuser.addContactUs(model.subject, model.message, model.username, model.Email);
+                _Iuser.addContactUs(model.subject, model.message, model.FirstName,model.Surname, model.Email);
                 return RedirectToAction("UserProfile", "User");
             }
             catch (Exception ex)
@@ -903,5 +904,7 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
 
             return View();
         }
+
+
     }
 }

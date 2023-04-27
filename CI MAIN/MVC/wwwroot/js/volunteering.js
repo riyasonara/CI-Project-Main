@@ -80,7 +80,7 @@ function search(query) {
             var value = $(this).index() + 1;
             var itemId = $(this).parent().data("item-id");
             $.ajax({
-                url: "/User/VolunteeringMission",
+                url: "/Employee/User/VolunteeringMission",
                 type: "POST",
                 data: { itemId: itemId, value: value },
                 success: function (result) {
@@ -94,7 +94,7 @@ function AddtoFav(missionid, id) {
     const params = new URLSearchParams(window.location.search);
     const query = params.get('missionid');
     $.ajax({
-        url: "/User/AddToFav",
+        url: "/Employee/User/AddToFav",
         data: { missionid: missionid,id:id },
         success: function (result) {
             if (result.isFav) {
@@ -118,7 +118,7 @@ function PostComment() {
     const params = new URLSearchParams(window.location.search);
     const query = params.get('missionid');
     $.ajax({
-        url: "/User/PostComment",
+        url: "/Employee/User/PostComment",
         data: { missionId: query, commentVal: commentVal },
         success: function (result) {
             $('.commentdiv').html($(result).find('.commentdiv').html());
@@ -138,7 +138,7 @@ function Recommend(btn) {
     btn.innerText = "Sending...";
     btn.disabled = true;
     $.ajax({
-        url: '/User/Recommend',
+        url: '/Employee/User/Recommend',
         type: 'POST',
         data: { targetURL: currentURL, userMail: userMail },
         success: function (result) {
@@ -152,7 +152,7 @@ function Recommend(btn) {
 
 function apply(mid, uid) {
     $.ajax({
-        url: '/User/apply',
+        url: '/Employee/User/apply',
         type: 'POST',
         data: { MissionId: mid, UserId: uid },
         success: function (result) {

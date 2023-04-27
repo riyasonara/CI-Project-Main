@@ -49,6 +49,14 @@
 
         public bool isfav { get; set; }
 
-        public bool isapplied { get; set; }
+        public int? isapplied { get; set; }
+        public int? isclosed { get; set; }
+        public int? isrejected { get; set; }
+        public int? ispending { get; set; }
+
+
+
+
+
     }
 }

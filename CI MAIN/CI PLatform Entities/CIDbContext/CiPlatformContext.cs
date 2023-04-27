@@ -241,14 +241,16 @@ public partial class CiPlatformContext : DbContext
             entity.Property(e => e.Email)
                 .HasMaxLength(50)
                 .IsUnicode(false);
+            entity.Property(e => e.FirstName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
+            entity.Property(e => e.LastName)
+                .HasMaxLength(50)
+                .IsUnicode(false);
             entity.Property(e => e.Message).HasColumnName("message");
             entity.Property(e => e.Subject)
                 .HasMaxLength(255)
                 .HasColumnName("subject");
-            entity.Property(e => e.Username)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("username");
         });
 
         modelBuilder.Entity<Country>(entity =>

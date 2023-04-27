@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
     <link rel="stylesheet" href="~/css/AdminMissions.css" />
 
+    <link href="~/lib/dropzone/dist/min/dropzone.min.css" rel="stylesheet" />
+
 </head>
 <body>
     <div class="container-fluid">
@@ -40,9 +42,10 @@
                 </button>
             </div>
             <!-- Modal -->
-            <div class="modal fade" id="AddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-xl modal-dialog-centered">
-                    <form>
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="modal fade" id="AddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+
                         <div class="modal-content">
 
                             <div class="modal-header">
@@ -186,40 +189,31 @@
                                     <div class="row">
                                         <div class="col">
                                             <label class="mt-2">Mission Images</label>
-                                            <input type="text" class="form-control" id="Fname" placeholder="First name" aria-label="First name">
+                                            <input type="file" multiple name="file" id="my-dropzone" />
                                         </div>
                                         <div class="col">
                                             <label class="mt-2">Mission Documents</label>
-                                            <input type="text" class="form-control" id="Lname" placeholder="Last name" aria-label="Last name">
+                                            <input type="file" multiple name="file" id="my-dropzone" />
                                         </div>
                                     </div>
 
 
                                 </div>
-
-
-
-
-
-
-
-
-
-
-
                             </div>
-
                             <input type="hidden" id="CMSId" value="0" name="CMSId" />
 
+                            <div class="modal-footer">
+                                <button type="button" class="btn border-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn oran" onclick="AddEdit()" data-bs-dismiss="modal">Save</button>
+                            </div>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn border-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn oran" onclick="AddEdit()" data-bs-dismiss="modal">Save</button>
-                        </div>
-                    </form>
+
+
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
+
         @*End of Modal*@
 
     </div>
@@ -266,8 +260,20 @@
     });
 
 
+    $(document).ready(function () {
+        var myDropzone = new Dropzone("#my-dropzone", {
+            paramName: "file",
+            maxFilesize: 2, // MB
+            addRemoveLinks: true,
+            dictRemoveFile: "Remove"
+        });
 
+        myDropzone.on("success", function (file, response) {
+            // Handle the server response here
+        });
+    });
+<
 </script>
-
+<script src="~/lib/dropzone/dist/min/dropzone.min.js"></script>
 
 </html>

@@ -66,7 +66,7 @@ document.getElementById('skillSave').addEventListener("click", e => {
 
     console.log(selectedSkills);
     $.ajax({
-        url: '/User/SaveUserSkills',
+        url: '/Employee/User/SaveUserSkills',
         method: 'POST',
         data: { selectedSkills: selectedSkills },
 

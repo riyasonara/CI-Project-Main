@@ -54,8 +54,6 @@ namespace CI_Platform_Project.Models
         public string Password { get; set; } = null!;            
         public string newPassword { get; set; } = null!;
         public string ConfirmPassword { get; set; } = null!;
-
-        public string username { get; set; }
         public string subject { get; set; }
         public string message { get; set; }
 

@@ -131,10 +131,11 @@ namespace CI_Project.Repository.Repository
             _db.SaveChanges();
         }
 
-        public ContactU addContactUs(string subject, string message, string username, string email)
+        public ContactU addContactUs(string subject, string message, string FirstName, string Surname, string email)
         {
             var contactUs = new ContactU();
-            contactUs.Username = username;
+            contactUs.FirstName = FirstName;
+            contactUs.LastName = Surname;
             contactUs.Email = email;
             contactUs.Subject = subject;
             contactUs.Message = message;
@@ -143,6 +144,10 @@ namespace CI_Project.Repository.Repository
             _db.Add(contactUs);
             _db.SaveChanges();
             return contactUs;
+        }
+        public User UserExist(string Email)
+        {
+            return _db.Users.FirstOrDefault(u => u.Email == Email);
         }
     }
 }

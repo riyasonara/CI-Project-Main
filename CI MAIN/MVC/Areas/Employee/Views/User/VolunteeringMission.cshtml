@@ -238,22 +238,26 @@
                         <p style="color: #414141;">@ViewBag.Missiondetail.OrganizationName</p>
                     </div>
                 </div>
-                @if (ViewBag.Missiondetail.isapplied)
+                @if (ViewBag.Missiondetail.isapplied != null)
                 {
-                    <div class="m-auto text-center mt-2 ">
-                        <button class="apply px-3 py-2 my-3">
-                            Already Applied &nbsp; <img src="~/img/right-arrow.png" alt="">
-                        </button>
-                    </div>
+                    @if (ViewBag.Missiondetail.isapplied==1)
+                    {
+                        <div class="m-auto text-center mt-2 ">
+                            <button class="apply px-3 py-2 my-3">
+                                Already Applied &nbsp; <img src="~/img/right-arrow.png" alt="">
+                            </button>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="m-auto text-center mt-2 ">
+                            <button class="apply px-3 py-2 my-3" onclick="apply(@ViewBag.Missiondetail.MissionId, @ViewBag.user.UserId)">
+                                Apply Now &nbsp; <img src="~/img/right-arrow.png" alt="">
+                            </button>
+                        </div>
+                    }
                 }
-                else
-                {
-                    <div class="m-auto text-center mt-2 ">
-                        <button class="apply px-3 py-2 my-3" onclick="apply(@ViewBag.Missiondetail.MissionId, @ViewBag.user.UserId)">
-                            Apply Now &nbsp; <img src="~/img/right-arrow.png" alt="">
-                        </button>
-                    </div>
-                }
+                
                
             </div>
         </div>
@@ -651,7 +655,7 @@
                             <hr style="margin: 0;">
                             <div class="m-auto" style="width: fit-content;">
                                 <button class="apply px-3 py-2 mb-0 my-3">
-                                    <a href="/User/VolunteeringMission?missionid=@item.MissionId" style="text-decoration:none; color: #F88634;">
+                                    <a href="/Employee/User/VolunteeringMission?missionid=@item.MissionId" style="text-decoration:none; color: #F88634;">
                                         Apply &nbsp; <img src="~/img/right-arrow.png" alt="">
                                     </a>
                                 </button>

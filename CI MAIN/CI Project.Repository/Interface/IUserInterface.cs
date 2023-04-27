@@ -52,7 +52,8 @@ namespace CI_Project.Repository.Interface
 
         public void apply(long missionid, long userid);
 
-        public ContactU addContactUs(string subject, string message, string username, string email);
+        public ContactU addContactUs(string subject, string message, string FirstName,string Surname, string email);
 
+        public User UserExist(string Email);
     }
 }

@@ -1770,3 +1770,5 @@ E:\Project\CI Project Main\CI MAIN\MVC\obj\Debug\net6.0\refint\CI Platform Proje
 E:\Project\CI Project Main\CI MAIN\MVC\obj\Debug\net6.0\CI Platform Project.pdb
 E:\Project\CI Project Main\CI MAIN\MVC\obj\Debug\net6.0\CI Platform Project.genruntimeconfig.cache
 E:\Project\CI Project Main\CI MAIN\MVC\obj\Debug\net6.0\ref\CI Platform Project.dll
+E:\Project\CI Project Main\CI MAIN\MVC\bin\Debug\net6.0\PagedList.dll
+E:\Project\CI Project Main\CI MAIN\MVC\bin\Debug\net6.0\PagedList.Mvc.dll
