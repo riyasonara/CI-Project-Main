@@ -47,6 +47,10 @@ namespace CI_Platform_Project.Models
         public string? LinkedinUrl { get; set; }
 
         public IFormFile UserImg { get; set; }
+
+        public List<IFormFile> files { get; set; }
+
+
         public List<Skill> skills {  get; set; }
         public List<UserSkill> userSkills {  get; set; }
         public List<Skill> RemainingSkill {  get; set; }

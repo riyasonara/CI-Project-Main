@@ -28,6 +28,7 @@ using CI_Project.Repository.Interface;
 using System.Linq;
 using PagedList;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace CI_Platform_Project.Areas.Employee.Controllers
 {
@@ -98,6 +99,15 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             var City = _Iuser.cities().FirstOrDefault(m => m.CityId == volmission.CityId);
             var prevRating = _Iuser.missionRatings().FirstOrDefault(e => e.MissionId == volmission.MissionId && e.UserId == Convert.ToInt64(SessionUserId));
             var themeobjective = _Iuser.goalMissions().FirstOrDefault(m => m.MissionId == missionid);
+            var actionList = _db.Timesheets.Where(e => e.MissionId == missionid && e.DeletedAt == null).ToList();
+            int? progress = 0;
+            if (actionList != null)
+            {
+                foreach (var action in actionList)
+                {
+                    progress = progress + action.Action;
+                }
+            }
             string[] Startdate = volmission.StartDate.ToString().Split(" ");
             string[] Enddate = volmission.EndDate.ToString().Split(" ");
             VolunteeringViewModel volunteeringVM = new VolunteeringViewModel();
@@ -149,6 +159,9 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
                     GoalObjectiveText = relgoalobj.GoalObjectiveText,
                     MissionType = item.MissionType,
                     isfav = favrioute,
+                    goal = relgoalobj.GoalValue,
+                    progress = progress,
+                    progressPercent = item.MissionType == "Time" ? 0 : (progress * 100 / relgoalobj.GoalValue),
 
                 }
                 );
@@ -395,6 +408,18 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
                 var Country = _Iuser.countrylist().FirstOrDefault(u => u.CountryId == item.CountryId);
                 var Theme = _Iuser.themelist().FirstOrDefault(u => u.MissionThemeId == item.ThemeId);
                 var goalobj = _Iuser.goalMissions().FirstOrDefault(m => m.MissionId == item.MissionId);
+
+                var actionList = _db.Timesheets.Where(e => e.MissionId == item.MissionId && e.DeletedAt == null).ToList();
+                int? progress = 0;
+                if (actionList != null)
+                {
+                    foreach (var action in actionList)
+                    {
+                        progress = progress + action.Action;
+                    }
+                }
+
+
                 string[] Startdate1 = item.StartDate.ToString().Split(" ");
                 string[] Enddate2 = item.EndDate.ToString().Split(" ");
                 var favrioute = id != null ? _Iuser.favoriteMissions().Any(u => u.UserId == Convert.ToInt64(SessionUserId) && u.MissionId == item.MissionId) : false;
@@ -443,6 +468,9 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
                     ispending = Pendingbtn.Count() != 0 ? 1:0,
                     isrejected = Rejectedbtn.Count() != 0 ? 1:0,
                     UserId = Convert.ToInt64(SessionUserId),
+                    goal = goalobj.GoalValue,
+                    progress = progress,
+                    progressPercent = item.MissionType == "time" ? 0 : (progress * 100 /goalobj.GoalValue),
                 });
             }
 
@@ -648,7 +676,6 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
         }
 
         [HttpPost]
-
         public async Task<IActionResult> userProfile(UserProfileViewModel model)
         {
 
@@ -670,7 +697,7 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             userdetail.CountryId = model.CountryId;
             userdetail.CityId = model.CityId;
             userdetail.Availability = model.Availability;
-            userdetail.Email = model.Email;
+            //userdetail.Email = model.Email;
 
             //if (files.Count() == 0)
             //{

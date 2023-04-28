@@ -54,7 +54,11 @@
         public int? isrejected { get; set; }
         public int? ispending { get; set; }
 
+        public int? goal { get; set; }
 
+        public int? progress { get; set; }
+
+        public int? progressPercent { get; set; }
 
 
 

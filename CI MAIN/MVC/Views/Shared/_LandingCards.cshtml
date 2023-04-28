@@ -241,11 +241,11 @@
                                         <div class="d-flex">
                                             <img src="~/img/achieved.png" alt="">
                                             <div class="progress ms-2" role="progressbar" aria-label="Basic example"
-                                                 aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
-                                                <div class="progress-bar" style="width:100px; background-color: #F88634;"></div>
+                                                 aria-valuenow="@item.progress" aria-valuemin="0" aria-valuemax="@item.goal">
+                                                <div class="progress-bar" style="width:@item.progressPercent%; background-color: #F88634;"></div>
                                             </div>
                                         </div>
-                                        <p class="info-txt">8000 achieved</p>
+                                        <p class="info-txt">@item.progress achieved</p>
                                     </div>
                                 }
                             </div>

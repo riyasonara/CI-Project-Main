@@ -27,6 +27,16 @@
     background-color: rgba(247, 221, 33, 0.6);
     font-size: 14px;
 }
+.progress {
+    margin-top: 5px;
+    height: 15px;
+    width: 135px;
+    margin-left: 1rem;
+}
+.progress-bar {
+    width: 32%;
+    background-color: #F88634;
+}
 
 .demo-1 {
     overflow: hidden;

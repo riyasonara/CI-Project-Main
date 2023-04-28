@@ -54,6 +54,6 @@ namespace CI_Project.Repository.Interface
 
         public ContactU addContactUs(string subject, string message, string FirstName,string Surname, string email);
 
-        public User UserExist(string Email);
+        //public User UserExist(string Email);
     }
 }

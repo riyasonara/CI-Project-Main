@@ -73,7 +73,7 @@ document.getElementById('skillSave').addEventListener("click", e => {
         success: function (response) {
             debugger;
             $('#userskilldiv').html($(response).find('#userskilldiv').html());
-            window.location.href = '/user/userprofile';
+            window.location.href = '/Employee/user/userprofile';
             //document.getElementById('close').click();
 
         },

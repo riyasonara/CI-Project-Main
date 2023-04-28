@@ -25,5 +25,7 @@ namespace CI_Platform_Project.Models
         public long? CityId { get; set; }
 
         public long? CountryId { get; set; }
+
+        public string MissionType { get; set; } = null!;
     }
 }

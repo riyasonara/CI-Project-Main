@@ -108,13 +108,13 @@
                                         </div>
                                     </div>
 
-                                    @* =========================== time,goal ==================================================
-                                    <div class="row mb-3">
+                                     @*=========================== time,goal ==================================================*@
+                                    @*<div class="row mb-3">
                                     <div class="col">
                                     <label>Mission Type</label>
                                     <select id="city" class="form-select" aria-label="Default select example">
                                     <option selected>Select your mission type</option>
-                                    @foreach (var item in Model.Cities)
+                                    @foreach (var item in Model.Missio)
                                     {
                                     <option value="@item.CityId">@item.Name </option>
                                     }
@@ -131,8 +131,8 @@
                                     </select>
 
                                     </div>
-                                    ==================================================================================*@
-
+                                    ==================================================================================
+*@
                                     <div class="row mb-3">
                                         <div class="col">
                                             <label>Mission Start Date</label>

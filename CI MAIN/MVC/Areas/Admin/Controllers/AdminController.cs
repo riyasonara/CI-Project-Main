@@ -174,6 +174,7 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
             mission.missions = _db.Missions.ToList();
             mission.Cities = _db.Cities.ToList();
             mission.Countries = _db.Countries.ToList();
+ 
             return View(mission);
 
 
@@ -237,7 +238,6 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
             _db.SaveChanges();
 
             return RedirectToAction("MissionApplication", "Admin");
-
 
         }
 
