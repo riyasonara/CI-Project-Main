@@ -2,7 +2,7 @@ $(document).ready(function () {
     filter();
 
 });
-function filter(sortValue) {
+function filter(sortValue,pg=1) {
 
     var Search = $("input[name='searchQuery']").val();
     //if (Search == '')
@@ -33,7 +33,7 @@ function filter(sortValue) {
     $.ajax({
         url: "/Employee/User/navbarfilters",
         type: "POST",
-        data: { 'search': Search, 'sortValue': sortValue, 'country': country, 'city': city, 'theme': theme},
+        data: { 'search': Search, 'pg': pg ,'sortValue': sortValue, 'country': country, 'city': city, 'theme': theme },
 
         success: function (res) {
             

@@ -290,6 +290,7 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
         public IActionResult landingPage(long userId, int id, int missionid, string? search, int? pageIndex, string? sortValue, string[] country, string[] city, string[] theme)
         {
             var SessionUserId = HttpContext.Session.GetString("userID");
+            ViewData["applications"] = _Iuser.applications();
             //var UserId = HttpContext.Session.GetString("userID");
             ViewBag.countrylist = _Iuser.countrylist();
             ViewBag.themelist = _Iuser.themelist();
@@ -382,7 +383,7 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
         //#endregion
 
         #region Filters
-        public IActionResult navbarfilters(long userId, int id, int missionid, string? search, int? page, string? sortValue, string[] country, string[] city, string[] theme)
+        public IActionResult navbarfilters(long userId, int id, int missionid, string? search, int pg , string? sortValue, string[] country, string[] city, string[] theme)
         {
             var SessionUserId = HttpContext.Session.GetString("userID");
 
@@ -526,12 +527,25 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             }
 
             //Pagination
-
-            //int pageSize = 3;
-            //int pageNumber = (page ?? 1);
+            #region Pagination 
+            //Pagination
+            ViewBag.missionCount = Missions.Count();
+            const int pageSize = 6;
+            if (pg < 1)
+            {
+                pg = 1;
+            }
+            int recsCount = Missions.Count();
+            var pager = new PagerViewModel(recsCount, pg, pageSize);
+            int recSkip = (pg - 1) * pageSize;
+            var data = Missions.Skip(recSkip).Take(pager.PageSize).ToList();
+            ViewBag.pager = pager;
+            ViewBag.missionTempDate = data;
+            Missions = data.ToList();
+            ViewBag.TotalMission = recsCount;
 
             var missionfinal = Missions;
-
+            #endregion
 
             return PartialView("_LandingCards", missionfinal);
         }

@@ -112,15 +112,13 @@ public partial class CiPlatformContext : DbContext
 
             entity.Property(e => e.BannerId).HasColumnName("banner_id");
             entity.Property(e => e.CreatedAt)
-                .IsRowVersion()
-                .IsConcurrencyToken()
+                .HasColumnType("datetime")
                 .HasColumnName("created_at");
             entity.Property(e => e.DeletedAt)
                 .HasColumnType("datetime")
                 .HasColumnName("deleted_at");
             entity.Property(e => e.Image)
-                .HasMaxLength(512)
-                .IsUnicode(false)
+                .HasColumnType("text")
                 .HasColumnName("image");
             entity.Property(e => e.SortOrder)
                 .HasDefaultValueSql("((0))")
@@ -349,6 +347,9 @@ public partial class CiPlatformContext : DbContext
                 .IsRowVersion()
                 .IsConcurrencyToken()
                 .HasColumnName("created_at");
+            entity.Property(e => e.Deadline)
+                .HasColumnType("datetime")
+                .HasColumnName("deadline");
             entity.Property(e => e.DeletedAt)
                 .HasColumnType("datetime")
                 .HasColumnName("deleted_at");
@@ -369,6 +370,7 @@ public partial class CiPlatformContext : DbContext
                 .HasMaxLength(255)
                 .IsUnicode(false)
                 .HasColumnName("organization_name");
+            entity.Property(e => e.SeatsLeft).HasColumnName("seatsLeft");
             entity.Property(e => e.ShortDescription)
                 .HasColumnType("text")
                 .HasColumnName("short_description");

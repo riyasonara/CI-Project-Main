@@ -160,9 +160,11 @@ function apply(mid, uid) {
                 icon: 'success',
                 title: 'Applied',
                 text: 'Applied Successfully',
+                timer:4000
 
             });
             window.location.href = 'VolunteeringMission?missionid=' + mid;
+            location.reload();
 
         },
         error: function (result) { }

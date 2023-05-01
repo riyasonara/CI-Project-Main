@@ -13,7 +13,7 @@ public partial class Banner
 
     public int? SortOrder { get; set; }
 
-    public byte[] CreatedAt { get; set; } = null!;
+    public DateTime CreatedAt { get; set; }
 
     public DateTime? UpdatedAt { get; set; }
 

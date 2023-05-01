@@ -55,5 +55,13 @@ namespace CI_Project.Repository.Interface
         public ContactU addContactUs(string subject, string message, string FirstName,string Surname, string email);
 
         //public User UserExist(string Email);
+
+        public Banner AddBanner(string discrption, string image, int sortorder);
+
+        public Banner UpdateBanner(string discrption, string image, int sortorder, long bannerId);
+
+        public List<Banner> AllBanners();
+
+        public void DeleteBanner(long bannerId);
     }
 }

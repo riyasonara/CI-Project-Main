@@ -10,6 +10,7 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
     public class AdminController : Controller
     {
         private readonly CiPlatformContext _db;
+        private readonly IUserInterface _Iuser;
 
         public AdminController(CiPlatformContext db, IUserInterface Iuser)
         {
@@ -163,22 +164,29 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
         }
 
 
-
+        [HttpGet]
         public IActionResult Missions()
         {
 
             HttpContext.Session.SetInt32("Nav", 3);
             ViewBag.nav = HttpContext.Session.GetInt32("Nav");
 
-            var mission = new UserCrudVieweModel();
-            mission.missions = _db.Missions.ToList();
+            var mission = new AdminMissionViewModel();
+            mission.Missions = _db.Missions.ToList();
             mission.Cities = _db.Cities.ToList();
             mission.Countries = _db.Countries.ToList();
+            mission.MissionThemes = _db.MissionThemes.ToList();
+            mission.Skills = _db.Skills.ToList();
  
             return View(mission);
 
 
         }
+
+        
+
+
+
 
         [HttpPost]
         public IActionResult Upload(IFormFileCollection file)
@@ -247,7 +255,7 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
             HttpContext.Session.SetInt32("Nav", 4);
             ViewBag.nav = HttpContext.Session.GetInt32("Nav");
 
-            var missiontheme = new UserCrudVieweModel();
+            var missiontheme = new AdminMissionViewModel();
             missiontheme.MissionThemes = _db.MissionThemes.ToList();
 
             return View(missiontheme);
@@ -258,10 +266,61 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
             HttpContext.Session.SetInt32("Nav", 5);
             ViewBag.nav = HttpContext.Session.GetInt32("Nav");
 
-            var missionskill = new UserCrudVieweModel();
+            var missionskill = new AdminMissionViewModel();
             missionskill.Skills = _db.Skills.ToList();
 
             return View(missionskill);
+        }
+
+        public IActionResult Banner()
+        {
+            HttpContext.Session.SetInt32("Nav", 8);
+            ViewBag.nav = HttpContext.Session.GetInt32("Nav");
+            AdminBannerViewModel banner = new AdminBannerViewModel();
+            banner.banners =_db.Banners.Where(e=>e.DeletedAt==null).ToList();
+            return View(banner);
+        }
+
+        [HttpPost]
+        public IActionResult AddBanner(string description, string image, int sortorder, long bannerId)
+        {
+            try
+            {
+
+                if (bannerId == 0 || bannerId == null)
+                {
+                    _Iuser.AddBanner(description, image, sortorder);
+
+                }
+                else
+                {
+                    _Iuser.UpdateBanner(description, image, sortorder, bannerId);
+                }
+                return RedirectToAction("Banner");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Error", "User", new { area = "Employee" });
+            }
+        }
+        [HttpPost]
+        public IActionResult GetBanner(long bannerId)
+        {
+            var bannerlist = _Iuser.AllBanners().FirstOrDefault(t => t.BannerId == bannerId);
+            var banner = new AdminBannerViewModel();
+            banner.img = bannerlist.Image;
+            banner.BannerText = bannerlist.Text;
+            banner.BannerSortOrder = bannerlist.SortOrder;
+            banner.BannerId = bannerId;
+            banner.banners = _Iuser.AllBanners();
+            return View("Banner", banner);
+        }
+
+        public IActionResult DeleteBanner(long bannerId)
+        {
+            _Iuser.DeleteBanner(bannerId);
+
+            return RedirectToAction("Banner");
         }
     }
 }

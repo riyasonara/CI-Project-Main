@@ -149,6 +149,41 @@ namespace CI_Project.Repository.Repository
         //{
         //    return _db.Users.FirstOrDefault(u => u.Email == Email);
         //}
+
+        public Banner AddBanner(string description, string image, int sortorder)
+        {
+            Banner banner = new Banner();
+            banner.SortOrder = sortorder;
+            banner.Image = image;
+            banner.Text = description;
+            banner.CreatedAt = DateTime.Now;
+            _db.Add(banner);
+            _db.SaveChanges();
+            return banner;
+        }
+        public Banner UpdateBanner(string description, string image, int sortorder, long bannerId)
+        {
+            Banner banner = _db.Banners.FirstOrDefault(b => b.BannerId == bannerId);
+            banner.SortOrder = sortorder;
+            banner.Image = image;
+            banner.Text = description;
+            banner.UpdatedAt = DateTime.Now;
+            _db.Update(banner);
+            _db.SaveChanges();
+            return banner;
+        }
+        public List<Banner> AllBanners()
+        {
+            return _db.Banners.Where(b => b.DeletedAt == null).ToList();
+        }
+        public void DeleteBanner(long bannerId)
+        {
+            var banner = _db.Banners.FirstOrDefault(t => t.BannerId == bannerId);
+            banner.DeletedAt = DateTime.Now;
+            banner.UpdatedAt = DateTime.Now;
+            _db.Update(banner);
+            _db.SaveChanges();
+        }
     }
 }
 

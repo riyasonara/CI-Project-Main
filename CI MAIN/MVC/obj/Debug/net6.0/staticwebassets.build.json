@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XQJF79bONLYQid1M/4fag/X/2r4SeuAi37RBZ2i8gZc=",
+  "Hash": "pbOjsMrlgXqGuY+xY6uT22uWDbLbP8VEz0KJ8bAp8Kk=",
   "Source": "CI Platform Project",
   "BasePath": "_content/CI Platform Project",
   "Mode": "Default",
@@ -2786,23 +2786,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\popper.min.js"
-    },
-    {
-      "Identity": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\privacypolicy.js",
-      "SourceId": "CI Platform Project",
-      "SourceType": "Discovered",
-      "ContentRoot": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\",
-      "BasePath": "_content/CI Platform Project",
-      "RelativePath": "js/privacypolicy.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\privacypolicy.js"
     },
     {
       "Identity": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\rateMission.js",
