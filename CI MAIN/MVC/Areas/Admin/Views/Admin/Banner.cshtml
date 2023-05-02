@@ -111,6 +111,7 @@
                     <th>Banner Image</th>
                     <th>Description</th>
                     <th>Sort Order Value</th>
+                    <th>Action</th>
                 </tr>
             </thead>
 
@@ -124,7 +125,20 @@
                             <td class="text-break">@banner.Text</td>
                             <td>@banner.SortOrder</td>
 
-                            <td class="d-flex justify-content-center"><i class="fas fa-edit  me-1" data-bs-toggle="modal" data-bs-target="#AdminBannerModalmodal" onclick="getBanner(@banner.BannerId)"></i> | <i class="fa fa-trash  ms-1 " style="color:red" onclick="deletebanner(@banner.BannerId)"></i></td>
+                            <td>
+
+                                <span>
+                                    <button class="btn shadow-none" @*onclick="approve(@applications.MissionApplicationId)*@">
+                                        <i class="bi bi-check-circle fs-5" style="color:green;"></i>
+                                    </button>
+                                </span>
+                                <span>
+                                    <button class="btn shadow-none" @*onclick="reject(@applications.MissionApplicationId)*@">
+                                        <i class="bi bi-x-circle fs-5" style="color:red;"></i>
+                                    </button>
+                                </span>
+
+                            </td>
                         </tr>
                     }
                 }
@@ -192,10 +206,6 @@
         }
     })
 
-                                    }
-
-
-
     function CLICK() {
 
         document.getElementById("imginput").click();
@@ -213,7 +223,7 @@
                 url: '/Admin/Admin/AddBanner',
                 type: 'POST',
                 data: {
-                    discrption: document.getElementById("description").value,
+                    description: document.getElementById("description").value,
                     bannerId: document.getElementById("bannerId").value,
                     image: document.getElementById("imgTag").src,
                     sortorder: document.getElementById("sortorder").value,
@@ -263,12 +273,9 @@
     }
 </script>
 
-@*<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>*@
+
 <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
 <script src="~/js/Admin.js" asp-append-version="true"></script>
 <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
-<script src="~/lib/dropzone/dist/min/dropzone.min.js"></script>
-
 </html>

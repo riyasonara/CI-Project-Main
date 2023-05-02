@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
-    <link rel="stylesheet" href="~/css/AdminMissions.css" />
+    <link rel="stylesheet" href="~/css/AdminMissions.css" asp/>
 
     <link href="~/lib/dropzone/dist/min/dropzone.min.css" rel="stylesheet" />
 
@@ -76,8 +76,8 @@
                                     <div class="row mb-3">
                                         <div class="col">
                                             <label>City</label>
-                                            <select id="city" asp-for="Cities" class="form-select" aria-label="Default select example">
-                                                <option selected>Select your city</option>
+                                            <select id="city" asp-for="CityId" class="form-control form-select" aria-label="Default select example">
+                                                <option selected disabled>Select your city</option>
                                                 @foreach (var item in Model.Cities)
                                                 {
                                                     <option value="@item.CityId">@item.Name </option>
@@ -86,8 +86,8 @@
                                         </div>
                                         <div class="col">
                                             <label>Country</label>
-                                            <select id="country" asp-for="Countries" class="form-select" aria-label="Default select example">
-                                                <option selected>Select your country</option>
+                                            <select id="country" asp-for="CountryId" class="form-control form-select" aria-label="Default select example">
+                                                <option selected disabled>Select your country</option>
                                                 @foreach (var item in Model.Countries)
                                                 {
                                                     <option value="@item.CountryId">@item.Name</option>
@@ -100,20 +100,21 @@
                                     <div class="row">
                                         <div class="col">
                                             <label class="mt-2">Mission Organization Name</label>
-                                            <input type="text" asp-for="OrganizationName" class="form-control" id="Fname" placeholder="First name" aria-label="First name">
+                                            <input type="text" asp-for="OrganizationName" class="form-control" id="OrgName" placeholder="Organization name" aria-label="First name">
                                         </div>
                                         <div class="col">
                                             <label class="mt-2">Mission Organization Detail</label>
-                                            <input type="text" asp-for="OrganizationDetail" class="form-control" id="Lname" placeholder="Last name" aria-label="Last name">
+                                            <input type="text" asp-for="OrganizationDetail" class="form-control" id="OrgDetail" placeholder="Organization Detail" aria-label="Last name">
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="col-6">
                                             <label class="mt-3">Mission Type</label>
-                                            <select asp-for="MissionType" id="misstype" class="col-11">
-                                                <option>Time</option>
-                                                <option>Goal</option>
+                                            <select asp-for="MissionType" id="misstype" name="MissionType" class="form-control form-select col-11">
+                                                <option selected disabled>Please Select MissionType</option>
+                                                <option value="time">time</option>
+                                                <option value="goal">goal</option>
                                             </select>
                                         </div>
 
@@ -145,11 +146,11 @@
                                     <div class="row">
                                         <div class="col">
                                             <label class="mt-2">Mission Registration Deadline</label>
-                                            <input asp-for="Deadline" type="text" class="form-control" id="Fname" placeholder="First name" aria-label="First name">
+                                            <input asp-for="Deadline" type="date" class="form-control" id="RegDeadline" placeholder="dd-mm-yy">
                                         </div>
                                         <div class="col">
                                             <label class="mt-2">Mission Availability</label>
-                                            <input asp-for="Availability" type="text" class="form-control" id="Lname" placeholder="Last name" aria-label="Last name">
+                                            <input asp-for="Availability" type="number" class="form-control" id="availability" placeholder="Last name">
                                         </div>
                                     </div>
 
@@ -197,11 +198,11 @@
 
                                 </div>
                             </div>
-                            <input type="hidden" id="CMSId" value="0" name="CMSId" />
+                            <input type="hidden" asp-for="missionId" id="missionId" value="0" name="missionId" />
 
                             <div class="modal-footer">
                                 <button type="button" class="btn border-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
-                                <button type="button" class="btn oran" onclick="AddEdit()" data-bs-dismiss="modal">Save</button>
+                                <button type="button" class="btn oran" onclick=" addMission()" data-bs-dismiss="modal">Save</button>
                             </div>
                         </div>
 
@@ -238,8 +239,20 @@
 
                     <td>@missions.EndDate</td>
 
-                    <td><i class="bi bi-pencil-square" data-bs-toggle="modal" data-bs-target="#exampleModal1" @*id="@fn.UserId"*@ onclick="editAdminUser(this.id)"></i> | <i class="bi bi-trash." style="color:red"></i></td>
+                    <td>
 
+                        <span>
+                            <button class="btn shadow-none" data-bs-toggle="modal" data-bs-target="#AddModal" @*onclick="editMission(@missions.MissionId)*@">
+                                <i class="bi bi-pencil-square fs-5" style="color:green;"></i>
+                            </button>
+                        </span>
+                        <span>
+                            <button class="btn shadow-none" data-bs-toggle="modal" data-bs-target="#AddModal" @*onclick="deleteMission(@missions.UserId)*@">
+                                <i class="bi bi-trash fs-5" style="color:red;"></i>
+                            </button>
+                        </span>
+
+                    </td>
 
                 </tr>
             }
@@ -250,27 +263,6 @@
     </div>
 </body>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
-<script>
-    $(document).ready(function () { 
-
-        $('#userTable').DataTable();
-    });
-
-
-    $(document).ready(function () {
-        var myDropzone = new Dropzone("#my-dropzone", {
-            paramName: "file",
-            maxFilesize: 2, // MB
-            addRemoveLinks: true,
-            dictRemoveFile: "Remove"
-        });
-
-        myDropzone.on("success", function (file, response) {
-            // Handle the server response here
-        });
-    });
-<
-</script>
-<script src="~/lib/dropzone/dist/min/dropzone.min.js"></script>
+<script src="~/js/AdminMission.js" asp-append-version="true"></script>
 
 </html>

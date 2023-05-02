@@ -5,6 +5,19 @@ namespace CI_Platform_Project.Models
 {
     public class StoryViewModel
     {
+        public string storymediapath { get; set; }
+
+        public string Useravtar { get; set; }
+
+
+        public string lastname { get; set; }
+
+        public string username { get; set; }
+
+        public string Themename { get; set; }
+
+        public string? StoryTitle { get; set; }
+        public string? ShortDescription { get; set; }
         public List<IFormFile> attachment { get; set; }
         public int? StoryViews { get; set; }
 
@@ -16,6 +29,7 @@ namespace CI_Platform_Project.Models
 
         public long MissionId { get; set; }
 
+        [Required]
         public string? Title { get; set; }
 
         public string? editor1 { get; set; }

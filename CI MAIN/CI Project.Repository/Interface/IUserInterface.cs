@@ -54,6 +54,8 @@ namespace CI_Project.Repository.Interface
 
         public ContactU addContactUs(string subject, string message, string FirstName,string Surname, string email);
 
+        public Mission addMission(string Title, string shortDescription, string desc, int city, int country, string orgName, string orgDetail, string MissionType, int seatsleft, string availability);
+
         //public User UserExist(string Email);
 
         public Banner AddBanner(string discrption, string image, int sortorder);

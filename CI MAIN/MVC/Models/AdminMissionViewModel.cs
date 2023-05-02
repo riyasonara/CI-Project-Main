@@ -4,7 +4,7 @@ namespace CI_Platform_Project.Models
 {
     public class AdminMissionViewModel
     {
-
+        public long missionId { get; set; }
         public List<Mission> Missions { get; set; }
 
         public List<City> Cities { get; set; }
@@ -14,7 +14,7 @@ namespace CI_Platform_Project.Models
 
         public List<Skill> Skills { get; set; }
 
-        public string MissionType { get; set; } = null!;
+        public string MissionType { get; set; } 
         public string Title { get; set; } = null!;
 
         public string? ShortDescription { get; set; }

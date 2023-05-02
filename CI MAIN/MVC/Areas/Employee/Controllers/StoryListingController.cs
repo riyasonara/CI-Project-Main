@@ -10,6 +10,7 @@ using System.Net.Mail;
 using MailKit.Security;
 using SmtpClient = MailKit.Net.Smtp.SmtpClient;
 using CI_Project.Repository.Interface;
+using System.Web;
 
 namespace CI_Platform_Project.Areas.Employee.Controllers
 {
@@ -27,7 +28,7 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
         }
         public IActionResult StoryListing(int? page)
         {
-            List<Story> storylist = _db.Stories.ToList();
+            List<Story> storylist = _db.Stories.Where(x=>x.Status!="Draft").ToList();
             List<VolunteeringViewModel> StoryList = new List<VolunteeringViewModel>();
             foreach (var story in storylist)
             {
@@ -245,14 +246,36 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
         {
 
             var SessionUserId = HttpContext.Session.GetString("userID");
+            var stories= _db.Stories.Where(u => u.Status == "Draft" && u.UserId == Convert.ToUInt32(SessionUserId)).ToList();
 
-            StoryViewModel storyView = new StoryViewModel();
-            storyView.stories = _db.Stories.Where(u => u.Status == "Draft" && u.UserId == Convert.ToUInt32(SessionUserId)).ToList();
-            storyView.missions = _db.Missions.ToList();
-            storyView.themes = _db.MissionThemes.ToList();
-            storyView.storyMedia = _db.StoryMedia.ToList();
-            storyView.users = _db.Users.ToList();
-            return View(storyView);
+            List<StoryViewModel> storyView = new List<StoryViewModel>();
+
+
+            foreach (var story in stories)
+            {
+
+                var storyuser = _db.Users.FirstOrDefault(x => x.UserId == story.UserId);
+                var missiontheme = _db.Missions.FirstOrDefault(m => m.MissionId == story.MissionId).ThemeId;
+                var storytheme = _db.MissionThemes.FirstOrDefault(m => m.MissionThemeId == missiontheme).Title;
+                var storymedia = _db.StoryMedia.FirstOrDefault(m => m.StoryId == story.StoryId);
+                storyView.Add(new StoryViewModel
+                {
+                    StoryId = story.StoryId,
+                    MissionId = story.MissionId,
+                    UserId = story.UserId,
+                    StoryTitle = story.Title,
+                    Themename = storytheme,
+                    ShortDescription = HttpUtility.HtmlDecode(story.Description),
+                    username = storyuser.FirstName,
+                    lastname = storyuser.LastName,
+                    //Useravtar = storyuser.Avatar != null ? storyuser.Avatar : "",
+                    storymediapath = storymedia != null ? storymedia.Path : "",
+
+                });
+            }
+            var Storys = storyView;
+            ViewBag.StoryList = storyView;
+            return View(Storys);
         }
 
 

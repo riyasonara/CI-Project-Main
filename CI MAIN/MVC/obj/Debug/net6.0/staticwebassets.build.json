@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "pbOjsMrlgXqGuY+xY6uT22uWDbLbP8VEz0KJ8bAp8Kk=",
+  "Hash": "SziUGwkGyj9DA+AnhTTSgUEtE9RZPWZrPB38P1yOJCI=",
   "Source": "CI Platform Project",
   "BasePath": "_content/CI Platform Project",
   "Mode": "Default",
@@ -2363,6 +2363,23 @@
       "OriginalItemSpec": "wwwroot\\img\\storyuserimg\\f3cb3fff-337a-40a9-b127-8a5c2aaa00d1.jpg"
     },
     {
+      "Identity": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\storyuserimg\\f8720491-25da-4d78-ac9b-0a9fbd0228cc.jfif",
+      "SourceId": "CI Platform Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\",
+      "BasePath": "_content/CI Platform Project",
+      "RelativePath": "img/storyuserimg/f8720491-25da-4d78-ac9b-0a9fbd0228cc.jfif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\storyuserimg\\f8720491-25da-4d78-ac9b-0a9fbd0228cc.jfif"
+    },
+    {
       "Identity": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\storyuserimg\\fdbbe3d6-b68a-4def-8dea-ba3bdffee43d.jpg",
       "SourceId": "CI Platform Project",
       "SourceType": "Discovered",
@@ -2718,6 +2735,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\Admin.js"
+    },
+    {
+      "Identity": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\AdminMission.js",
+      "SourceId": "CI Platform Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\",
+      "BasePath": "_content/CI Platform Project",
+      "RelativePath": "js/AdminMission.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\AdminMission.js"
     },
     {
       "Identity": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\landing.js",

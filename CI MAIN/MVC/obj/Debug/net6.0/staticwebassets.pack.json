@@ -549,6 +549,10 @@
       "PackagePath": "staticwebassets\\img\\storyuserimg\\f3cb3fff-337a-40a9-b127-8a5c2aaa00d1.jpg"
     },
     {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\storyuserimg\\f8720491-25da-4d78-ac9b-0a9fbd0228cc.jfif",
+      "PackagePath": "staticwebassets\\img\\storyuserimg\\f8720491-25da-4d78-ac9b-0a9fbd0228cc.jfif"
+    },
+    {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\storyuserimg\\fdbbe3d6-b68a-4def-8dea-ba3bdffee43d.jpg",
       "PackagePath": "staticwebassets\\img\\storyuserimg\\fdbbe3d6-b68a-4def-8dea-ba3bdffee43d.jpg"
     },
@@ -623,6 +627,10 @@
     {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\Admin.js",
       "PackagePath": "staticwebassets\\js\\Admin.js"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\AdminMission.js",
+      "PackagePath": "staticwebassets\\js\\AdminMission.js"
     },
     {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\ShareStory.js",

@@ -1,7 +1,7 @@
 ﻿
 @*@using CI_PLatform_Entities.Models;*@
-@using CI_Platform_Project.Models
-@model StoryViewModel
+@*@using CI_Platform_Project.Models
+@model StoryViewModel*@
 
 @using Microsoft.AspNetCore.Http
 @inject IHttpContextAccessor Accessor
@@ -38,20 +38,7 @@
     <partial name="_Navbar1"/>
 
 
-    @*<div class="filters-section d-flex align-items-start flex-wrap justify-content-start ms-2 mt-3 mb-2"></div>*@
-
-
-   @* <div class="hero-image">
-        <div class="hero-text">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore exercitationem, accusamus, perspiciatis
-                magni beatae dolorum quos doloribus quod excepturi itaque eos autem praesentium enim odit.
-            </p>
-            <a asp-action="ShareStory" asp-controller="StoryListing" class="right-arrow share-story-btn">Share your Story &nbsp; </a><i class="bi bi-arrow-right"></i></a>
-        </div>
-    </div>
-    *@
-    <!-- ===================================== STORY LISTING ===================================== -->
+    <!-- ================================= STORY LISTING ===================================== -->
     <!-- ------------------------------------CARDS-------------------------------------- -->
     <!-- ------------------------------- CARD - 1 ---------------------------  -->
 
@@ -59,23 +46,23 @@
 
         <div class="row">
 
-            @foreach (var item in Model.stories)
+            @foreach (var item in Model)
             {
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card shadow">
                         <div class="card-img">
                             <div class="containers">
-                                @{
+                               @* @{
                                     var media = Model.storyMedia.FirstOrDefault(e => e.StoryId == item.StoryId);
-                                }
-                              @*  @if (media!=null){
+                                }*@
+                                @if (item.storymediapath!=""){
 
-                                    <img src="~/img/storyuserimg/" alt="Avatar" class="image" style="width:100%">
+                                    <img src="/img/storyuserimg/@item.storymediapath" alt="Avatar" class="image" style="width:100%">
                                 }
-                                else{*@
+                                else{
                                     <img src="~/img/404-Page-image.png" alt="Avatar" class="image" style="width:100%">
                                 
-                                     
+                                }
 
 
                                 <div class="env align-items-center px-2 py-1 ">
@@ -88,16 +75,26 @@
                         </div>
                         <div class="card-body pb-0 px-0 pt-4">
                             <div class="px-3">
-                                <h5 class="card-title">@item.Title </h5>
+                                <h5 class="card-title">@item.StoryTitle </h5>
                                 <p class="card-text info-txt">
-                                    @Html.Raw(@item.Description)
+                                    @Html.Raw(@item.ShortDescription)
                                 </p>
                             </div>
 
                             <div class="comment d-flex mt-3 mb-3">
+                               @* @if (item.Useravtar != "")
+                                {
+                                    <img src="@item.Useravtar" class="rounded-circle ms-3" height="42"
+                                         width="42" alt="">
+                                }
+                                else
+                                {
+                                  *@  
+                                
                                 <img src="~/img/volunteer3.png" class="rounded-circle ms-3" height="42"
                                      width="42" alt="">
-                                <p class="mt-1" style="margin-left: 1rem;">@item.User.FirstName @item.User.LastName</p>
+                             @*   }*@
+                              @*  <p class="mt-1" style="margin-left: 1rem;">@item.username @item.lastName</p>*@
                             </div>
                         </div>
                     </div>

@@ -256,3 +256,24 @@ div#example_info {
     color: #fd7e14;
     background-color: white;
 }
+
+.nav-pills .nav-link.active {
+    display:flex!important;
+    flex-direction:row!important;
+    color: #F88634!important;
+    background-color: white!important;
+}
+
+.nav-pills .nav-link:hover{
+    display:flex!important;
+    flex-direction:row!important;
+    color: #F88634!important;
+    background-color: white!important;
+}
+
+.nav-pills .nav-link {
+    display: flex !important;
+    flex-direction: row !important;
+    color: white !important;
+    background-color: #F88634 !important;
+}

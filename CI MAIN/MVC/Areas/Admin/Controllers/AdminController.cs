@@ -3,6 +3,7 @@ using CI_PLatform_Entities.Models;
 using CI_Platform_Project.Models;
 using CI_Project.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
+using Org.BouncyCastle.Ocsp;
 
 namespace CI_Platform_Project.Areas.Admin.Controllers
 {
@@ -92,8 +93,6 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
             return View("UserCrud");
         }
 
-
-
         public IActionResult CmsPage()
         {
             HttpContext.Session.SetInt32("Nav", 2);
@@ -177,15 +176,54 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
             mission.Countries = _db.Countries.ToList();
             mission.MissionThemes = _db.MissionThemes.ToList();
             mission.Skills = _db.Skills.ToList();
- 
+
             return View(mission);
 
 
         }
 
-        
+        public IActionResult addMission(long missionId, string Title, string shortDescription, string desc, int city, int country, string orgName, string orgDetail,string misstype, int seatsleft, string availability)
+        {
+            if (missionId == 0)
+            {
+                Mission missions = new Mission()
+                {
+                    Title = Title,
+                    ShortDescription = shortDescription,
+                    Description = desc,
+                    OrganizationDetail = orgDetail,
+                    OrganizationName = orgName,
+                    MissionType = misstype,
+                    SeatsLeft = seatsleft,
+                    Availability = availability,
+                    CountryId = country,
+                    CityId = city,
 
+                };
+                _db.Missions.Add(missions);
+                _db.SaveChanges();
+            }
+            else
+            {
+                Mission mission = _db.Missions.FirstOrDefault(x => x.MissionId == missionId);
+                mission.Title = Title;
+                mission.ShortDescription = shortDescription;
+                mission.Description = desc;
+                mission.OrganizationDetail = orgDetail;
+                mission.OrganizationName = orgName;
+                mission.MissionType = misstype;
+                mission.SeatsLeft = seatsleft;
+                mission.Availability = availability;
+                mission.CountryId = country;
+                mission.CityId = city;
 
+                _db.Update(mission);
+                _db.SaveChanges();
+
+            }
+
+            return Json("Missions");
+        }
 
 
         [HttpPost]
@@ -274,10 +312,12 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
 
         public IActionResult Banner()
         {
+
             HttpContext.Session.SetInt32("Nav", 8);
             ViewBag.nav = HttpContext.Session.GetInt32("Nav");
             AdminBannerViewModel banner = new AdminBannerViewModel();
-            banner.banners =_db.Banners.Where(e=>e.DeletedAt==null).ToList();
+            banner.banners = _db.Banners.Where(e => e.DeletedAt == null).ToList();
+            //banner.banners =_Iuser.AllBanners();
             return View(banner);
         }
 
@@ -290,7 +330,6 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
                 if (bannerId == 0 || bannerId == null)
                 {
                     _Iuser.AddBanner(description, image, sortorder);
-
                 }
                 else
                 {

@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" asp-append-version="true" />
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/AdminMissions.css" />
+    <link rel="stylesheet" href="~/css/AdminMissions.css" asp-append-version="true"/>
 
 </head>
 <body>
@@ -111,7 +111,7 @@
                         <td>
 
                             <span>
-                                <button class="btn shadow-none" @*onclick="approve(@themes.MissionApplicationId)*@">
+                                <button class="btn shadow-none" @*onclick="approve(@themes.MissionThemeId)*@">
                                     <i class="bi bi-check-circle fs-5" style="color:green;"></i>
                                 </button>
                             </span>

@@ -150,6 +150,32 @@ namespace CI_Project.Repository.Repository
         //    return _db.Users.FirstOrDefault(u => u.Email == Email);
         //}
 
+        public Mission addMission(string Title, string shortDescription, string desc, int city, int country, string orgName, string orgDetail, string MissionType, int seatsleft, string availability)
+        {
+            var mission = new Mission();
+            mission.Title = Title;
+            mission.ShortDescription = shortDescription;
+            mission.Description = desc;
+            mission.CityId= city;
+            mission.CountryId= country;
+            mission.OrganizationName= orgName;
+            mission.OrganizationDetail= orgDetail;
+            mission.MissionType= MissionType;
+            mission.Availability= availability;
+            mission.SeatsLeft= seatsleft;
+            mission.Availability = availability;
+            mission.Deadline= DateTime.Now;
+            mission.StartDate= DateTime.Now;
+            mission.EndDate= DateTime.Now;
+
+            _db.Add(mission);
+            _db.SaveChanges();
+            return mission;
+        }
+
+
+
+
         public Banner AddBanner(string description, string image, int sortorder)
         {
             Banner banner = new Banner();
