@@ -52,7 +52,7 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
 
         public IActionResult Index()
         {
-
+            ViewData["banners"] = _db.Banners.ToList();
             return View();
         }
 
@@ -469,7 +469,7 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
                     ispending = Pendingbtn.Count() != 0 ? 1:0,
                     isrejected = Rejectedbtn.Count() != 0 ? 1:0,
                     UserId = Convert.ToInt64(SessionUserId),
-                    goal = goalobj.GoalValue,
+                    goal = goalobj!=null?goalobj.GoalValue:null,
                     progress = progress,
                     progressPercent = item.MissionType == "time" ? 0 : (progress * 100 /goalobj.GoalValue),
                 });
@@ -622,7 +622,7 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
                         PhoneNumber = user.PhoneNumber,
                         Email = user.Email,
                         Password = user.Password,
-                        CreatedAt = timestamp
+                        CreatedAt = DateTime.Now,
                     };
                     _Iuser.adduser(newUser);
                     TempData["okay"] = "Registered successfully";

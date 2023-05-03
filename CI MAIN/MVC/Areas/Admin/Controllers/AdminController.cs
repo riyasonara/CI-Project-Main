@@ -16,6 +16,7 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
         public AdminController(CiPlatformContext db, IUserInterface Iuser)
         {
             _db = db;
+            _Iuser = Iuser;
         }
         public IActionResult UserCrud()
         {
@@ -30,56 +31,49 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
 
         [HttpPost]
 
-        public IActionResult adduser(long userID, int status, string proftxt, string email, string password, string department, string Fname, string Lname, string empID, int country, int city)
+        public IActionResult adduser(string avatar, string Fname, string Lname, string email, string password, string empID, string department, long city, long country, string proftxt, int status, long userID)
         {
-
-
-            if (userID == 0)
+            try
             {
-                User user = new User()
+                if(userID == 0 || userID == null)
                 {
-                    FirstName = Fname,
-                    LastName = Lname,
-                    Email = email,
-                    Password = password,
-                    Department = department,
-                    Status = status,
-                    ProfileText = proftxt,
-                    EmployeeId = empID,
-                    CountryId = country,
-                    CityId = city,
-
-                };
-                _db.Users.Add(user);
-                _db.SaveChanges();
+                    _Iuser.addUser(avatar, Fname,Lname,email,password,empID,department,city,country,proftxt,status);
+                }
+                else
+                {
+                    _Iuser.updateUser(avatar,Fname, Lname,email, password, empID, department, city, country, proftxt, status, userID);
+                }
+                return RedirectToAction("UserCrud");
             }
-            else
+            catch(Exception ex)
             {
-                User user = _db.Users.FirstOrDefault(x => x.UserId == userID);
-                user.FirstName = Fname;
-                user.LastName = Lname;
-                user.Email = email;
-                user.Password = password;
-                user.Department = department;
-                user.CityId = city;
-                user.CountryId = country;
-                user.Department = department;
-                user.ProfileText = proftxt;
-                user.EmployeeId = empID;
-                user.Status = status;
-
-                _db.Update(user);
-                _db.SaveChanges();
-
+                return RedirectToAction("Error", "User", new { area = "Employee" });
             }
 
-            return Json("UserCrud");
+
+           
         }
 
-        public IActionResult GetUser(long UserID)
+        public IActionResult getUser(long UserID)
         {
-            var user = _db.Users.FirstOrDefault(x => x.UserId == UserID);
-            return Json(user);
+            var userlist = _db.Users.FirstOrDefault(x => x.UserId == UserID);
+            var user = new UserCrudVieweModel();
+            user.avatar = userlist.Avatar;
+            user.FirstName = userlist.FirstName;
+            user.LastName = userlist.LastName;
+            user.Email = userlist.Email;
+            user.Password = userlist.Password;
+            user.Department = userlist.Department;
+            user.ProfileText = userlist.ProfileText;
+            user.Status = userlist.Status;
+            user.EmployeeId = userlist.EmployeeId;
+            user.CityId = userlist.CityId==null?0: userlist.CityId;
+            user.CountryId = userlist.CountryId==null?0: userlist.CountryId;
+            user.UserId = userlist.UserId;
+            user.users = _Iuser.users();
+            user.Cities=_db.Cities.ToList();
+            user.Countries=_db.Countries.ToList();
+            return View("UserCrud", user);
         }
 
         public IActionResult deleteUser(long UserID)
@@ -182,47 +176,46 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
 
         }
 
-        public IActionResult addMission(long missionId, string Title, string shortDescription, string desc, int city, int country, string orgName, string orgDetail,string misstype, int seatsleft, string availability)
+        [HttpPost]
+        public IActionResult addMission(long missionId, string Title, string ShortDesc, string Desc, int city, int country, string OrgName, string OrgDetail, string misstype,int seats,DateTime startdate, DateTime endDate, DateTime RegDeadline, string availability, int themeid, int skill)
         {
-            if (missionId == 0)
+            try
             {
-                Mission missions = new Mission()
+                if (missionId == 0 || missionId == null)
                 {
-                    Title = Title,
-                    ShortDescription = shortDescription,
-                    Description = desc,
-                    OrganizationDetail = orgDetail,
-                    OrganizationName = orgName,
-                    MissionType = misstype,
-                    SeatsLeft = seatsleft,
-                    Availability = availability,
-                    CountryId = country,
-                    CityId = city,
-
-                };
-                _db.Missions.Add(missions);
-                _db.SaveChanges();
+                    _Iuser.addMission(Title, ShortDesc, Desc, city, country, OrgName, OrgDetail, misstype,seats, startdate, endDate, RegDeadline,availability, themeid, skill);
+                }
+                else
+                {
+                    _Iuser.updateMission(missionId,Title, ShortDesc, Desc, city, country, OrgName, OrgDetail, misstype, seats, startdate, endDate, RegDeadline, availability, themeid, skill);
+                }
+                return RedirectToAction("Missions");
             }
-            else
+            catch (Exception ex)
             {
-                Mission mission = _db.Missions.FirstOrDefault(x => x.MissionId == missionId);
-                mission.Title = Title;
-                mission.ShortDescription = shortDescription;
-                mission.Description = desc;
-                mission.OrganizationDetail = orgDetail;
-                mission.OrganizationName = orgName;
-                mission.MissionType = misstype;
-                mission.SeatsLeft = seatsleft;
-                mission.Availability = availability;
-                mission.CountryId = country;
-                mission.CityId = city;
-
-                _db.Update(mission);
-                _db.SaveChanges();
-
+                return RedirectToAction("Error", "User", new { area = "Employee" });
             }
 
-            return Json("Missions");
+        }
+
+        public IActionResult getMiss(long missionId)
+        {
+            var missionlist = _db.Missions.FirstOrDefault(x => x.MissionId == missionId);
+            var mission = new AdminMissionViewModel();
+            mission.Title = missionlist.Title;
+            mission.ShortDescription = missionlist.ShortDescription;
+            mission.Description = missionlist.Description;
+            mission.CityId = missionlist.CityId == null ? 0 : missionlist.CityId;
+            mission.CountryId = missionlist.CountryId == null ? 0 : missionlist.CountryId;
+            mission.OrganizationName = missionlist.OrganizationName;
+            mission.OrganizationDetail = missionlist.OrganizationDetail;
+            mission.MissionType = missionlist.MissionType;
+            mission.SeatsLeft = missionlist.SeatsLeft;
+            mission.Availability = missionlist.Availability;
+            mission.missionId = missionlist.MissionId;
+            mission.Missions = _Iuser.missionlist();
+
+            return RedirectToAction("Missions", mission);
         }
 
 
@@ -310,56 +303,44 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
             return View(missionskill);
         }
 
+
         public IActionResult Banner()
         {
-
+            ViewData["banners"] = _db.Banners.ToList();
             HttpContext.Session.SetInt32("Nav", 8);
-            ViewBag.nav = HttpContext.Session.GetInt32("Nav");
-            AdminBannerViewModel banner = new AdminBannerViewModel();
-            banner.banners = _db.Banners.Where(e => e.DeletedAt == null).ToList();
-            //banner.banners =_Iuser.AllBanners();
-            return View(banner);
+            ViewBag.nav = HttpContext.Session.GetInt32("Nav");           
+            return View();
         }
 
         [HttpPost]
-        public IActionResult AddBanner(string description, string image, int sortorder, long bannerId)
+        public IActionResult Banner(Banner b, IFormFileCollection? bannerPic)
         {
-            try
+            ViewData["banners"] = _db.Banners.ToList();
+
+            Banner newBan = new Banner();
+            newBan.Text = b.Text;
+
+            foreach (IFormFile file in bannerPic)
             {
-
-                if (bannerId == 0 || bannerId == null)
+                if (file != null)
                 {
-                    _Iuser.AddBanner(description, image, sortorder);
-                }
-                else
-                {
-                    _Iuser.UpdateBanner(description, image, sortorder, bannerId);
-                }
-                return RedirectToAction("Banner");
-            }
-            catch (Exception ex)
-            {
-                return RedirectToAction("Error", "User", new { area = "Employee" });
-            }
-        }
-        [HttpPost]
-        public IActionResult GetBanner(long bannerId)
-        {
-            var bannerlist = _Iuser.AllBanners().FirstOrDefault(t => t.BannerId == bannerId);
-            var banner = new AdminBannerViewModel();
-            banner.img = bannerlist.Image;
-            banner.BannerText = bannerlist.Text;
-            banner.BannerSortOrder = bannerlist.SortOrder;
-            banner.BannerId = bannerId;
-            banner.banners = _Iuser.AllBanners();
-            return View("Banner", banner);
-        }
+                    //Set Key Name
+                    string ImageName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
 
-        public IActionResult DeleteBanner(long bannerId)
-        {
-            _Iuser.DeleteBanner(bannerId);
+                    //Get url To Save
+                    string SavePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img", ImageName);
 
-            return RedirectToAction("Banner");
+                    using (var stream = new FileStream(SavePath, FileMode.Create))
+                    {
+                        newBan.Image = ImageName;
+                        file.CopyTo(stream);
+                    }
+                }
+            }
+            newBan.CreatedAt = DateTime.Now;
+            _db.Banners.Add(newBan);
+            _db.SaveChanges();
+            return View();
         }
     }
 }

@@ -1,59 +1,52 @@
 
 
-function adduser() {
-    var Fname = $("#Fname").val();
-    var Lname = $("#Lname").val();
-    var email = $("#email").val();
-    var password = $("#password").val();
-    var empID = $("#empID").val();
-    var department = $("#department").val();
-    var country = $("#country").val();
-    var city = $("#city").val();
-    var proftxt = $("#proftxt").val();
-    var status = $("#status").val();
-    var userID = $("#userID").val();
-
-
+function saveUser() {
+    debugger;
 
     $.ajax({
         url: '/Admin/Admin/adduser',
         type: 'POST',
-        data: { 'userID': userID, 'Fname': Fname, 'Lname': Lname, 'email': email, 'password': password, 'empID': empID, 'department': department, 'country': country, 'city': city, 'proftxt': proftxt, 'status': status },
+        data: {
+
+            Fname: document.getElementById("Fname").value,
+            Lname: document.getElementById("Lname").value,
+            email: document.getElementById("email").value,
+            password: document.getElementById("password").value,
+            empID: document.getElementById("empID").value,
+            department: document.getElementById("department").value,
+            country: document.getElementById("country").value,
+            city: document.getElementById("city").value,
+            proftxt: document.getElementById("proftxt").value,
+            status: document.getElementById("status").value,
+            avatar: document.getElementById("user-profile-img").src,
+        },
         success: function (res) {
-            location.reload();
+
             $('#myInputTextField').keyup(function () {
                 table.search($(this).val()).draw();
+                location.reload();
+            })
         },
-        error: function (res) {
+        error: function () {
             console.log(res);
             alert("Modal error");
         }
     });
 }
 
-
-
-function GetUser(userID) {
+function GetUser(id) {
     $.ajax({
-        url: '/Admin/Admin/GetUser',
-        type: 'GET',
-        data: { 'UserID': userID },
-        success: function (res) {
-            console.log(res);
-            $("#userID").val(res.userID);
-            $("#Fname").val(res.Fname);
-            $("#Lname").val(res.Lname);
-            $("#email").val(res.email);
-            $("#password").val(res.password);
-            $("#empID").val(res.empID);
-            $("#department").val(res.department);
-            $("#country").val(res.country);
-            $("#city").val(res.city);
-            $("#proftxt").val(res.proftxt);
-            $("#status").val(res.status);
+        url: '/Admin/Admin/getUser',
+        type: 'POST',
+        data: {
+            UserID: id
         },
-        error: function (res) {
-            console.log(res);
+
+        success: function (response) {           
+            $("#AddModal").html($(response).find("#AddModal").html());
+        },
+        error: function () {
+            console.log(response);
             alert("Modal error");
         }
     });
@@ -73,17 +66,13 @@ function deleteUser(userID) {
         }
     });
 }
-
-function nullvalues() {
-    $("#userID").val('');
-    $("#Fname").val('');
-    $("#Lname").val('');
-    $("#email").val('');
-    $("#password").val('');
-    $("#empID").val('');
-    $("#department").val('');
-    $("#country").val('');
-    $("#city").val('');
-    $("#proftxt").val('');
-    $("#status").val('');
+function CHANGE(event) {
+    const reader = new FileReader(); // Create a new FileReader object
+    reader.onload = function () {
+        document.getElementById('user-profile-img').src = reader.result; // Set the source of the image tag to the selected image
+    }
+    reader.readAsDataURL(event.target.files[0]); // Read the selected file as a data URL
+}
+function CLICK() {
+    document.getElementById("imginput").click();
 }

@@ -69,6 +69,10 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\css\\userPage.css",
+      "PackagePath": "staticwebassets\\css\\userPage.css"
+    },
+    {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\css\\userProfile.css",
       "PackagePath": "staticwebassets\\css\\userProfile.css"
     },
@@ -77,8 +81,28 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\2a8f9fe3-b5ce-4412-b544-42cae24534c6.jfif",
+      "PackagePath": "staticwebassets\\img\\2a8f9fe3-b5ce-4412-b544-42cae24534c6.jfif"
+    },
+    {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\404-Page-image.png",
       "PackagePath": "staticwebassets\\img\\404-Page-image.png"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\760d4e80-8eb0-4a4a-af41-9c9e63c863e3.jpg",
+      "PackagePath": "staticwebassets\\img\\760d4e80-8eb0-4a4a-af41-9c9e63c863e3.jpg"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\7b36e340-44b6-4fef-903c-4fdf225c18e5.jpg",
+      "PackagePath": "staticwebassets\\img\\7b36e340-44b6-4fef-903c-4fdf225c18e5.jpg"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\8c68bbb4-5407-4c30-9a9a-6e34d7485ab5.jpg",
+      "PackagePath": "staticwebassets\\img\\8c68bbb4-5407-4c30-9a9a-6e34d7485ab5.jpg"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\9c063226-ea79-45e4-9c2f-d02e3a837407.jpg",
+      "PackagePath": "staticwebassets\\img\\9c063226-ea79-45e4-9c2f-d02e3a837407.jpg"
     },
     {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\Already-volunteered.png",

@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
-    <link rel="stylesheet" href="~/css/cmspage.css" />
+    <link rel="stylesheet" href="~/css/userPage.css" />
 
 </head>
 <body>
@@ -26,7 +26,7 @@
         </div>
 
         <div class="button-row mb-3">
-            
+
             <div class="start-btn">
                 <input class="form-control me-2" id="myInputTextField" type="search" placeholder="Search" aria-label="Search">
             </div>
@@ -37,103 +37,147 @@
                 </button>
             </div>
             <!-- Modal -->
-            
-            <div class="modal fade" id="AddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-xl modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="fs-5 bg-dark-subtle border p-3 col-12"> Add</div>
+            <form method="post" asp-action="UserCrud" asp-controller="Admin">
+                <div class="modal fade" id="AddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-xl modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="fs-5 bg-dark-subtle border p-3 col-12"> Add</div>
 
-                            <div class="border ps-4 pb-5">
+                                <div class="border ps-4 pb-5">
 
-                                <div class="row">
-                                    <div class="col">
-                                        <label class="mt-2">First Name</label>
-                                        <input type="text" class="form-control" id="Fname" placeholder="First name" aria-label="First name">
+
+                                    <div class="user-profile-div" onclick="CLICK()" id="imgdiv">
+                                        <input onchange="CHANGE(event)" type="file" style="display:none" id="imginput" />
+                                        @if (@Model.avatar != "")
+                                        {
+                                            <img src="@Model.avatar" alt=""
+                                                 class="rounded-circle user-profile-img " id="user-profile-img">
+                                        }
+                                        else
+                                        {
+                                            <img src="~/img/user1.png"
+                                                 class="rounded-circle user-profile-img" id="user-profile-img">
+                                        }
+
+                                        <i class="bi bi-plus-circle-fill addimgplus" height="25px" width="25px"></i>
+
                                     </div>
-                                    <div class="col">
-                                        <label class="mt-2">Last Name</label>
-                                        <input type="text" class="form-control" id="Lname" placeholder="Last name" aria-label="Last name">
+
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <label class="mt-2">First Name</label>
+                                            <input type="text" asp-for="FirstName" class="form-control" id="Fname" placeholder="First name" aria-label="First name">
+                                            <span class="text-danger" id="reqFname" asp-validation-for="FirstName"> </span>
+                                        </div>
+                                        <div class="col">
+                                            <label class="mt-2">Last Name</label>
+                                            <input asp-for="LastName" type="text" class="form-control" id="Lname" placeholder="Last name" aria-label="Last name">
+                                            <span class="text-danger" id="reqFname" asp-validation-for="LastName"> </span>
+
+                                        </div>
                                     </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <label class="mt-2">Email</label>
+                                            <input type="email" asp-for="Email" class="form-control" id="email" placeholder="Enter email">
+                                            <span class="text-danger" id="reqFname" asp-validation-for="Email"> </span>
+
+                                        </div>
+                                        <div class="col">
+                                            <label class="mt-2">Password</label>
+                                            <input type="password" asp-for="Password" class="form-control" id="password" placeholder="Enter Password">
+                                            <span class="text-danger" id="reqFname" asp-validation-for="Password"> </span>
+
+                                        </div>
+                                    </div>
+
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <label class="mt-2">Employee id</label>
+                                            <input type="text" asp-for="EmployeeId" class="form-control" id="empID" placeholder="Enter Employee ID">
+                                            <span class="text-danger" id="reqFname" asp-validation-for="EmployeeId"> </span>
+
+                                        </div>
+                                        <div class="col">
+                                            <label class="mt-2">Department</label>
+                                            <input type="text" asp-for="Department" class="form-control" id="department" placeholder="Enter Department">
+                                            <span class="text-danger" id="reqFname" asp-validation-for="Department"> </span>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row mb-3">
+                                        <div class="col">
+                                            <label class="mt-2">City</label>
+                                            <select asp-for="CityId" id="city" class="form-select" aria-label="Default select example">
+
+
+                                                <option value="0" selected>Select your city</option>
+
+
+
+                                                @foreach (var item in Model.Cities)
+                                                {
+                                                    <option value="@item.CityId">@item.Name </option>
+                                                }
+
+                                            </select>
+                                            <span class="text-danger" id="reqcountry" asp-validation-for="CityId"> </span>
+
+                                        </div>
+                                        <div class="col">
+                                            <label class="mt-2">Country</label>
+                                            <select asp-for="CountryId" id="country" class="form-select" aria-label="Default select example">
+                                                <option selected>Select your country</option>
+                                                @foreach (var item in Model.Countries)
+                                                {
+                                                    <option value="@item.CountryId">@item.Name</option>
+                                                }
+                                            </select>
+                                            <span class="text-danger" id="reqcountry" asp-validation-for="CountryId"> </span>
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <label class="mt-2">Profile Text</label>
+                                            <input asp-for="ProfileText" type="text" class="form-control" id="proftxt" placeholder="Enter Profile Text">
+                                            <span class="text-danger" id="reqPtext" asp-validation-for="ProfileText"> </span>
+
+                                        </div>
+                                        <div class="col">
+                                            <label class="mt-2">Status</label>
+                                            <input asp-for="Status" type="number" class="form-control" id="status" placeholder="Enter Status">
+                                            <span class="text-danger" id="reqPtext" asp-validation-for="Status"> </span>
+
+                                        </div>
+                                    </div>
+
+
                                 </div>
 
-                                <div class="row">
-                                    <div class="col">
-                                        <label class="mt-2">Email</label>
-                                        <input type="text" class="form-control" id="email" placeholder="Enter email">
-                                    </div>
-                                    <div class="col">
-                                        <label class="mt-2">Password</label>
-                                        <input type="text" class="form-control" id="password" placeholder="Enter Password">
-                                    </div>
-                                </div>
-
-
-                                <div class="row">
-                                    <div class="col">
-                                        <label class="mt-2">Employee id</label>
-                                        <input type="email" class="form-control" id="empID" placeholder="Enter Employee ID">
-                                    </div>
-                                    <div class="col">
-                                        <label class="mt-2">Department</label>
-                                        <input type="text" class="form-control" id="department" placeholder="Enter Department">
-                                    </div>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <div class="col">
-                                        <label class="mt-2">City</label>
-                                        <select id="city" class="form-select" aria-label="Default select example">
-                                            <option selected>Select your city</option>
-                                            @foreach (var item in Model.Cities)
-                                            {
-                                                <option value="@item.CityId">@item.Name </option>
-                                            }
-                                        </select>
-                                    </div>
-                                    <div class="col">
-                                        <label class="mt-2">Country</label>
-                                        <select id="country" class="form-select" aria-label="Default select example">
-                                            <option selected>Select your country</option>
-                                            @foreach (var item in Model.Countries)
-                                            {
-                                                <option value="@item.CountryId">@item.Name</option>
-                                            }
-                                        </select>
-
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col">
-                                        <label class="mt-2">Profile Text</label>
-                                        <input type="text" class="form-control" id="proftxt" placeholder="Enter Profile Text">
-                                    </div>
-                                    <div class="col">
-                                        <label class="mt-2">Status</label>
-                                        <input type="number" class="form-control" id="status" placeholder="Enter Status">
-                                    </div>
-                                </div>
-
+                                <input type="hidden" id="userID" value="0" name="userID" />
 
                             </div>
-
-                            <input type="hidden" id="userID" value="0" name="userID" />
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn border-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn oran" onclick="adduser()" data-bs-dismiss="modal">Save</button>
+                            <div class="modal-footer">
+                                <button type="button" class="btn border-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn oran" onclick="saveUser()" data-bs-dismiss="modal">Save</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            @*End of Modal*@
-
+                @*End of Modal*@
+            </form>
         </div>
 
 
@@ -209,8 +253,8 @@
 
 
 </script>
-<script src="~/js/userPage.js"></script>
+<script src="~/js/userPage.js" asp-append-version="true"></script>
+<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
-@*<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-*@
 </html>

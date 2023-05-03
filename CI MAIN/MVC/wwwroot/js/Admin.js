@@ -7,10 +7,7 @@ function currentTime() {
     let t = setTimeout(function () { currentTime() }, 1000);
 }
 currentTime();
-$(document).ready(function () {
-    $('#example').DataTable();
-});
-CKEDITOR.replace('editor1');
+
 
 function ved1() {
     var a = document.getElementById("s1");

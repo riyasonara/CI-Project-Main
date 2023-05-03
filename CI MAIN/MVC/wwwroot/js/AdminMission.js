@@ -4,49 +4,83 @@ $(document).ready(function () {
 });
 
 
-$(document).ready(function () {
-    var myDropzone = new Dropzone("#my-dropzone", {
-        paramName: "file",
-        maxFilesize: 2, // MB
-        addRemoveLinks: true,
-        dictRemoveFile: "Remove"
-    });
+//$(document).ready(function () {
+//    var myDropzone = new Dropzone("#my-dropzone", {
+//        paramName: "file",
+//        maxFilesize: 2, // MB
+//        addRemoveLinks: true,
+//        dictRemoveFile: "Remove"
+//    });
 
-    myDropzone.on("success", function (file, response) {
-        // Handle the server response here
-    });
-});
+//    myDropzone.on("success", function (file, response) {
+//        // Handle the server response here
+//    });
+//});
 
 
-function addMission() {
-    var Title = document.getElementById("Title").value;
-    var ShortDesc = document.getElementById("ShortDesc").value;
-    var Desc = document.getElementById("Desc").value;
-    var city = document.getElementById("city").value;
-    var country = document.getElementById("country").value;
-    var OrgName = document.getElementById("OrgName").value;
-    var OrgDetail = document.getElementById("OrgDetail").value;
-    var misstype = document.getElementById("misstype").value;
-    var seats = document.getElementById("seats").value;
-    var dat = document.getElementById("dat").value;
-    var RegDeadline = document.getElementById("RegDeadline").value;
-    var availability = document.getElementById("availability").value;
-    var themeid = document.getElementById("themeid").value;
-    var skill = document.getElementById("skill").value;
-    var missionId = document.getElementById("missionId").value;
-    debugger;
+function missionadd() { 
     $.ajax({
         url: '/Admin/Admin/addMission',
         type: 'POST',
-        data: { 'Title': Title, 'ShortDesc': ShortDesc, 'Desc': Desc, 'city': city, 'country': country, 'OrgName': OrgName, 'OrgDetail': OrgDetail, 'misstype': misstype, 'seats': seats, 'dat': dat, 'RegDeadline': RegDeadline, 'availability': availability, 'themeid': themeid, 'skill': skill, 'missionId': missionId },
+        data: {
+            Title: document.getElementById("Title").value,
+            ShortDesc: document.getElementById("ShortDesc").value,
+            Desc: document.getElementById("Desc").value,
+            city: document.getElementById("city").value,
+            country: document.getElementById("country").value,
+            OrgName: document.getElementById("OrgName").value,
+            OrgDetail: document.getElementById("OrgDetail").value,
+            misstype: document.getElementById("misstype").value,
+            seats: document.getElementById("seats").value,
+            startdate: document.getElementById("startdate").value,
+            endDate: document.getElementById("endDate").value,
+            RegDeadline: document.getElementById("RegDeadline").value,
+            availability: document.getElementById("availability").value,
+            themeid: document.getElementById("themeid").value,
+            skill: document.getElementById("skill").value,
+            missionId: document.getElementById("missionId").value,
+        },
         success: function (res) {
-            //console.log(res);
-            //$("#UserModal").html($(res).find("#UserModal").html());
-            $("#cms").click();
+            console.log(res);
+            $("#UserModal").html($(res).find("#UserModal").html());
+           /* $("#cms").click();*/
         },
         error: function (res) {
             console.log(res);
             alert("Modal error");
+        }
+    });
+}
+
+function getMission(id) {
+    $.ajax({
+        url: '/Admin/Admin/getMiss',
+        type: 'POST',
+        data: {
+            missionId: id
+        },
+
+        success: function (response) {
+            $("#AddModal").html($(response).find("#AddModal").html());
+        },
+        error: function () {
+            console.log(response);
+            alert("Modal error");
+        }
+    });
+}
+
+function missiondelete(missionId) {
+    $.ajax({
+        url: '/Admin/Admin/delmiss',
+        type: 'GET',
+        data: { 'missionId': missionId },
+        success: function (res) {
+            swal("Are you sure you want to do this?", {
+                buttons: ["Oh noez!", true],
+            });
+            console.log(res);
+            $("#User").click();
         }
     });
 }

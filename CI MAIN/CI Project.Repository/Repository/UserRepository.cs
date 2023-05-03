@@ -14,6 +14,7 @@ namespace CI_Project.Repository.Repository
     public class UserRepository : IUserInterface
     {
         private readonly CiPlatformContext _db;
+     
 
         public UserRepository(CiPlatformContext db)
         {
@@ -150,25 +151,106 @@ namespace CI_Project.Repository.Repository
         //    return _db.Users.FirstOrDefault(u => u.Email == Email);
         //}
 
-        public Mission addMission(string Title, string shortDescription, string desc, int city, int country, string orgName, string orgDetail, string MissionType, int seatsleft, string availability)
+        public User addUser(string avatar, string firstName, string lastName, string email, string password, string empid, string department, long cityId, long countryId, string ProfileText, int status)
+        {
+            User user = new User();
+            user.Avatar = avatar;
+            user.FirstName = firstName;
+            user.LastName = lastName;
+            user.Email = email;
+            user.Password = password;
+            user.EmployeeId = empid;
+            user.Department = department;
+            user.CityId = cityId;
+            user.CountryId = countryId;
+            user.ProfileText = ProfileText;
+            user.Status = status;
+            
+            user.CreatedAt = DateTime.Now;
+
+            _db.Add(user);
+            _db.SaveChanges();
+            return user;
+        }
+
+        public User updateUser(string avatar,string firstName, string lastName, string email, string password, string empid, string department, long cityId, long countryId, string ProfileText, int status, long userId)
+        {
+            User user = _db.Users.FirstOrDefault(u => u.UserId == userId);
+            user.UserId = userId;
+            user.Avatar = avatar;
+            user.FirstName = firstName;
+            user.LastName = lastName;
+            user.Email = email;
+            user.Password = password;
+            user.EmployeeId = empid;
+            user.Department = department;
+            user.CityId = cityId;
+            user.CountryId = countryId;
+            user.ProfileText = ProfileText;
+            user.Status = status;
+            user.UpdatedAt = DateTime.Now;
+
+            _db.Update(user);
+            _db.SaveChanges();
+            return user;
+        }
+        public void DeleteUser(long userId)
+        {
+            var user = _db.Users.FirstOrDefault(u => u.UserId == userId);
+            user.DeletedAt = DateTime.Now;
+            user.UpdatedAt = DateTime.Now;
+            _db.Update(user);
+            _db.SaveChanges();
+        }
+
+        public Mission addMission(string Title, string ShortDesc, string Desc, int city, int country, string OrgName, string OrgDetail, string misstype, int seats, DateTime startdate, DateTime endDate, DateTime RegDeadline, string availability, int themeid, int skill)
         {
             var mission = new Mission();
             mission.Title = Title;
-            mission.ShortDescription = shortDescription;
-            mission.Description = desc;
+            mission.ShortDescription = ShortDesc;
+            mission.Description = Desc;
             mission.CityId= city;
             mission.CountryId= country;
-            mission.OrganizationName= orgName;
-            mission.OrganizationDetail= orgDetail;
-            mission.MissionType= MissionType;
+            mission.OrganizationName= OrgName;
+            mission.OrganizationDetail= OrgDetail;
+            mission.MissionType= misstype;
             mission.Availability= availability;
-            mission.SeatsLeft= seatsleft;
+            mission.SeatsLeft= seats;
             mission.Availability = availability;
             mission.Deadline= DateTime.Now;
-            mission.StartDate= DateTime.Now;
-            mission.EndDate= DateTime.Now;
+            mission.StartDate = DateTime.Now;
+            mission.EndDate = DateTime.Now;
+            mission.ThemeId= themeid;
+           
+
 
             _db.Add(mission);
+            _db.SaveChanges();
+            MissionSkill missionSkill = new MissionSkill()
+            {
+                SkillId = skill,
+                MissionId = mission.MissionId,
+            };
+            _db.MissionSkills.Add(missionSkill);
+            _db.SaveChanges();
+            return mission;
+        }
+
+        public Mission updateMission(long missionId, string Title, string ShortDesc, string Desc, int city, int country, string OrgName, string OrgDetail, string misstype, int seats, DateTime startdate, DateTime endDate, DateTime RegDeadline, string availability, int themeid, int skill)
+        {
+            Mission mission = _db.Missions.FirstOrDefault(m => m.MissionId ==missionId);
+            mission.Title = Title;
+            mission.ShortDescription = ShortDesc;
+            mission.Description = Desc;
+            mission.CityId= city;
+            mission.CountryId= country;
+            mission.OrganizationName= OrgName;
+            mission.OrganizationDetail= OrgDetail;
+            mission.MissionType= misstype;
+            mission.Availability= availability;
+            mission.UpdatedAt = DateTime.Now;
+
+            _db.Update(mission);
             _db.SaveChanges();
             return mission;
         }
