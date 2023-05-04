@@ -23,35 +23,34 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
             HttpContext.Session.SetInt32("Nav", 1);
             ViewBag.nav = HttpContext.Session.GetInt32("Nav");
             var uservm = new UserCrudVieweModel();
-            uservm.users = _db.Users.ToList();
+            uservm.users = _db.Users.Where(u => u.DeletedAt == null).ToList();
             uservm.Cities = _db.Cities.ToList();
             uservm.Countries = _db.Countries.ToList();
             return View(uservm);
         }
 
         [HttpPost]
-
         public IActionResult adduser(string avatar, string Fname, string Lname, string email, string password, string empID, string department, long city, long country, string proftxt, int status, long userID)
         {
             try
             {
-                if(userID == 0 || userID == null)
+                if (userID == 0 || userID == null)
                 {
-                    _Iuser.addUser(avatar, Fname,Lname,email,password,empID,department,city,country,proftxt,status);
+                    _Iuser.addUser(avatar, Fname, Lname, email, password, empID, department, city, country, proftxt, status);
                 }
                 else
                 {
-                    _Iuser.updateUser(avatar,Fname, Lname,email, password, empID, department, city, country, proftxt, status, userID);
+                    _Iuser.updateUser(avatar, Fname, Lname, email, password, empID, department, city, country, proftxt, status, userID);
                 }
                 return RedirectToAction("UserCrud");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return RedirectToAction("Error", "User", new { area = "Employee" });
             }
 
 
-           
+
         }
 
         public IActionResult getUser(long UserID)
@@ -67,12 +66,12 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
             user.ProfileText = userlist.ProfileText;
             user.Status = userlist.Status;
             user.EmployeeId = userlist.EmployeeId;
-            user.CityId = userlist.CityId==null?0: userlist.CityId;
-            user.CountryId = userlist.CountryId==null?0: userlist.CountryId;
+            user.CityId = userlist.CityId == null ? 0 : userlist.CityId;
+            user.CountryId = userlist.CountryId == null ? 0 : userlist.CountryId;
             user.UserId = userlist.UserId;
             user.users = _Iuser.users();
-            user.Cities=_db.Cities.ToList();
-            user.Countries=_db.Countries.ToList();
+            user.Cities = _db.Cities.ToList();
+            user.Countries = _db.Countries.ToList();
             return View("UserCrud", user);
         }
 
@@ -84,7 +83,7 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
             _db.Users.Update(user);
             _db.SaveChanges();
 
-            return View("UserCrud");
+            return RedirectToAction("UserCrud", new { UserID = UserID });
         }
 
         public IActionResult CmsPage()
@@ -177,17 +176,17 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult addMission(long missionId, string Title, string ShortDesc, string Desc, int city, int country, string OrgName, string OrgDetail, string misstype,int seats,DateTime startdate, DateTime endDate, DateTime RegDeadline, string availability, int themeid, int skill)
+        public IActionResult addMission(long missionId, string Title, string ShortDesc, string Desc, int city, int country, string OrgName, string OrgDetail, string misstype, int seats, DateTime startdate, DateTime endDate, DateTime RegDeadline, string availability, int themeid, int skill)
         {
             try
             {
                 if (missionId == 0 || missionId == null)
                 {
-                    _Iuser.addMission(Title, ShortDesc, Desc, city, country, OrgName, OrgDetail, misstype,seats, startdate, endDate, RegDeadline,availability, themeid, skill);
+                    _Iuser.addMission(Title, ShortDesc, Desc, city, country, OrgName, OrgDetail, misstype, seats, startdate, endDate, RegDeadline, availability, themeid, skill);
                 }
                 else
                 {
-                    _Iuser.updateMission(missionId,Title, ShortDesc, Desc, city, country, OrgName, OrgDetail, misstype, seats, startdate, endDate, RegDeadline, availability, themeid, skill);
+                    _Iuser.updateMission(missionId, Title, ShortDesc, Desc, city, country, OrgName, OrgDetail, misstype, seats, startdate, endDate, RegDeadline, availability, themeid, skill);
                 }
                 return RedirectToAction("Missions");
             }
@@ -198,6 +197,7 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
 
         }
 
+        [HttpPost]
         public IActionResult getMiss(long missionId)
         {
             var missionlist = _db.Missions.FirstOrDefault(x => x.MissionId == missionId);
@@ -218,11 +218,21 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
             return RedirectToAction("Missions", mission);
         }
 
+        public IActionResult delmiss(long missionId)
+        {
+            var mission = _db.Missions.FirstOrDefault(x => x.MissionId == missionId);
+            mission.DeletedAt = DateTime.Now;
+
+            _db.Missions.Update(mission);
+            _db.SaveChanges();
+
+            return View("Missions");
+        }
+
 
         [HttpPost]
         public IActionResult Upload(IFormFileCollection file)
         {
-            // Handle the uploaded file here
             return Json(new { success = true });
         }
 
@@ -308,7 +318,7 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
         {
             ViewData["banners"] = _db.Banners.ToList();
             HttpContext.Session.SetInt32("Nav", 8);
-            ViewBag.nav = HttpContext.Session.GetInt32("Nav");           
+            ViewBag.nav = HttpContext.Session.GetInt32("Nav");
             return View();
         }
 
@@ -342,5 +352,15 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
             _db.SaveChanges();
             return View();
         }
+
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+            TempData["bye"] = "logged out successfully";
+            TempData["okay"] = null;
+            return RedirectToAction("LandingPage", "User", new {area= "Employee" });
+        }
+
     }
 }

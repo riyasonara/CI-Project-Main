@@ -18,6 +18,7 @@ function saveUser() {
             city: document.getElementById("city").value,
             proftxt: document.getElementById("proftxt").value,
             status: document.getElementById("status").value,
+            userID: document.getElementById("userID").value,
             avatar: document.getElementById("user-profile-img").src,
         },
         success: function (res) {
@@ -53,18 +54,34 @@ function GetUser(id) {
 }
 
 function deleteUser(userID) {
-    $.ajax({
-        url: '/Admin/Admin/deleteUser',
-        type: 'GET',
-        data: { 'UserID': userID },
-        success: function (res) {
-            swal("Are you sure you want to do this?", {
-                buttons: ["Oh noez!", true],
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: '/Admin/Admin/deleteUser',
+                type: 'GET',
+                data: { 'UserID': userID },
+                success: function (res) {
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                    console.log(res);
+                    $("#User").click();
+                }
             });
-            console.log(res);
-            $("#User").click();
+            
         }
-    });
+    })
+  
 }
 function CHANGE(event) {
     const reader = new FileReader(); // Create a new FileReader object

@@ -20,6 +20,7 @@ namespace CI_Platform_Project.Models
         public string MissionType { get; set; }
 
         [Required(ErrorMessage ="title is required")]
+        [RegularExpression(@"^([a-zA-Z0-9 \.\&\'\-]+)$", ErrorMessage = "Invalid title")]
         public string Title { get; set; } = null!;
 
 

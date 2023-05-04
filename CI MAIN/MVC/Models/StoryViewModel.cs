@@ -23,6 +23,8 @@ namespace CI_Platform_Project.Models
 
         public User Singleuser { get; set; }
         public Timesheet Singlesheet { get; set; }
+
+        public Story singleStory { get; set; }
         public long StoryId { get; set; }
 
         public long UserId { get; set; }
@@ -30,6 +32,7 @@ namespace CI_Platform_Project.Models
         public long MissionId { get; set; }
 
         [Required]
+        [RegularExpression(@"^([a-zA-Z0-9 \.\&\'\-]+)$", ErrorMessage = "Invalid title")]
         public string? Title { get; set; }
 
         public string? editor1 { get; set; }

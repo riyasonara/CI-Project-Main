@@ -556,8 +556,9 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
 
         public IActionResult Logout()
         {
-            HttpContext.Session.Remove("username");
-            return RedirectToAction("Index", "User");
+            HttpContext.Session.Clear();
+            TempData["bye"] = "logged out successfully";
+            return RedirectToAction("LandingPage", "User");
         }
 
 
@@ -711,17 +712,8 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             userdetail.CountryId = model.CountryId;
             userdetail.CityId = model.CityId;
             userdetail.Availability = model.Availability;
-            //userdetail.Email = model.Email;
 
-            //if (files.Count() == 0)
-            //{
-            //    model.Avatar = userdetail.Avatar;
-            //}
-            //else
-            //{
-            //    userdetail.Avatar = model.Avatar;
-
-            //}
+           
             if (model.UserImg != null)
             {
                 var FileName = "";
@@ -945,6 +937,7 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
 
             return View();
         }
+
 
 
     }

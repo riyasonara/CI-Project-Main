@@ -42,7 +42,7 @@ function missionadd() {
         },
         success: function (res) {
             console.log(res);
-            $("#UserModal").html($(res).find("#UserModal").html());
+            $("#missionModal").html($(res).find("#missionModal").html());
            /* $("#cms").click();*/
         },
         error: function (res) {
@@ -52,16 +52,16 @@ function missionadd() {
     });
 }
 
-function getMission(id) {
+function getMission(missionId) {
     $.ajax({
         url: '/Admin/Admin/getMiss',
         type: 'POST',
         data: {
-            missionId: id
+            missionId: missionId
         },
 
         success: function (response) {
-            $("#AddModal").html($(response).find("#AddModal").html());
+            $("#missionModal").html($(response).find("#missionModal").html());
         },
         error: function () {
             console.log(response);

@@ -693,6 +693,8 @@ public partial class CiPlatformContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("status");
+            entity.Property(e => e.storyViews).HasDefaultValueSql("((0))");
+
             entity.Property(e => e.Title)
                 .HasMaxLength(255)
                 .IsUnicode(false)

@@ -37,13 +37,13 @@
             </div>
 
             <div class="end-btn">
-                <button type="button" class="btn btn-outline-warning rounded-pill px-3 py-0 me-2" data-bs-toggle="modal" data-bs-target="#AddModal">
+                <button type="button" class="btn btn-outline-warning rounded-pill px-3 py-0 me-2" data-bs-toggle="modal" data-bs-target="#missionModal">
                     <i class="bi bi-plus-lg "></i> <span class="btn-label">Add</span>
                 </button>
             </div>
             <!-- Modal -->
-            <form asp-action="" asp-controller="Admin" method="post" enctype="multipart/form-data">
-                <div class="modal fade" id="AddModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <form asp-action="Missions" asp-controller="Admin" method="post" enctype="multipart/form-data">
+                <div class="modal fade" id="missionModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-xl modal-dialog-centered">
 
                         <div class="modal-content">
@@ -230,7 +230,7 @@
 
                                 </div>
                             </div>
-                            <input type="hidden" asp-for="missionId" id="missionId" value="0" name="missionId" />
+                            <input type="hidden" asp-for="missionId" id="missionId" name="missionId" />
 
                             <div class="modal-footer">
                                 <button type="button" class="btn border-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
@@ -274,12 +274,12 @@
                     <td>
 
                         <span>
-                            <button class="btn shadow-none" data-bs-toggle="modal" data-bs-target="#AddModal" onclick="getMission(@missions.MissionId)">
+                            <button class="btn shadow-none" data-bs-toggle="modal" data-bs-target="#missionModal" onclick="getMission(@missions.MissionId)">
                                 <i class="bi bi-pencil-square fs-5" style="color:green;"></i>
                             </button>
                         </span>
                         <span>
-                            <button class="btn shadow-none" data-bs-toggle="modal" data-bs-target="#AddModal" onclick="missiondelete(@missions.MissionId)">
+                            <button class="btn shadow-none" data-bs-toggle="modal" onclick="missiondelete(@missions.MissionId)">
                                 <i class="bi bi-trash fs-5" style="color:red;"></i>
                             </button>
                         </span>

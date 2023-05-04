@@ -237,10 +237,14 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
 
 
 
-        public IActionResult StoryDetail()
-        {
+        public IActionResult StoryDetail(int missionid,long storyid)
+            {
+            var userId = HttpContext.Session.GetString("userID");
+            var story = _db.Stories.Find(storyid);
             return View();
-        }
+            }
+            
+        
 
         public IActionResult DraftStory()
         {

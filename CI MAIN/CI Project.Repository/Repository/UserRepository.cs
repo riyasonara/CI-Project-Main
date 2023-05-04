@@ -35,7 +35,7 @@ namespace CI_Project.Repository.Repository
         }
         public List<User> users()
         {
-            return _db.Users.ToList();
+            return _db.Users.Where(u => u.DeletedAt == null).ToList();
         }
         public List<Mission> missionlist()
         {
@@ -146,10 +146,6 @@ namespace CI_Project.Repository.Repository
             _db.SaveChanges();
             return contactUs;
         }
-        //public User UserExist(string Email)
-        //{
-        //    return _db.Users.FirstOrDefault(u => u.Email == Email);
-        //}
 
         public User addUser(string avatar, string firstName, string lastName, string email, string password, string empid, string department, long cityId, long countryId, string ProfileText, int status)
         {
@@ -252,10 +248,17 @@ namespace CI_Project.Repository.Repository
 
             _db.Update(mission);
             _db.SaveChanges();
+
+            MissionSkill missionSkill = new MissionSkill()
+            {
+                SkillId = skill,
+                MissionId = mission.MissionId,
+            };
+            _db.MissionSkills.Update(missionSkill);
+            _db.SaveChanges();
+
             return mission;
         }
-
-
 
 
         public Banner AddBanner(string description, string image, int sortorder)

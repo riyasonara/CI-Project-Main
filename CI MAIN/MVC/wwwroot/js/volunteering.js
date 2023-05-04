@@ -156,6 +156,7 @@ function apply(mid, uid) {
         type: 'POST',
         data: { MissionId: mid, UserId: uid },
         success: function (result) {
+            console.log(result);
             Swal.fire({
                 icon: 'success',
                 title: 'Applied',

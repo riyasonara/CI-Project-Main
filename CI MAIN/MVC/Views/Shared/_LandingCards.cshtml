@@ -2,7 +2,8 @@
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
 
-
+@using CI_PLatform_Entities.Models;
+@using CI_Platform_Project.Models;
 @inject IHttpContextAccessor Accessor
 
 @{
@@ -125,15 +126,15 @@
                             </div>
 
 
-                           @* @foreach (var data in ViewData["applications"] as IList<>)
+                         @*   @foreach (var data in ViewData["applications"] as IList<MissionApplication>)
                             {
                                 @if (id == data.UserId.ToString())
                                 {
                                     <p class="p-2 text-white applied" style="width:fit-content;">Applied</p>
 
                                 }
-                            }*@
-
+                            }
+*@
 
                             @if (item.isfav == true)
                             {
