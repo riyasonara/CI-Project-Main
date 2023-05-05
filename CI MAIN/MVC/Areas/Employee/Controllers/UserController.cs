@@ -125,7 +125,7 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             volunteeringVM.StartDate = Startdate[0];
             volunteeringVM.isapplied = applied.Count() != 0 ? 1 : 0;
             volunteeringVM.UserPrevRating = prevRating != null ? prevRating.Rating : 0;
-            var favrioute = uId != null ? _Iuser.favoriteMissions().Any(u => u.UserId == Convert.ToInt64(SessionUserId) && u.MissionId == volmission.MissionId) : false;
+            volunteeringVM.isfav = uId != null ? _Iuser.favoriteMissions().Any(u => u.UserId == Convert.ToInt64(SessionUserId) && u.MissionId == volmission.MissionId) : false;
             //if (prevRating != null) { volunteeringVM.UserPrevRating = prevRating.Rating; }
 
             volunteeringVM.GoalObjectiveText = themeobjective.GoalObjectiveText;
@@ -158,7 +158,7 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
                     OrganizationName = item.OrganizationName,
                     GoalObjectiveText = relgoalobj.GoalObjectiveText,
                     MissionType = item.MissionType,
-                    isfav = favrioute,
+                   // isfav = favrioute,
                     goal = relgoalobj.GoalValue,
                     progress = progress,
                     progressPercent = item.MissionType == "Time" ? 0 : (progress * 100 / relgoalobj.GoalValue),
@@ -232,11 +232,11 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             if (isFav == null)
             {
 
-                _Iuser.favoriteMissions().Add(obj);
+                _db.FavoriteMissions.Add(obj);
             }
             else
             {
-                _Iuser.favoriteMissions().Remove(isFav);
+                _db.FavoriteMissions.Remove(isFav);
             }
 
             _db.SaveChanges();

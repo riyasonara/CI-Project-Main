@@ -1,7 +1,6 @@
 
 
 function saveUser() {
-    debugger;
 
     $.ajax({
         url: '/Admin/Admin/adduser',
@@ -75,7 +74,7 @@ function deleteUser(userID) {
                         'success'
                     )
                     console.log(res);
-                    $("#User").click();
+                    location.reload();
                 }
             });
             

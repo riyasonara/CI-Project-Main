@@ -93,9 +93,15 @@
 
             <div class="col-12 col-lg-6 col-md-12 col-sm-12">
                 <div class="col-12 mt-3 d-flex justify-content-lg-between">
-                    <a class=" ms-4 me-2 text-decoration-none text-black justify-content-center ">
+                    <a class=" ms-4 me-2 text-decoration-none text-black justify-content-center ">                       
                         <img src="~/img/volunteer1.png" class="involveduserprofile rounded-circle" height="62" width="62" /><br>
-                        <label id="" class="text-center">@Model.User.FirstName @Model.User.LastName</label>
+                        @if (Model.User != null)
+                        {
+                            <label id="" class="text-center">@Model.User.FirstName @Model.User.LastName</label>
+                        }
+                        
+                        
+                       
                     </a>
 
                     <div class="views d-flex justify-content-center align-content-center me-1 mt-5 px-2 py-0 ">

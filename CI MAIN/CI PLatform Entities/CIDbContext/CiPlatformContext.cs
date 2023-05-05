@@ -610,8 +610,7 @@ public partial class CiPlatformContext : DbContext
 
             entity.Property(e => e.MissionThemeId).HasColumnName("mission_theme_id");
             entity.Property(e => e.CreatedAt)
-                .IsRowVersion()
-                .IsConcurrencyToken()
+                .HasColumnType("datetime")
                 .HasColumnName("created_at");
             entity.Property(e => e.DeletedAt)
                 .HasColumnType("datetime")
@@ -693,8 +692,7 @@ public partial class CiPlatformContext : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false)
                 .HasColumnName("status");
-            entity.Property(e => e.storyViews).HasDefaultValueSql("((0))");
-
+            entity.Property(e => e.StoryViews).HasColumnName("storyViews");
             entity.Property(e => e.Title)
                 .HasMaxLength(255)
                 .IsUnicode(false)

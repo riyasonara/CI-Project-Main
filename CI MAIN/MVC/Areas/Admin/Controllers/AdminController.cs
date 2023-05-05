@@ -4,6 +4,7 @@ using CI_Platform_Project.Models;
 using CI_Project.Repository.Interface;
 using Microsoft.AspNetCore.Mvc;
 using Org.BouncyCastle.Ocsp;
+using System.Reflection;
 
 namespace CI_Platform_Project.Areas.Admin.Controllers
 {
@@ -135,7 +136,7 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
                 _db.SaveChanges();
             }
 
-            return Json("_CMSAdmin");
+            return Json("CmsPage");
         }
 
         /*CMS Get Data*/
@@ -152,25 +153,33 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
             _db.CmsPages.Remove(cms);
             _db.SaveChanges();
 
-            return RedirectToAction("Index", "Admin");
+            return RedirectToAction("CmsPage", "Admin");
         }
 
 
         [HttpGet]
-        public IActionResult Missions()
+        public IActionResult Missions(AdminMissionViewModel mission)
         {
 
             HttpContext.Session.SetInt32("Nav", 3);
             ViewBag.nav = HttpContext.Session.GetInt32("Nav");
+            AdminMissionViewModel missions;
+            if (mission.missionId != 0)
+            {
+                missions = mission;
+            }
+            else
+            {
+                 missions = new AdminMissionViewModel();
+            }
+           
+            missions.Missions = _db.Missions.Where(m=>m.DeletedAt==null).ToList();
+            missions.Cities = _db.Cities.ToList();
+            missions.Countries = _db.Countries.ToList();
+            missions.MissionThemes = _db.MissionThemes.ToList();
+            missions.Skills = _db.Skills.ToList();
 
-            var mission = new AdminMissionViewModel();
-            mission.Missions = _db.Missions.ToList();
-            mission.Cities = _db.Cities.ToList();
-            mission.Countries = _db.Countries.ToList();
-            mission.MissionThemes = _db.MissionThemes.ToList();
-            mission.Skills = _db.Skills.ToList();
-
-            return View(mission);
+            return View(missions);
 
 
         }
@@ -226,7 +235,7 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
             _db.Missions.Update(mission);
             _db.SaveChanges();
 
-            return View("Missions");
+            return RedirectToAction("Missions", new { missionId = missionId });
         }
 
 
@@ -291,16 +300,77 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult MissionTheme()
+        public IActionResult MissionTheme(AdminMissionViewModel theme)
         {
             HttpContext.Session.SetInt32("Nav", 4);
             ViewBag.nav = HttpContext.Session.GetInt32("Nav");
+            AdminMissionViewModel themes;
+            if(theme.MissionThemeId != 0)
+            {
+                themes = theme;
+            }
+            else
+            {
+                themes = new AdminMissionViewModel();
+            }
 
-            var missiontheme = new AdminMissionViewModel();
-            missiontheme.MissionThemes = _db.MissionThemes.ToList();
+            themes.MissionThemes = _db.MissionThemes.ToList();
 
-            return View(missiontheme);
+            return View(themes);
         }
+       
+        [HttpPost]
+        public IActionResult theme(long missionThemeId, String Title, int Status)
+        {
+            if (missionThemeId == 0)
+            {
+                MissionTheme theme = new MissionTheme()
+                {
+                    Title = Title,
+                    Status = Status,
+                    CreatedAt = DateTime.Now,
+                };
+
+                _db.Add(theme);
+                _db.SaveChanges();
+            }
+            else
+            {
+                MissionTheme theme = _db.MissionThemes.FirstOrDefault(x => x.MissionThemeId == missionThemeId);
+                theme.Status = Status;
+                theme.Title = Title;
+                theme.UpdatedAt = DateTime.Now;
+
+                _db.Update(theme);
+                _db.SaveChanges();
+            }
+
+            return Json("MissionTheme");
+        }
+
+
+
+        [HttpGet]
+        public IActionResult editTheme(long missionThemeId)
+        {
+            var themeList = _db.MissionThemes.FirstOrDefault(x => x.MissionThemeId == missionThemeId);
+
+
+            return Json(themeList);
+        }
+
+        [HttpGet]
+        public IActionResult deleteMissiontheme(long missionThemeId)
+        {
+            var delTheme = _db.MissionThemes.FirstOrDefault(m => m.MissionThemeId == missionThemeId );
+            delTheme.DeletedAt = DateTime.Now;
+
+            _db.MissionThemes.Update(delTheme);
+            _db.SaveChanges();
+
+            return RedirectToAction("MissionTheme", "Admin");
+        }
+
 
         public IActionResult MissionSkills()
         {
@@ -334,10 +404,8 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
             {
                 if (file != null)
                 {
-                    //Set Key Name
                     string ImageName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
 
-                    //Get url To Save
                     string SavePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\img", ImageName);
 
                     using (var stream = new FileStream(SavePath, FileMode.Create))

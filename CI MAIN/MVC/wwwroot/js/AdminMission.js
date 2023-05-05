@@ -3,21 +3,6 @@ $(document).ready(function () {
     $('#userTable').DataTable();
 });
 
-
-//$(document).ready(function () {
-//    var myDropzone = new Dropzone("#my-dropzone", {
-//        paramName: "file",
-//        maxFilesize: 2, // MB
-//        addRemoveLinks: true,
-//        dictRemoveFile: "Remove"
-//    });
-
-//    myDropzone.on("success", function (file, response) {
-//        // Handle the server response here
-//    });
-//});
-
-
 function missionadd() { 
     $.ajax({
         url: '/Admin/Admin/addMission',
@@ -71,16 +56,124 @@ function getMission(missionId) {
 }
 
 function missiondelete(missionId) {
-    $.ajax({
-        url: '/Admin/Admin/delmiss',
-        type: 'GET',
-        data: { 'missionId': missionId },
-        success: function (res) {
-            swal("Are you sure you want to do this?", {
-                buttons: ["Oh noez!", true],
+
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: '/Admin/Admin/delmiss',
+                type: 'GET',
+                data: { 'missionId': missionId },
+                success: function (res) {
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                    console.log(res);
+                    $("#User").click();
+                }
             });
+
+
+           
+        }
+    })
+
+
+
+   
+}
+
+
+
+
+
+
+//=============================== theme ==============================
+
+
+function theme() {
+    var Title = document.getElementById("Title").value;
+    var Status = document.getElementById("Status").value;
+    var missionThemeId = document.getElementById("missionThemeId").value;
+
+    $.ajax({
+        url: '/Admin/Admin/theme',
+        type: 'GET',
+        data: { 'missionThemeId': missionThemeId, 'Title': Title, 'Status': Status },
+        success: function (res) {
+            $("#cms").click();
+        },
+        error: function (res) {
             console.log(res);
-            $("#User").click();
+            alert("Modal error");
+        }
+    });
+}
+
+function editTheme(missionThemeId) {
+    $.ajax({
+        url: '/Admin/Admin/editTheme',
+        type: 'GET',
+        data: { 'missionThemeId': missionThemeId },
+        success: function (res) {
+            console.log(res);
+            $("#Title").val(res.title);
+            $("#Status").val(res.status);
+            $("#missionThemeId").val(res.missionThemeId);
+        },
+        error: function (res) {
+            console.log(res);
+            alert("Modal error");
+        }
+    });
+}
+
+
+function nullvalues() {
+    document.getElementById("Title").value = "";
+    document.getElementById("Status").value = "";
+    document.getElementById("missionThemeId").value = "";
+}
+
+
+function deleteTheme(missionThemeId) {
+
+    $.ajax({
+        url: '/Admin/Admin/deleteMissiontheme',
+        type: 'GET',
+        data: { 'missionThemeId': missionThemeId },
+        success: function (res) {
+            $("#missionReject").click();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                }
+            })
+        },
+        error: function (res) {
+            console.log(res);
+            alert("error");
         }
     });
 }

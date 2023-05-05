@@ -657,6 +657,10 @@
       "PackagePath": "staticwebassets\\js\\AdminMission.js"
     },
     {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\Cms.js",
+      "PackagePath": "staticwebassets\\js\\Cms.js"
+    },
+    {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\ShareStory.js",
       "PackagePath": "staticwebassets\\js\\ShareStory.js"
     },

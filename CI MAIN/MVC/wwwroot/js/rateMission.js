@@ -1,6 +1,6 @@
 ﻿function ratemission(starId, missionId, id) {
     $.ajax({
-        url: '/User/AddRating',
+        url: '/Employee/User/AddRating',
         type: 'POST',
         data: { missionId: missionId, id: id, rating: starId },
         success: function (result) {

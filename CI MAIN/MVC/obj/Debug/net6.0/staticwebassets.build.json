@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "A0g2Al4IPNcegenZEpjGR0x2GWG4c5B5mSn+WZLvxmM=",
+  "Hash": "mWcgf8C/saKqstZA4X0MDEOe3B7C7njP1pOHgt8Y5NM=",
   "Source": "CI Platform Project",
   "BasePath": "_content/CI Platform Project",
   "Mode": "Default",
@@ -2854,6 +2854,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\AdminMission.js"
+    },
+    {
+      "Identity": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\Cms.js",
+      "SourceId": "CI Platform Project",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\",
+      "BasePath": "_content/CI Platform Project",
+      "RelativePath": "js/Cms.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\Cms.js"
     },
     {
       "Identity": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\landing.js",

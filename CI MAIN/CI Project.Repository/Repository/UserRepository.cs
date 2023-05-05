@@ -39,7 +39,7 @@ namespace CI_Project.Repository.Repository
         }
         public List<Mission> missionlist()
         {
-            return _db.Missions.ToList();
+            return _db.Missions.Where(m => m.DeletedAt == null).ToList();
         }
         public List<City> cities()
         {
@@ -110,7 +110,7 @@ namespace CI_Project.Repository.Repository
         }
         public List<Comment> comments()
         {
-            return _db.Comments.ToList();
+            return _db.Comments.OrderByDescending(u=>u.CreatedAt).ToList();
         }
 
         public void passwordReset(PasswordReset pswdreset)

@@ -17,9 +17,6 @@ public partial class Story
 
     public string Status { get; set; } = null!;
 
-    public int? storyViews { get; set; }
-
-
     public DateTime? PublishedAt { get; set; }
 
     public DateTime CreatedAt { get; set; }
@@ -27,6 +24,8 @@ public partial class Story
     public DateTime? UpdatedAt { get; set; }
 
     public DateTime? DeletedAt { get; set; }
+
+    public int? StoryViews { get; set; }
 
     public virtual Mission Mission { get; set; } = null!;
 

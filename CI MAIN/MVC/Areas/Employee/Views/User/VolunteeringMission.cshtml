@@ -370,7 +370,11 @@
                                              width="52" alt="">
                                     </div>
                                     <div class="ms-3">
-                                        <p style="margin-left: 1rem;">@i.User.FirstName @i.User.LastName</p>
+                                        @if(i.User != null)
+                                        {
+                                            <p style="margin-left: 1rem;">@i.User.FirstName @i.User.LastName</p>
+                                        }
+                                       
                                         <p style="margin: 0.5rem 0 0 1rem;">@i.CreatedAt.ToString("dddd, dd MMMM yyyy , hh:mm tt")</p>
                                         <p style="margin: 0 0 0 1rem;">
                                             @i.CommentValue

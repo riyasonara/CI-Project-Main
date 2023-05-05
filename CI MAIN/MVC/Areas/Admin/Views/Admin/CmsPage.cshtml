@@ -109,20 +109,18 @@
                         </td>
 
                         <td>
-                            <span>
-                                @*<a asp-action="CMSEdit" asp-controller="Admin" asp-area="Admin" asp-route-id="@cms.CmsPageId">  </a>*@
-                                <button data-bs-toggle="modal" data-bs-target="#AddModal" class="btn shadow-none" onclick="GetCmsData(@cms.CmsPageId)">
-                                    <i class="bi bi-pencil-square"></i>
-                                </button>
 
+                            <span>
+                                <button class="btn shadow-none" data-bs-toggle="modal" data-bs-target="#AddModal" onclick="GetCmsData(@cms.CmsPageId)">
+                                    <i class="bi bi-pencil-square fs-5" style="color:green;"></i>
+                                </button>
                             </span>
                             <span>
-                                @*<a asp-action="CMSDelete" asp-controller="Admin" asp-area="Admin" asp-route-id="@cms.CmsPageId">*@
                                 <button class="btn shadow-none" onclick="DeleteCMS(@cms.CmsPageId)">
-                                    <i class="bi bi-trash"></i>
+                                    <i class="bi bi-trash fs-5" style="color:red;"></i>
                                 </button>
-                                @*</a>*@
                             </span>
+
                         </td>
 
                     </tr>
@@ -133,18 +131,7 @@
     </div>
    
 </body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
-<script src="~/js/Admin.js" asp-append-version="true"></script>
-<script>
-    $(document).ready(function () {
+<script src="~/js/Cms.js" asp-append-version="true"></script>
 
-        $('#userTable').DataTable();
-    });
-    var table = new DataTable('#userTable');
-
-    $('#myInputTextField').keyup(function () {
-        table.search($(this).val()).draw();
-    });
-
-
-</script>

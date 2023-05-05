@@ -14,6 +14,10 @@ namespace CI_Platform_Project.Models
 
         public List<MissionTheme> MissionThemes { get; set; }
 
+        public long MissionThemeId { get; set; }
+
+        public int Status { get; set; }
+
         public List<Skill> Skills { get; set; }
 
         [Required(ErrorMessage ="enter mission type")]
