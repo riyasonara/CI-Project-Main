@@ -20,6 +20,10 @@ namespace CI_Platform_Project.Models
 
         public List<Skill> Skills { get; set; }
 
+         public long SkillId { get; set; }
+
+        public string SkillName { get; set; } = null!;
+
         [Required(ErrorMessage ="enter mission type")]
         public string MissionType { get; set; }
 

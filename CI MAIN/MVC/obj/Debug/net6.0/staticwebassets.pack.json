@@ -81,12 +81,36 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\0cb82f56-0738-499d-9643-dda11818593b.jpg",
+      "PackagePath": "staticwebassets\\img\\0cb82f56-0738-499d-9643-dda11818593b.jpg"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\1cb156d5-45e5-4981-b857-4a8ed42600b4.jpg",
+      "PackagePath": "staticwebassets\\img\\1cb156d5-45e5-4981-b857-4a8ed42600b4.jpg"
+    },
+    {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\2a8f9fe3-b5ce-4412-b544-42cae24534c6.jfif",
       "PackagePath": "staticwebassets\\img\\2a8f9fe3-b5ce-4412-b544-42cae24534c6.jfif"
     },
     {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\35851647-a80c-4c5e-a572-6baddfb90571.jpg",
+      "PackagePath": "staticwebassets\\img\\35851647-a80c-4c5e-a572-6baddfb90571.jpg"
+    },
+    {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\404-Page-image.png",
       "PackagePath": "staticwebassets\\img\\404-Page-image.png"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\5649dec3-171d-4db9-b95c-08f2bde27f47.jpg",
+      "PackagePath": "staticwebassets\\img\\5649dec3-171d-4db9-b95c-08f2bde27f47.jpg"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\5d1d0050-9310-48eb-ad7c-ca35400dac30.jpg",
+      "PackagePath": "staticwebassets\\img\\5d1d0050-9310-48eb-ad7c-ca35400dac30.jpg"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\65d8ea9f-140a-49ad-b2c7-460ed1700ce0.jfif",
+      "PackagePath": "staticwebassets\\img\\65d8ea9f-140a-49ad-b2c7-460ed1700ce0.jfif"
     },
     {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\760d4e80-8eb0-4a4a-af41-9c9e63c863e3.jpg",
@@ -97,12 +121,28 @@
       "PackagePath": "staticwebassets\\img\\7b36e340-44b6-4fef-903c-4fdf225c18e5.jpg"
     },
     {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\822b622a-6660-4bb7-a126-8a50473fccf1.jpg",
+      "PackagePath": "staticwebassets\\img\\822b622a-6660-4bb7-a126-8a50473fccf1.jpg"
+    },
+    {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\8c68bbb4-5407-4c30-9a9a-6e34d7485ab5.jpg",
       "PackagePath": "staticwebassets\\img\\8c68bbb4-5407-4c30-9a9a-6e34d7485ab5.jpg"
     },
     {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\8f03be95-a27c-4971-9564-5e387b847ad6.jpg",
+      "PackagePath": "staticwebassets\\img\\8f03be95-a27c-4971-9564-5e387b847ad6.jpg"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\92d2df64-31d9-423e-a678-7a4558f467c6.jpg",
+      "PackagePath": "staticwebassets\\img\\92d2df64-31d9-423e-a678-7a4558f467c6.jpg"
+    },
+    {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\9c063226-ea79-45e4-9c2f-d02e3a837407.jpg",
       "PackagePath": "staticwebassets\\img\\9c063226-ea79-45e4-9c2f-d02e3a837407.jpg"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\9ef04eb6-14b1-4ff5-982f-58fe4c3f75c7.jpg",
+      "PackagePath": "staticwebassets\\img\\9ef04eb6-14b1-4ff5-982f-58fe4c3f75c7.jpg"
     },
     {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\Already-volunteered.png",
@@ -283,6 +323,10 @@
     {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\drop-down.png",
       "PackagePath": "staticwebassets\\img\\drop-down.png"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\e349f38a-c846-425e-be0c-0e1a907eccfa.jpg",
+      "PackagePath": "staticwebassets\\img\\e349f38a-c846-425e-be0c-0e1a907eccfa.jpg"
     },
     {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\eye.png",
@@ -565,6 +609,10 @@
       "PackagePath": "staticwebassets\\img\\storyuserimg\\e3ef56db-b711-4cd8-bd37-8ecfccf56721.jfif"
     },
     {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\storyuserimg\\e5e0c4c0-5b08-48f4-b8e9-65df52a78077.jpg",
+      "PackagePath": "staticwebassets\\img\\storyuserimg\\e5e0c4c0-5b08-48f4-b8e9-65df52a78077.jpg"
+    },
+    {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\img\\storyuserimg\\ea2c1071-65f7-49d5-ba23-963f2efd30c5.jpg",
       "PackagePath": "staticwebassets\\img\\storyuserimg\\ea2c1071-65f7-49d5-ba23-963f2efd30c5.jpg"
     },
@@ -655,6 +703,18 @@
     {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\AdminMission.js",
       "PackagePath": "staticwebassets\\js\\AdminMission.js"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\AdminSkill.js",
+      "PackagePath": "staticwebassets\\js\\AdminSkill.js"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\AdminStory.js",
+      "PackagePath": "staticwebassets\\js\\AdminStory.js"
+    },
+    {
+      "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\Banner.js",
+      "PackagePath": "staticwebassets\\js\\Banner.js"
     },
     {
       "Id": "E:\\Project\\CI Project Main\\CI MAIN\\MVC\\wwwroot\\js\\Cms.js",

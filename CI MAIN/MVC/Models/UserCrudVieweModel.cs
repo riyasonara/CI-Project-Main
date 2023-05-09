@@ -17,6 +17,13 @@ namespace CI_Platform_Project.Models
 
         public List<Story> Stories { get; set; }
 
+        public long StoryId { get; set; }
+
+        public DateTime? PublishedAt { get; set; }
+
+        public int? StoryViews { get; set; }
+
+
         public List<City> Cities { get; set; }
 
         public List<Country> Countries { get; set; }

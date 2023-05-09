@@ -9,9 +9,9 @@ public partial class Skill
 
     public string SkillName { get; set; } = null!;
 
-    public byte Status { get; set; }
+    public int Status { get; set; }
 
-    public byte[] CreatedAt { get; set; } = null!;
+    public DateTime CreatedAt { get; set; }
 
     public DateTime? UpdatedAt { get; set; }
 

@@ -92,3 +92,37 @@ function CHANGE(event) {
 function CLICK() {
     document.getElementById("imginput").click();
 }
+
+//==================================================== cascading =========================================
+
+filteredCitites();
+function filteredCitites() {
+    //alert("hiiii");
+    var missionCityDiv = document.getElementById("city");
+    var missionCountry = document.getElementById("country").value;
+    var missioncity = document.getElementById("city");
+
+    //alert(missionCountry)
+    while (missionCityDiv.hasChildNodes()) {
+        missionCityDiv.removeChild(missionCityDiv.firstChild);
+    }
+
+    $.ajax({
+        /* url: '@Url.Action("filterCity", "UserProfile")',*/
+        url: '/Employee/UserProfile/filterCity',
+        type: 'GET',
+        data: { missionCountry },
+        datatype: "json",
+        success: function (result) {
+            console.log(result)
+            result.map((city, index) => {
+                console.log(city)
+                var newCityOption = document.createElement('option');
+                newCityOption.value = city.cityId;
+                newCityOption.innerText = city.name;
+                console.log(newCityOption)
+                missioncity.appendChild(newCityOption)
+            })
+        }
+    });
+}

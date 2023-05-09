@@ -122,39 +122,36 @@ function removeElement(value) {
 
 
 
+//==================================================== cascading =========================================
 
+filteredCitites();
+function filteredCitites() {
+    //alert("hiiii");
+    var missionCityDiv = document.getElementById("missioncity");
+    var missionCountry = document.getElementById("missionCountry").value;
+    var missioncity = document.getElementById("missioncity");
 
+    //alert(missionCountry)
+    while (missionCityDiv.hasChildNodes()) {
+        missionCityDiv.removeChild(missionCityDiv.firstChild);
+    }
 
-
-//---------------------------------------- Volunteering Mission js ----------------------------------
-
-//let slideIndex = 1;
-//showSlides(slideIndex);
-
-//// Next/previous controls
-//function plusSlides(n) {
-//    showSlides(slideIndex += n);
-//}
-
-//// Thumbnail image controls
-//function currentSlide(n) {
-//    showSlides(slideIndex = n);
-//}
-
-//function showSlides(n) {
-//    let i;
-//    let slides = document.getElementsByClassName("mySlides");
-//    let dots = document.getElementsByClassName("demo");
-//    let captionText = document.getElementById("caption");
-//    if (n > slides.length) { slideIndex = 1 }
-//    if (n < 1) { slideIndex = slides.length }
-//    for (i = 0; i < slides.length; i++) {
-//        slides[i].style.display = "none";
-//    }
-//    for (i = 0; i < dots.length; i++) {
-//        dots[i].className = dots[i].className.replace(" active", "");
-//    }
-//    slides[slideIndex - 1].style.display = "block";
-//    dots[slideIndex - 1].className += " active";
-//    captionText.innerHTML = dots[slideIndex - 1].alt;
-//}
+    $.ajax({
+        /* url: '@Url.Action("filterCity", "UserProfile")',*/
+        url: '/Employee/UserProfile/filterCity',
+        type: 'GET',
+        data: { missionCountry },
+        datatype: "json",
+        success: function (result) {
+            console.log(result)
+            result.map((city, index) => {
+                console.log(city)
+                var newCityOption = document.createElement('option');
+                newCityOption.value = city.cityId;
+                newCityOption.innerText = city.name;
+                console.log(newCityOption)
+                missioncity.appendChild(newCityOption)
+            })
+        }
+    });
+}

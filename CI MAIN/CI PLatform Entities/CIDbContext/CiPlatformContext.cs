@@ -652,8 +652,7 @@ public partial class CiPlatformContext : DbContext
 
             entity.Property(e => e.SkillId).HasColumnName("skill_id");
             entity.Property(e => e.CreatedAt)
-                .IsRowVersion()
-                .IsConcurrencyToken()
+                .HasColumnType("datetime")
                 .HasColumnName("created_at");
             entity.Property(e => e.DeletedAt)
                 .HasColumnType("datetime")

@@ -46,6 +46,8 @@ namespace CI_Project.Repository.Interface
 
         public List<UserSkill> skilllist(int userid);
 
+        public List<MissionApplication> missionApplications();
+
         public void AddUserSkills(long SkillId, int UserId);
 
         public void updateuser(User user);
@@ -60,6 +62,14 @@ namespace CI_Project.Repository.Interface
 
         public Mission updateMission(long missionId, string Title, string ShortDesc, string Desc, int city, int country, string OrgName, string OrgDetail, string misstype, int seats, DateTime startdate, DateTime endDate, DateTime RegDeadline, string availability, int themeid, int skill);
 
+        public MissionTheme addtheme(string themeName, int Status);
+
+        public MissionTheme updateTheme(string themeName, int Status, long MissionThemeId);
+
+        public Skill addSkill(string skillName, int Status);
+
+        public Skill updateSkill(string skillName, int Status, long skillId);
+
         //public User UserExist(string Email);
 
         public Banner AddBanner(string discrption, string image, int sortorder);
@@ -69,5 +79,6 @@ namespace CI_Project.Repository.Interface
         public List<Banner> AllBanners();
 
         public void DeleteBanner(long bannerId);
+
     }
 }

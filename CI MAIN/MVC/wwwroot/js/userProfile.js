@@ -56,7 +56,7 @@ function ved4() {
 
 //document.getElementById('skillSave').onclick(function () { })
 document.getElementById('skillSave').addEventListener("click", e => {
-    debugger
+
     var selectedSkills = [];
     const skillsSelected = $('#s2 option');
 
@@ -71,7 +71,7 @@ document.getElementById('skillSave').addEventListener("click", e => {
         data: { selectedSkills: selectedSkills },
 
         success: function (response) {
-            debugger;
+            
             $('#userskilldiv').html($(response).find('#userskilldiv').html());
             window.location.href = '/Employee/user/userprofile';
             //document.getElementById('close').click();
@@ -114,4 +114,41 @@ function ChangePassword() {
             }
         });
     }
+}
+
+
+
+
+//==================================================== cascading =========================================
+
+filteredCitites();
+function filteredCitites() {
+    //alert("hiiii");
+    var missionCityDiv = document.getElementById("missioncity");
+    var missionCountry = document.getElementById("missionCountry").value;
+    var missioncity = document.getElementById("missioncity");
+
+    //alert(missionCountry)
+    while (missionCityDiv.hasChildNodes()) {
+        missionCityDiv.removeChild(missionCityDiv.firstChild);
+    }
+
+    $.ajax({
+        /* url: '@Url.Action("filterCity", "UserProfile")',*/
+        url: '/Employee/User/filterCity',
+        type: 'GET',
+        data: { missionCountry },
+        datatype: "json",
+        success: function (result) {
+            console.log(result)
+            result.map((city, index) => {
+                console.log(city)
+                var newCityOption = document.createElement('option');
+                newCityOption.value = city.cityId;
+                newCityOption.innerText = city.name;
+                console.log(newCityOption)
+                missioncity.appendChild(newCityOption)
+            })
+        }
+    });
 }

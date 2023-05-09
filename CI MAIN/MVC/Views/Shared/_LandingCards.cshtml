@@ -43,13 +43,6 @@
 </head>
 <body>
 
-
-
-
-
-    <div class="filters-section d-flex align-items-start flex-wrap justify-content-start">
-    </div>
-
     <div class="explore-now row me-5">
         <div class="col-lg-6 d-inline">
             <p class="fs-4 ms-5 mt-2">
@@ -126,15 +119,15 @@
                             </div>
 
 
-                         @*   @foreach (var data in ViewData["applications"] as IList<MissionApplication>)
+                            @*@foreach (var data in  ViewData["applications"] as IList<MissionApplication>)
                             {
                                 @if (id == data.UserId.ToString())
                                 {
                                     <p class="p-2 text-white applied" style="width:fit-content;">Applied</p>
 
                                 }
-                            }
-*@
+                            }*@
+
 
                             @if (item.isfav == true)
                             {

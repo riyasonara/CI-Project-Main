@@ -67,14 +67,14 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             var mailbody = "<h3>You got a mission recommendation from " + currentUser + "<br /> Do visit it</h3><h4><a href=" + targetURL + ">Checkout Mission</a></h4>";
 
             var email = new MimeMessage();
-            email.From.Add(MailboxAddress.Parse("rahulshah89098@gmail.com"));
+            email.From.Add(MailboxAddress.Parse("stavenger7581@gmail.com"));
             email.To.Add(MailboxAddress.Parse(userMail));
             email.Subject = "Recommend mission";
             email.Body = new TextPart(MimeKit.Text.TextFormat.Html) { Text = mailbody };
 
             using var smtp = new SmtpClient();
             smtp.Connect("smtp.gmail.com", 587, SecureSocketOptions.StartTls);
-            smtp.Authenticate("rahulshah89098@gmail.com", "aufeorkjihnoevvs");
+            smtp.Authenticate("stavenger7581@gmail.com", "upjtmvizxcxwflyz");
             smtp.Send(email);
             smtp.Disconnect(true);
             return Json(new { status = 1 });
@@ -207,6 +207,13 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             }
             ViewBag.recentvolunteered = recentvolunteredlist;
 
+
+            if (HttpContext.Session.GetString("userID") != null)
+            {
+                ViewData["userImg"] = _db.Users.ToList().Where(m => m.UserId == Convert.ToInt64(HttpContext.Session.GetString("userID"))).Select(m => m.Avatar).FirstOrDefault();
+            }
+
+
             return View(selected);
         }
         public async Task<IActionResult> apply(long MissionId, long UserId)
@@ -290,15 +297,17 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
         public IActionResult landingPage(long userId, int id, int missionid, string? search, int? pageIndex, string? sortValue, string[] country, string[] city, string[] theme)
         {
             var SessionUserId = HttpContext.Session.GetString("userID");
-            ViewData["applications"] = _Iuser.applications();
-            //var UserId = HttpContext.Session.GetString("userID");
+            ViewData["applications"] = _Iuser.missionApplications();            //var UserId = HttpContext.Session.GetString("userID");
             ViewBag.countrylist = _Iuser.countrylist();
             ViewBag.themelist = _Iuser.themelist();
             ViewBag.citylist = _Iuser.cities();
             ViewBag.skilllist = _Iuser.skilllist();
 
 
-
+            if (HttpContext.Session.GetString("userID") != null)
+            {
+                ViewData["userImg"] = _db.Users.ToList().Where(m => m.UserId == Convert.ToInt64(HttpContext.Session.GetString("userID"))).Select(m => m.Avatar).FirstOrDefault();
+            }
 
             return View();
 
@@ -687,7 +696,22 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
                     select row1;
 
             userProfile.RemainingSkill = r.ToList();
+
+            if (HttpContext.Session.GetString("userID") != null)
+            {
+                ViewData["userImg"] = _db.Users.ToList().Where(m => m.UserId == Convert.ToInt64(HttpContext.Session.GetString("userID"))).Select(m => m.Avatar).FirstOrDefault();
+            }
+
+
             return View(userProfile);
+        }
+
+
+        //Cascading for city and country
+        public JsonResult filterCity(long missionCountry)
+        {
+            IList<City> cities = _db.Cities.Where(m => m.CountryId == missionCountry).ToList();
+            return Json(cities);
         }
 
         [HttpPost]
@@ -819,6 +843,11 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             ss.missions = _db.Missions.ToList();
             ss.applications = _db.MissionApplications.Where(e => e.UserId == Convert.ToInt64(userid)).ToList();
             ss.timesheets = _db.Timesheets.ToList();
+
+            if (HttpContext.Session.GetString("userID") != null)
+            {
+                ViewData["userImg"] = _db.Users.ToList().Where(m => m.UserId == Convert.ToInt64(HttpContext.Session.GetString("userID"))).Select(m => m.Avatar).FirstOrDefault();
+            }
 
             return View(ss);
         }

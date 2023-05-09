@@ -135,7 +135,7 @@
                                         </div>
                                         <div class="col">
                                             <label class="mt-2">Country</label>
-                                            <select asp-for="CountryId" id="country" class="form-select" aria-label="Default select example">
+                                            <select asp-for="CountryId" id="country" class="form-select" aria-label="Default select example" onchange="filteredCitites()">
                                                 <option selected>Select your country</option>
                                                 @foreach (var item in Model.Countries)
                                                 {

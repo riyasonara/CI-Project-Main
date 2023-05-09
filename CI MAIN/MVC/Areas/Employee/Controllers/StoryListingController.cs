@@ -57,6 +57,13 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             ViewBag.TotalMission = totalMissions;
             ViewBag.TotalPages = (int)Math.Ceiling(totalMissions / (double)pageSize);
             ViewBag.CurrentPage = page ?? 0;
+
+
+            if (HttpContext.Session.GetString("userID") != null)
+            {
+                ViewData["userImg"] = _db.Users.ToList().Where(m => m.UserId == Convert.ToInt64(HttpContext.Session.GetString("userID"))).Select(m => m.Avatar).FirstOrDefault();
+            }
+
             return View(Missions);
 
 
@@ -261,7 +268,10 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             var story = _db.Stories.Find(storyid);
             ViewBag.UserId = Convert.ToInt64(userId);
 
-
+            if (HttpContext.Session.GetString("userID") != null)
+            {
+                ViewData["userImg"] = _db.Users.ToList().Where(m => m.UserId == Convert.ToInt64(HttpContext.Session.GetString("userID"))).Select(m => m.Avatar).FirstOrDefault();
+            }
 
             return View(story);
         }
@@ -294,13 +304,19 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
                     ShortDescription = HttpUtility.HtmlDecode(story.Description),
                     username = storyuser.FirstName,
                     lastname = storyuser.LastName,
-                    //Useravtar = storyuser.Avatar != null ? storyuser.Avatar : "",
+                    Useravtar = storyuser.Avatar != null ? storyuser.Avatar : "",
                     storymediapath = storymedia != null ? storymedia.Path : "",
 
                 });
             }
             var Storys = storyView;
             ViewBag.StoryList = storyView;
+
+            if (HttpContext.Session.GetString("userID") != null)
+            {
+                ViewData["userImg"] = _db.Users.ToList().Where(m => m.UserId == Convert.ToInt64(HttpContext.Session.GetString("userID"))).Select(m => m.Avatar).FirstOrDefault();
+            }
+
             return View(Storys);
         }
 

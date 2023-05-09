@@ -30,6 +30,14 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
             return View(uservm);
         }
 
+
+        //Cascading for city and country
+        public JsonResult filterCity(long missionCountry)
+        {
+            IList<City> cities = _db.Cities.Where(m => m.CountryId == missionCountry).ToList();
+            return Json(cities);
+        }
+
         [HttpPost]
         public IActionResult adduser(string avatar, string Fname, string Lname, string email, string password, string empID, string department, long city, long country, string proftxt, int status, long userID)
         {
@@ -170,10 +178,10 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
             }
             else
             {
-                 missions = new AdminMissionViewModel();
+                missions = new AdminMissionViewModel();
             }
-           
-            missions.Missions = _db.Missions.Where(m=>m.DeletedAt==null).ToList();
+
+            missions.Missions = _db.Missions.Where(m => m.DeletedAt == null).ToList();
             missions.Cities = _db.Cities.ToList();
             missions.Countries = _db.Countries.ToList();
             missions.MissionThemes = _db.MissionThemes.ToList();
@@ -274,11 +282,40 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        public IActionResult approveStory(long StoryId)
+        {
+            var story =_db.Stories.FirstOrDefault(s=>s.StoryId == StoryId);
+            story.Status = "Approved";
+
+            _db.Stories.Update(story);
+            _db.SaveChanges();
+            return RedirectToAction("AdminStory","Admin");
+        }
+
+        [HttpGet]
+        public IActionResult rejectStory(long StoryId)
+        {
+            var storyReject = _db.Stories.FirstOrDefault(s=>s.StoryId ==StoryId);
+            storyReject.Status = "Rejected";
+
+            _db.Stories.Update(storyReject); 
+            _db.SaveChanges();
+            return RedirectToAction("AdminStory", "Admin");
+        }
+
+
+        [HttpGet]
         public IActionResult approveMission(long missionApplicationId)
         {
             var missionapp = _db.MissionApplications.FirstOrDefault(m => m.MissionApplicationId == missionApplicationId);
-            missionapp.ApprovalStatus = "Approved";
+            var targetMission = _db.Missions.ToList().Where(m => m.MissionId == missionapp.MissionId).FirstOrDefault();
+            if (targetMission.Availability != null)
+            {
+                targetMission.Availability = Convert.ToString(Convert.ToInt32(targetMission.Availability) - 1);
+                missionapp.ApprovalStatus = "Approved";
+            }
 
+            _db.Missions.Update(targetMission);
             _db.MissionApplications.Update(missionapp);
             _db.SaveChanges();
 
@@ -300,88 +337,136 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public IActionResult MissionTheme(AdminMissionViewModel theme)
+        public IActionResult MissionTheme(MissionThemeViewModel theme)
         {
             HttpContext.Session.SetInt32("Nav", 4);
             ViewBag.nav = HttpContext.Session.GetInt32("Nav");
-            AdminMissionViewModel themes;
-            if(theme.MissionThemeId != 0)
+            MissionThemeViewModel themes;
+            if (theme.MissionThemeId != 0)
             {
                 themes = theme;
             }
             else
             {
-                themes = new AdminMissionViewModel();
+                themes = new MissionThemeViewModel();
             }
 
-            themes.MissionThemes = _db.MissionThemes.ToList();
+            themes.MissionThemes = _db.MissionThemes.Where(t => t.DeletedAt==null).ToList();
 
             return View(themes);
         }
-       
-        [HttpPost]
-        public IActionResult theme(long missionThemeId, String Title, int Status)
-        {
-            if (missionThemeId == 0)
-            {
-                MissionTheme theme = new MissionTheme()
-                {
-                    Title = Title,
-                    Status = Status,
-                    CreatedAt = DateTime.Now,
-                };
 
-                _db.Add(theme);
-                _db.SaveChanges();
+        [HttpPost]
+
+        public IActionResult addTheme(string themeName, int Status, long missionThemeId)
+        {
+            try
+            {
+                if (missionThemeId == 0 || missionThemeId == null)
+                {
+                    _Iuser.addtheme(themeName, Status);
+                }
+                else
+                {
+                    _Iuser.updateTheme(themeName, Status, missionThemeId);
+                }
+                return RedirectToAction("MissionTheme");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Error", "User", new { area = "Employee" });
+            }
+        }
+
+
+        public IActionResult Themeget(long missionThemeId)
+        {
+            var themeList = _db.MissionThemes.FirstOrDefault(x => x.MissionThemeId == missionThemeId);
+            var theme = new MissionThemeViewModel();
+
+            theme.Title = themeList.Title;
+            theme.MissionThemeId = themeList.MissionThemeId;
+            theme.Status = themeList.Status;
+
+            return RedirectToAction("MissionTheme", theme);
+        }
+        public IActionResult deltheme(long missionThemeId)
+        {
+            var theme = _db.MissionThemes.FirstOrDefault(x => x.MissionThemeId == missionThemeId);
+            theme.DeletedAt = DateTime.Now;
+
+            _db.MissionThemes.Update(theme);
+            _db.SaveChanges();
+
+            return RedirectToAction("MissionTheme", new { missionThemeId = missionThemeId });
+        }
+
+        public IActionResult MissionSkills(AdminSkillViewModel skill)
+        {
+            var missionskills = new AdminSkillViewModel();
+            missionskills.skills = _db.Skills.ToList();
+
+            AdminSkillViewModel skills;
+            if (skill.SkillId != 0)
+            {
+                skills = skill;
             }
             else
             {
-                MissionTheme theme = _db.MissionThemes.FirstOrDefault(x => x.MissionThemeId == missionThemeId);
-                theme.Status = Status;
-                theme.Title = Title;
-                theme.UpdatedAt = DateTime.Now;
-
-                _db.Update(theme);
-                _db.SaveChanges();
+                skills = new AdminSkillViewModel();
             }
 
-            return Json("MissionTheme");
+            skills.skills = _db.Skills.Where(s => s.DeletedAt == null).ToList();
+
+
+            return View(missionskills);
         }
 
-
-
-        [HttpGet]
-        public IActionResult editTheme(long missionThemeId)
+        [HttpPost]
+        public IActionResult addskill(string skillName, int Status, long skillId)
         {
-            var themeList = _db.MissionThemes.FirstOrDefault(x => x.MissionThemeId == missionThemeId);
+            try
+            {
+                if (skillId == 0 || skillId == null)
+                {
+                    _Iuser.addSkill(skillName, Status);
+                }
+                else
+                {
+                    _Iuser.updateSkill(skillName, Status, skillId);
+                }
+                return RedirectToAction("MissionSkills");
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Error", "User", new { area = "Employee" });
+            }
 
-
-            return Json(themeList);
         }
 
-        [HttpGet]
-        public IActionResult deleteMissiontheme(long missionThemeId)
+        public IActionResult skillget(long skillId)
         {
-            var delTheme = _db.MissionThemes.FirstOrDefault(m => m.MissionThemeId == missionThemeId );
-            delTheme.DeletedAt = DateTime.Now;
+            var skillList = _db.Skills.FirstOrDefault(x => x.SkillId == skillId);
+            var skill = new AdminSkillViewModel();
 
-            _db.MissionThemes.Update(delTheme);
+            skill.SkillName = skillList.SkillName;
+            skill.SkillId = skillList.SkillId;
+            skill.Status = skillList.Status;
+
+            return RedirectToAction("MissionSkills", skill);
+        }
+        public IActionResult delskill(long skillId)
+        {
+            var skill = _db.Skills.FirstOrDefault(x => x.SkillId == skillId);
+            skill.DeletedAt = DateTime.Now;
+
+            _db.Skills.Update(skill);
             _db.SaveChanges();
 
-            return RedirectToAction("MissionTheme", "Admin");
+            return RedirectToAction("MissionSkills", new { skillId = skillId });
         }
 
 
-        public IActionResult MissionSkills()
-        {
-            HttpContext.Session.SetInt32("Nav", 5);
-            ViewBag.nav = HttpContext.Session.GetInt32("Nav");
-
-            var missionskill = new AdminMissionViewModel();
-            missionskill.Skills = _db.Skills.ToList();
-
-            return View(missionskill);
-        }
 
 
         public IActionResult Banner()
@@ -427,7 +512,7 @@ namespace CI_Platform_Project.Areas.Admin.Controllers
             HttpContext.Session.Clear();
             TempData["bye"] = "logged out successfully";
             TempData["okay"] = null;
-            return RedirectToAction("LandingPage", "User", new {area= "Employee" });
+            return RedirectToAction("LandingPage", "User", new { area = "Employee" });
         }
 
     }

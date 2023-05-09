@@ -100,17 +100,19 @@ function missiondelete(missionId) {
 //=============================== theme ==============================
 
 
-function theme() {
-    var Title = document.getElementById("Title").value;
-    var Status = document.getElementById("Status").value;
-    var missionThemeId = document.getElementById("missionThemeId").value;
 
+function themeadd() {
     $.ajax({
-        url: '/Admin/Admin/theme',
-        type: 'GET',
-        data: { 'missionThemeId': missionThemeId, 'Title': Title, 'Status': Status },
+        url: '/Admin/Admin/addTheme',
+        type: 'POST',
+        data: {
+            themeName: document.getElementById("themeName").value,
+            Status: document.getElementById("Status").value,
+            missionThemeId: document.getElementById("missionThemeId").value,
+        },
         success: function (res) {
-            $("#cms").click();
+            console.log(res);
+            $("#themeModal").html($(res).find("#themeModal").html());
         },
         error: function (res) {
             console.log(res);
@@ -119,61 +121,98 @@ function theme() {
     });
 }
 
-function editTheme(missionThemeId) {
+function getTheme(missionThemeId) {
     $.ajax({
-        url: '/Admin/Admin/editTheme',
-        type: 'GET',
-        data: { 'missionThemeId': missionThemeId },
-        success: function (res) {
-            console.log(res);
-            $("#Title").val(res.title);
-            $("#Status").val(res.status);
-            $("#missionThemeId").val(res.missionThemeId);
+        url: '/Admin/Admin/Themeget',
+        type: 'POST',
+        data: {
+            missionThemeId: missionThemeId
         },
-        error: function (res) {
-            console.log(res);
+
+        success: function (response) {
+            $("#themeModal").html($(response).find("#themeModal").html());
+        },
+        error: function () {
+            console.log(response);
             alert("Modal error");
         }
     });
 }
 
+function themedelete(missionThemeId) {
 
-function nullvalues() {
-    document.getElementById("Title").value = "";
-    document.getElementById("Status").value = "";
-    document.getElementById("missionThemeId").value = "";
-}
-
-
-function deleteTheme(missionThemeId) {
-
-    $.ajax({
-        url: '/Admin/Admin/deleteMissiontheme',
-        type: 'GET',
-        data: { 'missionThemeId': missionThemeId },
-        success: function (res) {
-            $("#missionReject").click();
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.isConfirmed) {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: '/Admin/Admin/deltheme',
+                type: 'GET',
+                data: { 'missionThemeId': missionThemeId },
+                success: function (res) {
                     Swal.fire(
                         'Deleted!',
                         'Your file has been deleted.',
                         'success'
                     )
+                    console.log(res);
+                    $("#User").click();
                 }
+            });
+
+
+
+        }
+    })
+
+
+
+
+}
+
+
+
+//==================================================== cascading =========================================
+
+filteredCitites();
+function filteredCitites() {
+    //alert("hiiii");
+    var missionCityDiv = document.getElementById("city");
+    var missionCountry = document.getElementById("country").value;
+    var missioncity = document.getElementById("city");
+
+    //alert(missionCountry)
+    while (missionCityDiv.hasChildNodes()) {
+        missionCityDiv.removeChild(missionCityDiv.firstChild);
+    }
+
+    $.ajax({
+        /* url: '@Url.Action("filterCity", "UserProfile")',*/
+        url: '/Admin/Admin/filterCity',
+        type: 'GET',
+        data: { missionCountry },
+        datatype: "json",
+        success: function (result) {
+            console.log(result)
+            result.map((city, index) => {
+                console.log(city)
+                var newCityOption = document.createElement('option');
+                newCityOption.value = city.cityId;
+                newCityOption.innerText = city.name;
+                console.log(newCityOption)
+                missioncity.appendChild(newCityOption)
             })
-        },
-        error: function (res) {
-            console.log(res);
-            alert("error");
         }
     });
 }
+
+
+
+
+
