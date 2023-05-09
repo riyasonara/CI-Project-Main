@@ -83,22 +83,67 @@ document.getElementById('skillSave').addEventListener("click", e => {
     });
 });
 
+
+function oldp() {
+    $('#old-val').addClass('d-none');
+}
+
+function validatePassword(password) {
+    // password must be at least 8 characters long
+    if (password.length < 8) {
+        return false;
+    }
+
+    // password must contain at least one uppercase letter
+    if (!/[A-Z]/.test(password)) {
+        return false;
+    }
+
+    // password must contain at least one lowercase letter
+    if (!/[a-z]/.test(password)) {
+        return false;
+    }
+
+    // password must contain at least one special character
+    if (!/[\W_]/.test(password)) {
+        return false;
+    }
+
+    // password is valid
+    return true;
+}
+
 function ChangePassword() {
     var oldpass = document.getElementById('old').value;
     var newpass = document.getElementById('new').value;
-    var confirmpass = document.getElementById('cnf').value;
+    var confirmpass = document.getElementById('conf').value;
+
+    const isValid = validatePassword(newpass)
+
     if (oldpass == "") {
-        alert("Old password Required");
+        $('#old-val').removeClass('d-none');
+        $('#old-val').addClass('d-inline!important');
     }
-    else if (newp != cnf) {
-        alert("Confirm Password Dosen't Match");
+
+    else if (newpass == "") {
+        Swal.fire('Please Enter New Password')
+    }
+    else if (confirmpass == "") {
+        Swal.fire('Please Enter Confrim Password')
+    }
+    else if (newpass != confirmpass) {
+        Swal.fire('Passowrd and Confrim Password Does not Match')
+
+    }
+    else if (isValid == false) {
+        Swal.fire('Password is not Valid')
     }
 
     else {
         $.ajax({
             url: '/Employee/User/ChangePassword',
             type: 'POST',
-            data: { old: oldpass, newp: newpass, cnf: confirmpass },
+            data: { old: oldpass, newp: newpass, conf: confirmpass },
             success: function (response) {
                 if (response == true) {
                     alert("password change successfully");

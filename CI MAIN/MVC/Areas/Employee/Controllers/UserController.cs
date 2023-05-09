@@ -664,7 +664,7 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
             userProfile.title = user.Title;
             userProfile.CityId = user.CityId;
             userProfile.CountryId = user.CountryId;
-            //userVM.availability = user.
+            userProfile.Availability = user.Availability;
             userProfile.ProfileText = user.ProfileText;
             userProfile.LinkedInUrl = user.LinkedInUrl;
             userProfile.Avatar = user.Avatar != null ? user.Avatar : "";
@@ -775,7 +775,7 @@ namespace CI_Platform_Project.Areas.Employee.Controllers
         }
 
         [HttpPost]
-        public bool ChangePassword(string old, string newp, string cnf)
+        public bool ChangePassword(string old, string newp, string conf)
         {
 
             var userid = HttpContext.Session.GetString("userID");
